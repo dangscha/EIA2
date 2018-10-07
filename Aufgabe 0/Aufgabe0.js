@@ -8,7 +8,6 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 **/
 var Aufgabe0;
 (function (Aufgabe0) {
-    var name = "";
     function box() {
         var name = prompt("Wie ist dein Name");
         var node = document.getElementById("content");

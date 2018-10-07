@@ -9,7 +9,7 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 
 namespace Aufgabe0{
     
-    var name:string ="";
+
     function box(){
         var name = prompt ("Wie ist dein Name");
         var node:any= document.getElementById("content");
