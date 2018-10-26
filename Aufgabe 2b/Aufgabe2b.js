@@ -448,6 +448,7 @@ var Aufgabe31;
             var s = div.style;
             s.border = "solid black";
             s.textAlign = "center";
+            s.fontSize = "20px";
             s.position = "absolute";
             s.backgroundColor = _color;
             s.width = 100 + "px";

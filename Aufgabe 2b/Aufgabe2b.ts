@@ -493,6 +493,7 @@ namespace Aufgabe31 {
             let s: CSSStyleDeclaration = div.style;
             s.border = "solid black";
             s.textAlign = "center";
+            s.fontSize="20px";
             s.position = "absolute";
             s.backgroundColor = _color;
             s.width = 100 + "px";
