@@ -485,11 +485,11 @@ namespace Aufgabe31 {
         z = Number(input);
 
 
-        function placeDiv(_color: string, _v: string, _y: number): void {
+        function placeDiv(_color: string, _typ: string, _y: number): void {
             let div: HTMLDivElement = document.createElement("div");
             document.body.appendChild(div);
-            div.setAttribute("id", "a" + _y);
-            document.getElementById("a" + _y).innerHTML += _v;
+            div.setAttribute("id", "a" + _typ);
+            document.getElementById("a" + _typ).innerHTML += _typ;
             let s: CSSStyleDeclaration = div.style;
             s.border = "solid black";
             s.textAlign = "center";

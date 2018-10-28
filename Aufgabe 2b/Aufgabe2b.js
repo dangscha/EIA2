@@ -440,11 +440,11 @@ var Aufgabe31;
         var z;
         var input = prompt("Anzahl der Karten auswaehlen");
         z = Number(input);
-        function placeDiv(_color, _v, _y) {
+        function placeDiv(_color, _typ, _y) {
             var div = document.createElement("div");
             document.body.appendChild(div);
-            div.setAttribute("id", "a" + _y);
-            document.getElementById("a" + _y).innerHTML += _v;
+            div.setAttribute("id", "a" + _typ);
+            document.getElementById("a" + _typ).innerHTML += _typ;
             var s = div.style;
             s.border = "solid black";
             s.textAlign = "center";
