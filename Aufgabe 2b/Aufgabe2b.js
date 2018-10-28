@@ -1,3 +1,11 @@
+/**
+Aufgabe: 2b
+Name: Jan Dangschat
+Matrikel: 259522
+Datum: 28.10.2018
+    
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+**/
 var Aufgabe31;
 (function (Aufgabe31) {
     function uno() {
