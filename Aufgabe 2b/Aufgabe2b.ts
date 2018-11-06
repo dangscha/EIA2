@@ -8,7 +8,7 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 **/
 
 namespace Aufgabe31 {
-    function uno() {
+  
         interface Cards {
             color: string;
             typ: string;
@@ -489,6 +489,7 @@ namespace Aufgabe31 {
         function random(x: number) {
             return Math.floor(Math.random() * Math.floor(x))
         }
+      function uno() {
         let z: number;
         let input: string = prompt("Anzahl der Karten auswaehlen");
         z = Number(input);
@@ -497,18 +498,11 @@ namespace Aufgabe31 {
         function placeDiv(_color: string, _typ: string, _y: number): void {
             let div: HTMLDivElement = document.createElement("div");
             document.body.appendChild(div);
-            div.setAttribute("id", "a" + _typ);
-            document.getElementById("a" + _typ).innerHTML += _typ;
+            div.setAttribute("id", "a" + _y);
+            document.getElementById("a" + _y).innerHTML += _typ;
             let s: CSSStyleDeclaration = div.style;
-            s.border = "solid black";
-            s.textAlign = "center";
-            s.fontSize="20px";
-            s.position = "absolute";
             s.backgroundColor = _color;
-            s.width = 100 + "px";
-            s.height = 200 + "px";
             s.left = (_y + 0.2) * 110 + "px";
-            s.bottom = 40 + "px";
             if (_color == "#000000") {
                 s.color = "white";
             }
@@ -526,5 +520,6 @@ namespace Aufgabe31 {
         }
         console.log(AllCards)
     }
+    
     document.addEventListener("DOMContentLoaded", (uno))
 }
