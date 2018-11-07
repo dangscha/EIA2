@@ -441,6 +441,7 @@ var Aufgabe31;
         typ: "Color",
     };
     var AllCards = [cardblue1, cardblue2, cardblue3, cardblue4, cardblue5, cardblue6, cardblue7, cardblue8, cardblue9, cardblue10, cardblue11, cardblue12, cardblue13, cardblue14, cardblue15, cardblue16, cardblue17, cardblue18, cardblue19, cardblue20, cardblue21, cardblue22, cardblue23, cardblue24, cardblue25, cardred1, cardred2, cardred3, cardred4, cardred5, cardred6, cardred7, cardred8, cardred9, cardred10, cardred11, cardred12, cardred13, cardred14, cardred15, cardred16, cardred17, cardred18, cardred19, cardred20, cardred21, cardred22, cardred23, cardred24, cardred25, cardgreen1, cardgreen2, cardgreen3, cardgreen4, cardgreen5, cardgreen6, cardgreen7, cardgreen8, cardgreen9, cardgreen10, cardgreen11, cardgreen12, cardgreen13, cardgreen14, cardgreen15, cardgreen16, cardgreen17, cardgreen18, cardgreen19, cardgreen20, cardgreen21, cardgreen22, cardgreen23, cardgreen24, cardgreen25, cardyellow1, cardyellow2, cardyellow3, cardyellow4, cardyellow5, cardyellow6, cardyellow7, cardyellow8, cardyellow9, cardyellow10, cardyellow11, cardyellow12, cardyellow13, cardyellow14, cardyellow15, cardyellow16, cardyellow17, cardyellow18, cardyellow19, cardyellow20, cardyellow21, cardyellow22, cardyellow23, cardyellow24, cardyellow25, cardblack1, cardblack2, cardblack3, cardblack4, cardblack5, cardblack6, cardblack7, cardblack8];
+    var HandCards = [];
     function random(x) {
         return Math.floor(Math.random() * Math.floor(x));
     }
@@ -469,6 +470,7 @@ var Aufgabe31;
             AllCards.splice(b, 1);
             continue;
         }
+        console.log(HandCards);
         console.log(AllCards);
     }
     document.addEventListener("DOMContentLoaded", (uno));
