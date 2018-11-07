@@ -475,4 +475,4 @@ var Aufgabe31;
     }
     document.addEventListener("DOMContentLoaded", (uno));
 })(Aufgabe31 || (Aufgabe31 = {}));
-//# sourceMappingURL=Aufgabe2b.js.map
+//# sourceMappingURL=Aufgabe3.js.map
