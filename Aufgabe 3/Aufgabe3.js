@@ -454,6 +454,7 @@ var Aufgabe31;
             document.body.appendChild(div);
             div.setAttribute("id", "a" + _y);
             document.getElementById("a" + _y).innerHTML += _typ;
+            HandCards.push("a" + _y);
             var s = div.style;
             s.backgroundColor = _color;
             s.left = (_y + 0.2) * 110 + "px";
