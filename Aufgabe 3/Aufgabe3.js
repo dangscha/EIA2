@@ -17,11 +17,19 @@ var Aufgabe31;
     function uno() {
         function EventListenerSortCards() {
             var button = document.getElementById("button");
-            button.addEventListener("click", SortCards);
+            button.addEventListener("click", sortCards);
         }
-        function SortCards() {
-            //HandCards.sort(function(a, b) { return a.typ - b.typ });
+        function sortCards() {
             console.log(HandCards);
+            console.log(AllCards);
+            HandCards.sort(function (card1, card2) {
+                var textA = card1.color.toUpperCase();
+                var textB = card2.color.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            });
+            for (var i = 0; i < HandCards.length; i++) {
+                placeDiv(HandCards[i].color, HandCards[i].typ, i);
+            }
         }
         EventListenerSortCards();
         var numbercards;

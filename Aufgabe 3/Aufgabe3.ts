@@ -22,18 +22,29 @@ namespace Aufgabe31 {
         return Math.floor(Math.random() * Math.floor(x))
     }
 
-    function uno() {
+function uno(){  
+
         function EventListenerSortCards() {
             let button: HTMLButtonElement = <HTMLButtonElement>document.getElementById("button");
-            button.addEventListener("click", SortCards)
+            button.addEventListener("click", sortCards)
         }
+        
+        function sortCards() {
+            console.log(HandCards);
+            console.log(AllCards);
+            HandCards.sort(function(card1, card2) {
+                var textA = card1.color.toUpperCase();
+                var textB = card2.color.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            });
 
-        function SortCards() {
-            HandCards.sort(function(a, b) { return a.typ - b.typ });
-            console.log(HandCards)
+            for (let i: number = 0; i < HandCards.length; i++) {
+                placeDiv(HandCards[i].color, HandCards[i].typ, i)
+            }
         }
 
         EventListenerSortCards();
+
         let numbercards: number;
         let input: string = prompt("Anzahl der Karten auswaehlen");
         numbercards = Number(input);
