@@ -45,6 +45,7 @@ namespace Aufgabe31 {
          
         //Ablegen
         function RemoveCard(){
+            
                         console.log(AllCards);
 
             }
