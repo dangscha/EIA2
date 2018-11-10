@@ -34,10 +34,10 @@ namespace Aufgabe31 {
 
         function EventListenerAddCard() {
             let drawcard: HTMLDivElement = <HTMLDivElement>document.getElementById("Nachzieh");
-            drawcard.addEventListener("click", addCard)
+            drawcard.addEventListener("click", addCard);
         }
         EventListenerAddCard();
-        
+
         //Sortieren
         function sortCards() {
             console.log(HandCards);
@@ -48,33 +48,46 @@ namespace Aufgabe31 {
                 return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
             });
             deleteCards();
-           
+
             for (let i: number = 0; i < HandCards.length; i++) {
+              
                 placeDiv(HandCards[i].color, HandCards[i].typ, i)
             }
         }
-        //Aufnehmen
+        //add Card
         function addCard() {
             console.log(HandCards);
             console.log(AllCards);
+            deleteCards();
+            for (let i: number = 0; i < 1; i++) {
+                let b: number = CreateRandomNumber(AllCards.length);
+                placeDiv(AllCards[b].color, AllCards[b].typ, i);
+                let card: Card = AllCards.splice(b, 1)[0];
+                HandCards.push(card)
+                continue;
+            } 
         }
+
+        //Delete Cards
+        function deleteCards() {
+            let node: HTMLElement = document.getElementById("content");
+            if (node.parentNode) {
+                node.parentNode.removeChild(node);
+            }
+
+            let main: HTMLElement = document.createElement("main");
+            main.setAttribute("id", "content");
+            document.getElementsByTagName("body")[0].appendChild(main);
+        }
+
         //Prompt
         let numbercards: number;
         let input: string = prompt("Anzahl der Karten auswaehlen");
         numbercards = Number(input);
-        
-        //Delete Cards
-        function deleteCards(){
-         let node: HTMLElement = document.getElementById("content");
-            if (node.parentNode) {
-             node.parentNode.removeChild(node);}
-          
-        let main: HTMLElement = document.createElement("main");
-            main.setAttribute("id", "content");  }
-        
+
+
         //PlaceDiv
-        function placeDiv(_color: string, _typ: string, _y: number){
-            console.log(_color,_typ,_y)
+        function placeDiv(_color: string, _typ: string, _y: number) {
             let div: HTMLDivElement = document.createElement("div");
             document.getElementById("content").appendChild(div);
             div.setAttribute("id", "card" + _y);

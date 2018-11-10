@@ -42,15 +42,19 @@ var Aufgabe31;
                 placeDiv(HandCards[i].color, HandCards[i].typ, i);
             }
         }
-        //Aufnehmen
+        //add Card
         function addCard() {
             console.log(HandCards);
             console.log(AllCards);
+            deleteCards();
+            for (var i = 0; i < 1; i++) {
+                var b = CreateRandomNumber(AllCards.length);
+                placeDiv(AllCards[b].color, AllCards[b].typ, i);
+                var card = AllCards.splice(b, 1)[0];
+                HandCards.push(card);
+                continue;
+            }
         }
-        //Prompt
-        var numbercards;
-        var input = prompt("Anzahl der Karten auswaehlen");
-        numbercards = Number(input);
         //Delete Cards
         function deleteCards() {
             var node = document.getElementById("content");
@@ -59,10 +63,14 @@ var Aufgabe31;
             }
             var main = document.createElement("main");
             main.setAttribute("id", "content");
+            document.getElementsByTagName("body")[0].appendChild(main);
         }
+        //Prompt
+        var numbercards;
+        var input = prompt("Anzahl der Karten auswaehlen");
+        numbercards = Number(input);
         //PlaceDiv
         function placeDiv(_color, _typ, _y) {
-            console.log(_color, _typ, _y);
             var div = document.createElement("div");
             document.getElementById("content").appendChild(div);
             div.setAttribute("id", "card" + _y);
