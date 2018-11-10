@@ -50,6 +50,8 @@ namespace Aufgabe31 {
         let drawCard: HTMLDivElement = <HTMLDivElement>document.getElementById("Nachzieh");
         drawCard.addEventListener("click", addCard);
         document.getElementById("content").addEventListener("click", removeCard);
+        let cardSpace: HTMLDivElement = <HTMLDivElement>document.getElementById("Nachzieh");
+        document.getElementById("Nachzieh").addEventListener("keydown", addCardSpace);
     }
 
 
@@ -75,6 +77,14 @@ namespace Aufgabe31 {
 
         }
     }
+    
+   function addCardSpace(_event: KeyboardEvent): void {
+       console.log(_event);
+            var keyCode: number = _event.keyCode;
+            if (keyCode == 32) {
+                addCard();
+            }
+       }
     function deletePile() {
         let node: HTMLElement = document.getElementById("Ablagestapel");
         node.innerHTML = "Ablagestapel";

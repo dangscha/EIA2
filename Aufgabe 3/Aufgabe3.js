@@ -39,6 +39,8 @@ var Aufgabe31;
         var drawCard = document.getElementById("Nachzieh");
         drawCard.addEventListener("click", addCard);
         document.getElementById("content").addEventListener("click", removeCard);
+        var cardSpace = document.getElementById("Nachzieh");
+        document.getElementById("Nachzieh").addEventListener("keydown", addCardSpace);
     }
     //Ablegen
     function removeCard(_event) {
@@ -59,6 +61,13 @@ var Aufgabe31;
             for (var i = 0; i < pileCards.length; i++) {
                 placePile(pileCards[i].color, pileCards[i].typ, i);
             }
+        }
+    }
+    function addCardSpace(_event) {
+        console.log(_event);
+        var keyCode = _event.keyCode;
+        if (keyCode == 32) {
+            addCard();
         }
     }
     function deletePile() {
