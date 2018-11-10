@@ -23,9 +23,7 @@ namespace Aufgabe31 {
     function uno() {
 
         //Eventlistener
-        eventListenerSortCards();
-        eventListenerAddCard();
-        eventListenerDiscard();
+        installEventListener();
 
         //Prompt
         let numberCards: number;
@@ -40,91 +38,118 @@ namespace Aufgabe31 {
             handCards.push(card)
             continue;
         }
+    }
+    //Zufällige Nummer generieren
+    function createRandomNumber(x: number) {
+        return Math.floor(Math.random() * Math.floor(x))
+    }
 
-        //Zufällige Nummer generieren
-        function createRandomNumber(x: number) {
-            return Math.floor(Math.random() * Math.floor(x))
-        }
-
-        function eventListenerSortCards() {
-            let button: HTMLButtonElement = <HTMLButtonElement>document.getElementById("button");
-            button.addEventListener("click", sortCards)
-        }
-
-        function eventListenerAddCard() {
-            let drawCard: HTMLDivElement = <HTMLDivElement>document.getElementById("Nachzieh");
-            drawCard.addEventListener("click", addCard);
-        }
-
-        function eventListenerDiscard() {
-            let discard: HTMLDivElement = <HTMLDivElement>document.getElementById("content");
-            discard.addEventListener("click", removeCard);
-        }
-
-        //Ablegen
-        function removeCard() {
-            console.log(allCards);
-        }
+    function installEventListener() {
+        let button: HTMLButtonElement = <HTMLButtonElement>document.getElementById("button");
+        button.addEventListener("click", sortCards)
+        let drawCard: HTMLDivElement = <HTMLDivElement>document.getElementById("Nachzieh");
+        drawCard.addEventListener("click", addCard);
+        document.getElementById("content").addEventListener("click", removeCard);
+    }
 
 
-        //Sortieren
-        function sortCards() {
-            console.log(handCards);
-            console.log(allCards);
-            handCards.sort(compareCards);
+    //Ablegen
+    function removeCard(_event: MouseEvent) {
+        let eventCards: HTMLElement = document.getElementById("content");
+        let domCard: HTMLElement = <HTMLElement>_event.target;
+        if (domCard != eventCards) {
+            let index: number;
+            let domAttribute: string = domCard.getAttribute("id");
+            domAttribute = domAttribute.substr(1);
+            index = parseInt(domAttribute);
+            let karte: Card = handCards.splice(index, 1)[0];
+            pileCards.push(karte);
             deleteCards();
+            deletePile();
             for (let i: number = 0; i < handCards.length; i++) {
                 placeDiv(handCards[i].color, handCards[i].typ, i)
             }
-        }
-        
-        function compareCards(card1: Card, card2: Card) {
-            var textA = card1.color.toUpperCase();
-            var textB = card2.color.toUpperCase();
-            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-        }
-        //add Card
-        function addCard() {
-            console.log(handCards);
-            console.log(allCards);
-            deleteCards();
-            for (let i: number = 0; i < 1; i++) {
-                let randomNumber: number = createRandomNumber(allCards.length);
-                let card: Card = allCards.splice(randomNumber, 1)[0];
-                handCards.push(card)
+            for (let i: number = 0; i < pileCards.length; i++) {
+                placePile(pileCards[i].color, pileCards[i].typ, i)
             }
-            for (let i: number = 0; i < handCards.length; i++) {
-                console.log(handCards);
-                placeDiv(handCards[i].color, handCards[i].typ, i);
-            }
-        }
 
-        //Delete Cards
-        function deleteCards() {
-            let node: HTMLElement = document.getElementById("content");
-            if (node.parentNode) {
-                node.parentNode.removeChild(node);
-            }
-            let main: HTMLElement = document.createElement("main");
-            main.setAttribute("id", "content");
-            document.getElementsByTagName("body")[0].appendChild(main);
-        }
-
-        //PlaceDiv
-        function placeDiv(_color: string, _typ: string, _y: number) {
-            let div: HTMLDivElement = document.createElement("div");
-            document.getElementById("content").appendChild(div);
-            div.setAttribute("id", "card" + _y);
-            document.getElementById("card" + _y).innerHTML += _typ;
-            let s: CSSStyleDeclaration = div.style;
-            s.backgroundColor = _color;
-            s.left = (_y + 0.2) * 110 + "px";
-            if (_color == "#000000") {
-                s.color = "white";
-            }
-            if (_color == "#0000ff") {
-                s.color = "white";
-            }
         }
     }
+    function deletePile() {
+        let node: HTMLElement = document.getElementById("Ablagestapel");
+        node.innerHTML = "Ablagestapel";
+    }
+
+    function placePile(_color: string, _typ: string, _y: number) {
+        let div: HTMLDivElement = document.createElement("div");
+        document.getElementById("Ablagestapel").appendChild(div);
+        div.setAttribute("id", "pile" + _y);
+        div.setAttribute("class", "pile");
+        document.getElementById("pile" + _y).innerHTML += _typ;
+        let s: CSSStyleDeclaration = div.style;
+        s.backgroundColor = _color;
+        if (_color == "#000000") {
+            s.color = "white";
+        }
+        if (_color == "#0000ff") {
+            s.color = "white";
+        }
+    }
+
+    //Sortieren
+    function sortCards() {
+        console.log(handCards);
+        console.log(allCards);
+        handCards.sort(compareCards);
+        deleteCards();
+        for (let i: number = 0; i < handCards.length; i++) {
+            placeDiv(handCards[i].color, handCards[i].typ, i)
+        }
+    }
+
+    function compareCards(card1: Card, card2: Card) {
+        var textA = card1.color.toUpperCase();
+        var textB = card2.color.toUpperCase();
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    }
+    //add Card
+    function addCard() {
+        console.log(handCards);
+        console.log(allCards);
+        deleteCards();
+        for (let i: number = 0; i < 1; i++) {
+            let randomNumber: number = createRandomNumber(allCards.length);
+            let card: Card = allCards.splice(randomNumber, 1)[0];
+            handCards.push(card)
+        }
+        for (let i: number = 0; i < handCards.length; i++) {
+            console.log(handCards);
+            placeDiv(handCards[i].color, handCards[i].typ, i);
+        }
+    }
+
+    //Delete Cards
+    function deleteCards() {
+        let node: HTMLElement = document.getElementById("content");
+        node.innerHTML = "content";
+    }
+
+    //PlaceDiv
+    function placeDiv(_color: string, _typ: string, _y: number) {
+        //document.getElementById("content").addEventListener("click", removeCard);
+        let div: HTMLDivElement = document.createElement("div");
+        document.getElementById("content").appendChild(div);
+        div.setAttribute("id", "card" + _y);
+        document.getElementById("card" + _y).innerHTML += _typ;
+        let s: CSSStyleDeclaration = div.style;
+        s.backgroundColor = _color;
+        s.left = (_y + 0.2) * 110 + "px";
+        if (_color == "#000000") {
+            s.color = "white";
+        }
+        if (_color == "#0000ff") {
+            s.color = "white";
+        }
+    }
+
 }
