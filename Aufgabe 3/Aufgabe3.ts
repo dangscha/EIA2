@@ -50,22 +50,26 @@ namespace Aufgabe31 {
             deleteCards();
 
             for (let i: number = 0; i < HandCards.length; i++) {
-              
+
                 placeDiv(HandCards[i].color, HandCards[i].typ, i)
             }
         }
+        
         //add Card
         function addCard() {
             console.log(HandCards);
             console.log(AllCards);
             deleteCards();
             for (let i: number = 0; i < 1; i++) {
-                let b: number = CreateRandomNumber(AllCards.length);
-                placeDiv(AllCards[b].color, AllCards[b].typ, i);
-                let card: Card = AllCards.splice(b, 1)[0];
+                let randomnumber: number = CreateRandomNumber(AllCards.length);
+                let card: Card = AllCards.splice(randomnumber, 1)[0];
                 HandCards.push(card)
-                continue;
-            } 
+            }
+            for (let i: number = 0; i < HandCards.length; i++) {
+                console.log(HandCards);
+                placeDiv(HandCards[i].color, HandCards[i].typ, i);
+
+            }
         }
 
         //Delete Cards
@@ -104,9 +108,9 @@ namespace Aufgabe31 {
         }
         //Karten ausgeben
         for (let i: number = 0; i < numbercards; i++) {
-            let b: number = CreateRandomNumber(AllCards.length);
-            placeDiv(AllCards[b].color, AllCards[b].typ, i);
-            let card: Card = AllCards.splice(b, 1)[0];
+            let randomnumber: number = CreateRandomNumber(AllCards.length);
+            placeDiv(AllCards[randomnumber].color, AllCards[randomnumber].typ, i);
+            let card: Card = AllCards.splice(randomnumber, 1)[0];
             HandCards.push(card)
             continue;
         }

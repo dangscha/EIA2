@@ -48,11 +48,13 @@ var Aufgabe31;
             console.log(AllCards);
             deleteCards();
             for (var i = 0; i < 1; i++) {
-                var b = CreateRandomNumber(AllCards.length);
-                placeDiv(AllCards[b].color, AllCards[b].typ, i);
-                var card = AllCards.splice(b, 1)[0];
+                var randomnumber = CreateRandomNumber(AllCards.length);
+                var card = AllCards.splice(randomnumber, 1)[0];
                 HandCards.push(card);
-                continue;
+            }
+            for (var i = 0; i < HandCards.length; i++) {
+                console.log(HandCards);
+                placeDiv(HandCards[i].color, HandCards[i].typ, i);
             }
         }
         //Delete Cards
@@ -87,9 +89,9 @@ var Aufgabe31;
         }
         //Karten ausgeben
         for (var i = 0; i < numbercards; i++) {
-            var b = CreateRandomNumber(AllCards.length);
-            placeDiv(AllCards[b].color, AllCards[b].typ, i);
-            var card = AllCards.splice(b, 1)[0];
+            var randomnumber = CreateRandomNumber(AllCards.length);
+            placeDiv(AllCards[randomnumber].color, AllCards[randomnumber].typ, i);
+            var card = AllCards.splice(randomnumber, 1)[0];
             HandCards.push(card);
             continue;
         }
