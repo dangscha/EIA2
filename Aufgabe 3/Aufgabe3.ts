@@ -65,21 +65,24 @@ namespace Aufgabe31 {
         function removeCard() {
             console.log(allCards);
         }
+
+
         //Sortieren
         function sortCards() {
             console.log(handCards);
             console.log(allCards);
-            handCards.sort(function(card1, card2) {
-                var textA = card1.color.toUpperCase();
-                var textB = card2.color.toUpperCase();
-                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-            });
+            handCards.sort(compareCards);
             deleteCards();
             for (let i: number = 0; i < handCards.length; i++) {
                 placeDiv(handCards[i].color, handCards[i].typ, i)
             }
         }
-
+        
+        function compareCards(card1: Card, card2: Card) {
+            var textA = card1.color.toUpperCase();
+            var textB = card2.color.toUpperCase();
+            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        }
         //add Card
         function addCard() {
             console.log(handCards);
