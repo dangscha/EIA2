@@ -37,7 +37,17 @@ namespace Aufgabe31 {
             drawcard.addEventListener("click", addCard);
         }
         EventListenerAddCard();
+        
+        function EventListenerDiscard() {
+            let discard: HTMLDivElement = <HTMLDivElement>document.getElementById("content");
+            discard.addEventListener("click", RemoveCard);}
+        EventListenerDiscard();
+         
+        //Ablegen
+        function RemoveCard(){
+                        console.log(AllCards);
 
+            }
         //Sortieren
         function sortCards() {
             console.log(HandCards);
