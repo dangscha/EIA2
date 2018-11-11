@@ -14,8 +14,10 @@ var Aufgabe31;
     var pileCards = [];
     //Hauptfunktion
     function uno() {
-        //Eventlistener
-        installEventListener();
+        document.getElementById("button").addEventListener("click", sortCards);
+        document.getElementById("Nachzieh").addEventListener("click", addCard);
+        document.addEventListener("keydown", addCardSpace);
+        document.getElementById("content").addEventListener("click", removeCard);
         //Prompt
         var numberCards;
         var input = prompt("Anzahl der Karten auswaehlen");
@@ -32,16 +34,6 @@ var Aufgabe31;
     //Zuf�llige Nummer generieren
     function createRandomNumber(x) {
         return Math.floor(Math.random() * Math.floor(x));
-    }
-    //EventListener initiert
-    function installEventListener() {
-        var button = document.getElementById("button");
-        button.addEventListener("click", sortCards);
-        var drawCard = document.getElementById("Nachzieh");
-        drawCard.addEventListener("click", addCard);
-        var cardSpace = document.getElementById("content");
-        cardSpace.addEventListener("keydown", addCardSpace);
-        document.getElementById("content").addEventListener("click", removeCard);
     }
     //Ablegen
     function removeCard(_event) {

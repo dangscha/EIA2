@@ -21,9 +21,10 @@ namespace Aufgabe31 {
 
     //Hauptfunktion
     function uno() {
-
-        //Eventlistener
-        installEventListener();
+        document.getElementById("button").addEventListener("click", sortCards);
+        document.getElementById("Nachzieh").addEventListener("click", addCard);
+        document.addEventListener("keydown", addCardSpace);
+        document.getElementById("content").addEventListener("click", removeCard);
 
         //Prompt
         let numberCards: number;
@@ -43,21 +44,6 @@ namespace Aufgabe31 {
     function createRandomNumber(x: number) {
         return Math.floor(Math.random() * Math.floor(x))
     }
-        
-    //EventListener initiert
-    function installEventListener() {
-        let button: HTMLButtonElement = <HTMLButtonElement>document.getElementById("button");
-        button.addEventListener("click", sortCards)
-        
-        let drawCard: HTMLDivElement = <HTMLDivElement>document.getElementById("Nachzieh");
-        drawCard.addEventListener("click", addCard);
-        
-        let cardSpace: HTMLDivElement = <HTMLDivElement>document.getElementById("content");
-        cardSpace.addEventListener("keydown", addCardSpace);
-        
-        document.getElementById("content").addEventListener("click", removeCard);
-    }
-
 
     //Ablegen
     function removeCard(_event: MouseEvent) {
