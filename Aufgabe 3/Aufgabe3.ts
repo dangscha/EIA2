@@ -43,7 +43,8 @@ namespace Aufgabe31 {
     function createRandomNumber(x: number) {
         return Math.floor(Math.random() * Math.floor(x))
     }
-
+        
+    //EventListener initiert
     function installEventListener() {
         let button: HTMLButtonElement = <HTMLButtonElement>document.getElementById("button");
         button.addEventListener("click", sortCards)
@@ -62,7 +63,7 @@ namespace Aufgabe31 {
         if (domCard != eventCards) {
             let index: number;
             let domAttribute: string = domCard.getAttribute("id");
-            domAttribute = domAttribute.substr(1);
+            domAttribute = domAttribute.substr(4);
             index = parseInt(domAttribute);
             let karte: Card = handCards.splice(index, 1)[0];
             pileCards.push(karte);
@@ -78,13 +79,6 @@ namespace Aufgabe31 {
         }
     }
     
-   function addCardSpace(_event: KeyboardEvent): void {
-       console.log(_event);
-            var keyCode: number = _event.keyCode;
-            if (keyCode == 32) {
-                addCard();
-            }
-       }
     function deletePile() {
         let node: HTMLElement = document.getElementById("Ablagestapel");
         node.innerHTML = "Ablagestapel";
@@ -137,6 +131,14 @@ namespace Aufgabe31 {
             placeDiv(handCards[i].color, handCards[i].typ, i);
         }
     }
+    
+    function addCardSpace(_event: KeyboardEvent): void {
+       console.log(_event);
+            var keyCode: number = _event.keyCode;
+            if (keyCode == 32) {
+                addCard();
+            }
+       }
 
     //Delete Cards
     function deleteCards() {

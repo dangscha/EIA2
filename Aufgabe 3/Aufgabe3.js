@@ -33,6 +33,7 @@ var Aufgabe31;
     function createRandomNumber(x) {
         return Math.floor(Math.random() * Math.floor(x));
     }
+    //EventListener initiert
     function installEventListener() {
         var button = document.getElementById("button");
         button.addEventListener("click", sortCards);
@@ -49,7 +50,7 @@ var Aufgabe31;
         if (domCard != eventCards) {
             var index = void 0;
             var domAttribute = domCard.getAttribute("id");
-            domAttribute = domAttribute.substr(1);
+            domAttribute = domAttribute.substr(4);
             index = parseInt(domAttribute);
             var karte = handCards.splice(index, 1)[0];
             pileCards.push(karte);
@@ -61,13 +62,6 @@ var Aufgabe31;
             for (var i = 0; i < pileCards.length; i++) {
                 placePile(pileCards[i].color, pileCards[i].typ, i);
             }
-        }
-    }
-    function addCardSpace(_event) {
-        console.log(_event);
-        var keyCode = _event.keyCode;
-        if (keyCode == 32) {
-            addCard();
         }
     }
     function deletePile() {
@@ -117,6 +111,13 @@ var Aufgabe31;
         for (var i = 0; i < handCards.length; i++) {
             console.log(handCards);
             placeDiv(handCards[i].color, handCards[i].typ, i);
+        }
+    }
+    function addCardSpace(_event) {
+        console.log(_event);
+        var keyCode = _event.keyCode;
+        if (keyCode == 32) {
+            addCard();
         }
     }
     //Delete Cards
