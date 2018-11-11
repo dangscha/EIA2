@@ -127,7 +127,7 @@ namespace Aufgabe31 {
     //Delete Cards
     function deleteCards() {
         let node: HTMLElement = document.getElementById("content");
-        node.innerHTML = ("content");
+        node.innerHTML = "";
     }
 
     //PlaceDiv

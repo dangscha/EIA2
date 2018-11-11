@@ -110,7 +110,7 @@ var Aufgabe31;
     //Delete Cards
     function deleteCards() {
         var node = document.getElementById("content");
-        node.innerHTML = ("content");
+        node.innerHTML = "";
     }
     //PlaceDiv
     function placeDiv(_color, _typ, _y) {
