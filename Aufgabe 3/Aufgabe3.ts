@@ -40,12 +40,12 @@ namespace Aufgabe31 {
             continue;
         }
     }
-    //Zufällige Nummer generieren
+    //generate random number
     function createRandomNumber(x: number) {
         return Math.floor(Math.random() * Math.floor(x))
     }
 
-    //Ablegen
+    //discard
     function removeCard(_event: MouseEvent) {
         let eventCards: HTMLElement = document.getElementById("content");
         let domCard: HTMLElement = <HTMLElement>_event.target;
@@ -118,7 +118,6 @@ namespace Aufgabe31 {
     }
 
     function addCardSpace(_event: KeyboardEvent): void {
-        console.log("hi");
         var keyCode: number = _event.keyCode;
         if (keyCode == 32) {
             addCard();

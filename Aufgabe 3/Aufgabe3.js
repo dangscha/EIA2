@@ -31,11 +31,11 @@ var Aufgabe31;
             continue;
         }
     }
-    //Zuf�llige Nummer generieren
+    //generate random number
     function createRandomNumber(x) {
         return Math.floor(Math.random() * Math.floor(x));
     }
-    //Ablegen
+    //discard
     function removeCard(_event) {
         var eventCards = document.getElementById("content");
         var domCard = _event.target;
@@ -102,7 +102,6 @@ var Aufgabe31;
         }
     }
     function addCardSpace(_event) {
-        console.log("hi");
         var keyCode = _event.keyCode;
         if (keyCode == 32) {
             addCard();
