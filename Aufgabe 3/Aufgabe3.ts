@@ -67,7 +67,7 @@ namespace Aufgabe31 {
 
         }
     }
-    
+
     function deletePile() {
         let node: HTMLElement = document.getElementById("Ablagestapel");
         node.innerHTML = "Ablagestapel";
@@ -116,24 +116,23 @@ namespace Aufgabe31 {
             placeDiv(handCards[i].color, handCards[i].typ, i);
         }
     }
-    
+
     function addCardSpace(_event: KeyboardEvent): void {
-       console.log("hi");
-            var keyCode: number = _event.keyCode;
-            if (keyCode == 32) {
-                addCard();
-            }
-       }
+        console.log("hi");
+        var keyCode: number = _event.keyCode;
+        if (keyCode == 32) {
+            addCard();
+        }
+    }
 
     //Delete Cards
     function deleteCards() {
         let node: HTMLElement = document.getElementById("content");
-        node.innerHTML = "content";
+        node.innerHTML = ("content");
     }
 
     //PlaceDiv
     function placeDiv(_color: string, _typ: string, _y: number) {
-        //document.getElementById("content").addEventListener("click", removeCard);
         let div: HTMLDivElement = document.createElement("div");
         document.getElementById("content").appendChild(div);
         div.setAttribute("id", "card" + _y);

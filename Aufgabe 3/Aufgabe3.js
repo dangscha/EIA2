@@ -111,11 +111,10 @@ var Aufgabe31;
     //Delete Cards
     function deleteCards() {
         var node = document.getElementById("content");
-        node.innerHTML = "content";
+        node.innerHTML = ("content");
     }
     //PlaceDiv
     function placeDiv(_color, _typ, _y) {
-        //document.getElementById("content").addEventListener("click", removeCard);
         var div = document.createElement("div");
         document.getElementById("content").appendChild(div);
         div.setAttribute("id", "card" + _y);
