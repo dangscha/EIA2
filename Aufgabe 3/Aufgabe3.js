@@ -39,9 +39,9 @@ var Aufgabe31;
         button.addEventListener("click", sortCards);
         var drawCard = document.getElementById("Nachzieh");
         drawCard.addEventListener("click", addCard);
+        var cardSpace = document.getElementById("content");
+        cardSpace.addEventListener("keydown", addCardSpace);
         document.getElementById("content").addEventListener("click", removeCard);
-        var cardSpace = document.getElementById("Nachzieh");
-        document.getElementById("Nachzieh").addEventListener("keydown", addCardSpace);
     }
     //Ablegen
     function removeCard(_event) {
@@ -85,8 +85,6 @@ var Aufgabe31;
     }
     //Sortieren
     function sortCards() {
-        console.log(handCards);
-        console.log(allCards);
         handCards.sort(compareCards);
         deleteCards();
         for (var i = 0; i < handCards.length; i++) {
@@ -100,8 +98,6 @@ var Aufgabe31;
     }
     //add Card
     function addCard() {
-        console.log(handCards);
-        console.log(allCards);
         deleteCards();
         for (var i = 0; i < 1; i++) {
             var randomNumber = createRandomNumber(allCards.length);
@@ -114,7 +110,7 @@ var Aufgabe31;
         }
     }
     function addCardSpace(_event) {
-        console.log(_event);
+        console.log("hi");
         var keyCode = _event.keyCode;
         if (keyCode == 32) {
             addCard();

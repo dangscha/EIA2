@@ -48,11 +48,14 @@ namespace Aufgabe31 {
     function installEventListener() {
         let button: HTMLButtonElement = <HTMLButtonElement>document.getElementById("button");
         button.addEventListener("click", sortCards)
+        
         let drawCard: HTMLDivElement = <HTMLDivElement>document.getElementById("Nachzieh");
         drawCard.addEventListener("click", addCard);
+        
+        let cardSpace: HTMLDivElement = <HTMLDivElement>document.getElementById("content");
+        cardSpace.addEventListener("keydown", addCardSpace);
+        
         document.getElementById("content").addEventListener("click", removeCard);
-        let cardSpace: HTMLDivElement = <HTMLDivElement>document.getElementById("Nachzieh");
-        document.getElementById("Nachzieh").addEventListener("keydown", addCardSpace);
     }
 
 
@@ -102,8 +105,6 @@ namespace Aufgabe31 {
 
     //Sortieren
     function sortCards() {
-        console.log(handCards);
-        console.log(allCards);
         handCards.sort(compareCards);
         deleteCards();
         for (let i: number = 0; i < handCards.length; i++) {
@@ -118,8 +119,6 @@ namespace Aufgabe31 {
     }
     //add Card
     function addCard() {
-        console.log(handCards);
-        console.log(allCards);
         deleteCards();
         for (let i: number = 0; i < 1; i++) {
             let randomNumber: number = createRandomNumber(allCards.length);
@@ -133,7 +132,7 @@ namespace Aufgabe31 {
     }
     
     function addCardSpace(_event: KeyboardEvent): void {
-       console.log(_event);
+       console.log("hi");
             var keyCode: number = _event.keyCode;
             if (keyCode == 32) {
                 addCard();
