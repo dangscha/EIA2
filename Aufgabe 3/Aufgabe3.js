@@ -37,9 +37,9 @@ var Aufgabe31;
     }
     //discard
     function removeCard(_event) {
-        var eventCards = document.getElementById("content");
+        var main = document.getElementById("content");
         var domCard = _event.target;
-        if (domCard != eventCards) {
+        if (domCard != main) {
             var index = void 0;
             var domAttribute = domCard.getAttribute("id");
             domAttribute = domAttribute.substr(4);

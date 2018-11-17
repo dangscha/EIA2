@@ -47,9 +47,9 @@ namespace Aufgabe31 {
 
     //discard
     function removeCard(_event: MouseEvent) {
-        let eventCards: HTMLElement = document.getElementById("content");
+        let main: HTMLElement = document.getElementById("content");
         let domCard: HTMLElement = <HTMLElement>_event.target;
-        if (domCard != eventCards) {
+        if (domCard != main) {
             let index: number;
             let domAttribute: string = domCard.getAttribute("id");
             domAttribute = domAttribute.substr(4);
