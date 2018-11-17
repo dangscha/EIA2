@@ -65,6 +65,7 @@ var Aufgabe4;
     function init(_event) {
         var fieldset = document.getElementById("fieldset");
         fieldset.addEventListener("change", handleChange);
+        document.getElementById("check").addEventListener("click", checkInputs);
     }
     function handleChange(_event) {
         var target = _event.target;
@@ -176,6 +177,15 @@ var Aufgabe4;
         HTML += (treePrice + ballPrice + candlePrice + lamettaPrice + holderPrice + shipmentPrice);
         HTML += " Euro";
         node.innerHTML = HTML;
+    }
+    function checkInputs() {
+        console.log("lul");
+        if (treePrice == 0 || ballPrice == 0 || candlePrice == 0 || lamettaPrice == 0 || holderPrice == 0 || shipmentPrice == 0) {
+            document.getElementById("buttonCheck").innerHTML = "Eingabe ueberpruefen";
+        }
+        else {
+            document.getElementById("buttonCheck").innerHTML = "";
+        }
     }
 })(Aufgabe4 || (Aufgabe4 = {}));
 //# sourceMappingURL=Aufgabe4.js.map

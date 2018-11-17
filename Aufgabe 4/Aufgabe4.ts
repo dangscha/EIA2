@@ -1,6 +1,7 @@
 namespace Aufgabe4 {
     document.addEventListener("DOMContentLoaded", writeHTML);
     document.addEventListener("DOMContentLoaded", init);
+    
     let treePrice: number = 0;
     let ballPrice: number = 0;
     let candlePrice: number = 0;
@@ -75,6 +76,7 @@ namespace Aufgabe4 {
     function init(_event: Event) {
         let fieldset: HTMLElement = document.getElementById("fieldset")
         fieldset.addEventListener("change", handleChange);
+        document.getElementById("check").addEventListener("click",checkInputs);
     }
 
     function handleChange(_event: Event) {
@@ -198,4 +200,13 @@ namespace Aufgabe4 {
         node.innerHTML = HTML
 
     }
+    
+    function checkInputs(){
+        console.log("lul");
+        if(treePrice==0||ballPrice==0||candlePrice==0||lamettaPrice==0||holderPrice==0||shipmentPrice==0)
+        {document.getElementById("buttonCheck").innerHTML="Eingabe ueberpruefen";}
+    else {
+        document.getElementById("buttonCheck").innerHTML="";
+        }
+        }
 }
