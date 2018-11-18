@@ -29,6 +29,15 @@ border: solid black;
 margin-top:1em;
 float:left;}
 
+input:invalid {
+	background: white;
+}
+input:valid {
+	background: white;
+}
+input:required {
+	background: white;
+}
 
 #preis{
 font-size:2em;

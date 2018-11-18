@@ -9,6 +9,9 @@ var Aufgabe4;
     var holderPrice = 0;
     var shipmentPrice = 0;
     var ort = "";
+    var strass = "";
+    var nummer = "";
+    var postleitzahl = "";
     function writeHTML() {
         var node = document.getElementById("fieldset");
         var childNodeHTML;
@@ -58,7 +61,7 @@ var Aufgabe4;
         childNodeHTML += "<input id='strasse' type='text' name='Text' placeholder='Strasse' required/>";
         childNodeHTML += "<input id='hausnummer' type='text' name='Text' placeholder='Hausnummer' required/>";
         childNodeHTML += "<br>";
-        childNodeHTML += "<input id='plz' type='text' name='Text' pattern='[0-9]{5}' placeholder='PLZ' required/>";
+        childNodeHTML += "<input id='plz' type='text' name='Pattern' pattern='[0-9]{5}' placeholder='PLZ' required/>";
         childNodeHTML += "<input id='place' type='text' name='Text' placeholder='Ort' required/>";
         childNodeHTML += "<br>";
         node.innerHTML += childNodeHTML;
@@ -149,22 +152,34 @@ var Aufgabe4;
             console.log(shipmentPrice);
         }
         if (target.id == "strasse") {
-            var HTML_1 = " ";
-            HTML_1 += target.value;
             var node_7 = document.getElementById("strass");
-            node_7.innerHTML = HTML_1;
+            strass = target.value;
+            var childNodeHTML = void 0;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+            node_7.innerHTML = childNodeHTML;
         }
         if (target.id == "hausnummer") {
-            var HTML_2 = " ";
-            HTML_2 += target.value;
             var node_8 = document.getElementById("nummer");
-            node_8.innerHTML = HTML_2;
+            nummer = target.value;
+            var childNodeHTML = void 0;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+            node_8.innerHTML = childNodeHTML;
         }
         if (target.id == "plz") {
-            var HTML_3 = " ";
-            HTML_3 += target.value;
             var node_9 = document.getElementById("postleitzahl");
-            node_9.innerHTML = HTML_3;
+            postleitzahl = target.value;
+            var childNodeHTML = void 0;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+            node_9.innerHTML = childNodeHTML;
         }
         if (target.id == "place") {
             var node_10 = document.getElementById("ort");
@@ -185,8 +200,8 @@ var Aufgabe4;
     }
     function checkInputs() {
         console.log("lul");
-        if (treePrice == 0 || ballPrice == 0 || candlePrice == 0 || lamettaPrice == 0 || holderPrice == 0 || shipmentPrice == 0 || ort.length > 1) {
-            document.getElementById("buttonCheck").innerHTML = "Eingabe ueberpruefen";
+        if (treePrice == 0 || ballPrice == 0 || candlePrice == 0 || lamettaPrice == 0 || holderPrice == 0 || shipmentPrice == 0 || ort == "" || nummer == "" || postleitzahl == "" || strass == "") {
+            document.getElementById("buttonCheck").innerHTML = "Fehlende Angaben!";
         }
         else {
             document.getElementById("buttonCheck").innerHTML = "";

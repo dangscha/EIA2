@@ -1,14 +1,17 @@
 namespace Aufgabe4 {
     document.addEventListener("DOMContentLoaded", writeHTML);
     document.addEventListener("DOMContentLoaded", init);
-    
+
     let treePrice: number = 0;
     let ballPrice: number = 0;
     let candlePrice: number = 0;
     let lamettaPrice: number = 0;
     let holderPrice: number = 0;
     let shipmentPrice: number = 0;
-    let ort:string="";
+    let ort: string = "";
+    let strass: string = "";
+    let nummer: string = "";
+    let postleitzahl: string = "";
 
     function writeHTML() {
         let node: HTMLElement = document.getElementById("fieldset");
@@ -66,7 +69,7 @@ namespace Aufgabe4 {
         childNodeHTML += "<input id='strasse' type='text' name='Text' placeholder='Strasse' required/>"
         childNodeHTML += "<input id='hausnummer' type='text' name='Text' placeholder='Hausnummer' required/>"
         childNodeHTML += "<br>";
-        childNodeHTML += "<input id='plz' type='text' name='Text' pattern='[0-9]{5}' placeholder='PLZ' required/>"
+        childNodeHTML += "<input id='plz' type='text' name='Pattern' pattern='[0-9]{5}' placeholder='PLZ' required/>"
         childNodeHTML += "<input id='place' type='text' name='Text' placeholder='Ort' required/>"
         childNodeHTML += "<br>";
         node.innerHTML += childNodeHTML
@@ -77,7 +80,7 @@ namespace Aufgabe4 {
     function init(_event: Event) {
         let fieldset: HTMLElement = document.getElementById("fieldset")
         fieldset.addEventListener("change", handleChange);
-        document.getElementById("check").addEventListener("click",checkInputs);
+        document.getElementById("check").addEventListener("click", checkInputs);
     }
 
     function handleChange(_event: Event) {
@@ -167,53 +170,68 @@ namespace Aufgabe4 {
         }
 
         if (target.id == "strasse") {
-            let HTML: string = " ";
-            HTML += target.value;
             let node: HTMLElement = document.getElementById("strass");
-            node.innerHTML = HTML;
+            strass = target.value;
+            let childNodeHTML: string;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+            node.innerHTML = childNodeHTML;
+
         }
-        
-         if (target.id == "hausnummer") {
-            let HTML: string = " ";
-            HTML += target.value;
+
+        if (target.id == "hausnummer") {
             let node: HTMLElement = document.getElementById("nummer");
-            node.innerHTML = HTML;
+            nummer = target.value;
+            let childNodeHTML: string;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+            node.innerHTML = childNodeHTML;
+
         }
-        
-         if (target.id == "plz") {
-            let HTML: string = " ";
-            HTML += target.value;
+
+        if (target.id == "plz") {
             let node: HTMLElement = document.getElementById("postleitzahl");
-            node.innerHTML = HTML;
+            postleitzahl = target.value;
+            let childNodeHTML: string;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+            node.innerHTML = childNodeHTML;
+
         }
 
         if (target.id == "place") {
             let node: HTMLElement = document.getElementById("ort");
             ort = target.value;
-            let childNodeHTML:string;
-            childNodeHTML="";
-            childNodeHTML+="<a>";
-            childNodeHTML+=" " +target.value;
-            childNodeHTML+="</a>";
-            
-            
+            let childNodeHTML: string;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+
+
             node.innerHTML = childNodeHTML;
         }
         let HTML: string;
         let node: HTMLElement = document.getElementById("preis");
         HTML = " ";
         HTML += (treePrice + ballPrice + candlePrice + lamettaPrice + holderPrice + shipmentPrice);
-        HTML +=" Euro";
+        HTML += " Euro";
         node.innerHTML = HTML
 
     }
-    
-    function checkInputs(){
+
+    function checkInputs() {
         console.log("lul");
-        if(treePrice==0||ballPrice==0||candlePrice==0||lamettaPrice==0||holderPrice==0||shipmentPrice==0||ort.length>1)
-        {document.getElementById("buttonCheck").innerHTML="Eingabe ueberpruefen";}
-    else {
-        document.getElementById("buttonCheck").innerHTML="";
+        if (treePrice == 0 || ballPrice == 0 || candlePrice == 0 || lamettaPrice == 0 || holderPrice == 0 || shipmentPrice == 0 || ort == "" || nummer == "" || postleitzahl == "" || strass == "")
+        { document.getElementById("buttonCheck").innerHTML = "Fehlende Angaben!"; }
+        else {
+            document.getElementById("buttonCheck").innerHTML = "";
         }
-        }
+    }
 }
