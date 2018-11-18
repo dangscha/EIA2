@@ -8,6 +8,7 @@ var Aufgabe4;
     var lamettaPrice = 0;
     var holderPrice = 0;
     var shipmentPrice = 0;
+    var ort = "";
     function writeHTML() {
         var node = document.getElementById("fieldset");
         var childNodeHTML;
@@ -166,10 +167,14 @@ var Aufgabe4;
             node_9.innerHTML = HTML_3;
         }
         if (target.id == "place") {
-            var HTML_4 = " ";
-            HTML_4 += target.value;
             var node_10 = document.getElementById("ort");
-            node_10.innerHTML = HTML_4;
+            ort = target.value;
+            var childNodeHTML = void 0;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+            node_10.innerHTML = childNodeHTML;
         }
         var HTML;
         var node = document.getElementById("preis");
@@ -180,7 +185,7 @@ var Aufgabe4;
     }
     function checkInputs() {
         console.log("lul");
-        if (treePrice == 0 || ballPrice == 0 || candlePrice == 0 || lamettaPrice == 0 || holderPrice == 0 || shipmentPrice == 0) {
+        if (treePrice == 0 || ballPrice == 0 || candlePrice == 0 || lamettaPrice == 0 || holderPrice == 0 || shipmentPrice == 0 || ort.length > 1) {
             document.getElementById("buttonCheck").innerHTML = "Eingabe ueberpruefen";
         }
         else {

@@ -8,6 +8,7 @@ namespace Aufgabe4 {
     let lamettaPrice: number = 0;
     let holderPrice: number = 0;
     let shipmentPrice: number = 0;
+    let ort:string="";
 
     function writeHTML() {
         let node: HTMLElement = document.getElementById("fieldset");
@@ -187,10 +188,16 @@ namespace Aufgabe4 {
         }
 
         if (target.id == "place") {
-            let HTML: string = " ";
-            HTML += target.value;
             let node: HTMLElement = document.getElementById("ort");
-            node.innerHTML = HTML;
+            ort = target.value;
+            let childNodeHTML:string;
+            childNodeHTML="";
+            childNodeHTML+="<a>";
+            childNodeHTML+=" " +target.value;
+            childNodeHTML+="</a>";
+            
+            
+            node.innerHTML = childNodeHTML;
         }
         let HTML: string;
         let node: HTMLElement = document.getElementById("preis");
@@ -203,7 +210,7 @@ namespace Aufgabe4 {
     
     function checkInputs(){
         console.log("lul");
-        if(treePrice==0||ballPrice==0||candlePrice==0||lamettaPrice==0||holderPrice==0||shipmentPrice==0)
+        if(treePrice==0||ballPrice==0||candlePrice==0||lamettaPrice==0||holderPrice==0||shipmentPrice==0||ort.length>1)
         {document.getElementById("buttonCheck").innerHTML="Eingabe ueberpruefen";}
     else {
         document.getElementById("buttonCheck").innerHTML="";
