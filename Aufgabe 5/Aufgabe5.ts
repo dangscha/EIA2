@@ -96,10 +96,36 @@ namespace Aufgabe5 {
     function handleChange(_event: Event) {
 
         let target: HTMLInputElement = <HTMLInputElement>_event.target
-        
+        let articles: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input")
+        let node: HTMLElement = document.getElementById("kugeln");
+        node.innerHTML = ""
+        for (let i: number = 0; i < articles.length; i++) {
+            let article: HTMLInputElement = articles[i];
+            let value: number = parseInt(article.value)
+            if (target.id == "numberBalls" + i) {
+
+                let node: HTMLElement = document.getElementById("kugeln");
+                let DOMValue: string = target.value;
+                target.setAttribute("value", DOMValue)
+                let value: number= parseInt(article.getAttribute("value"))
+                console.log(value)
+                //let value: number = parseInt(article.value)
+                let childNodeHTML: string;
+                ballPrice = value * christmasBall[i].price
+                childNodeHTML = "";
+                childNodeHTML += "<a>";
+                childNodeHTML += " " + value + christmasBall[i].name
+                childNodeHTML += "</a>";
+                node.innerHTML += childNodeHTML;
+
+
+            }
+
+        }
+        /**
         let ballsValue1: HTMLInputElement = <HTMLInputElement>document.getElementById("numberBalls1");
         let ballValue1: any = ballsValue1.value;
-        console.log(ballsValue1.value);
+        console.log(ballsValue1.value);**/
         if (target.id == "tree") {
             let node: HTMLElement = document.getElementById("baum");
             let value: string = target.value;
@@ -114,13 +140,13 @@ namespace Aufgabe5 {
             console.log(treePrice)
 
         }
-        if (target.id == "christmasBalls") {
+        /*if (target.id == "christmasBalls") {
 
             let node: HTMLElement = document.getElementById("kugeln");
             let value: string = target.value;
             let priceIndex: number = parseInt(value.substr(0, 1));
             let childNodeHTML: string;
-            ballPrice = christmasBall[priceIndex].price*ballValue1;
+            ballPrice = christmasBall[priceIndex].price
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
@@ -128,7 +154,7 @@ namespace Aufgabe5 {
             node.innerHTML = childNodeHTML;
 
 
-        }
+        }*/
         if (target.id == "candles") {
             let node: HTMLElement = document.getElementById("kerzen");
             let value: string = target.value;
@@ -233,7 +259,6 @@ namespace Aufgabe5 {
             node.innerHTML = childNodeHTML;
         }
         price()
-console.log(ballPrice);
     }
     function price() {
         let HTML: string;
