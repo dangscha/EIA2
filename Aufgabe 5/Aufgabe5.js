@@ -1,5 +1,5 @@
-var Aufgabe4;
-(function (Aufgabe4) {
+var Aufgabe5;
+(function (Aufgabe5) {
     document.addEventListener("DOMContentLoaded", writeHTML);
     document.addEventListener("DOMContentLoaded", init);
     var treePrice = 0;
@@ -17,44 +17,44 @@ var Aufgabe4;
         var childNodeHTML;
         childNodeHTML = "<h3>Baeume</h3>";
         childNodeHTML += "<select name='Select' id='tree'>";
-        for (var i = 0; i < Aufgabe4.tree.length; i++) {
-            childNodeHTML += "<option value='" + i + Aufgabe4.tree[i].name + "'>" + Aufgabe4.tree[i].name + "</option>";
+        for (var i = 0; i < Aufgabe5.tree.length; i++) {
+            childNodeHTML += "<option value='" + i + Aufgabe5.tree[i].name + "'>" + Aufgabe5.tree[i].name + "</option>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
         childNodeHTML += "<h3>Glasskugeln</h3>";
-        for (var i = 0; i < Aufgabe4.christmasBall.length; i++) {
-            childNodeHTML += Aufgabe4.christmasBall[i].name;
+        for (var i = 0; i < Aufgabe5.christmasBall.length; i++) {
+            childNodeHTML += Aufgabe5.christmasBall[i].name;
             childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='Stepper' step='1' min='0' max='30' value='0'/>";
             childNodeHTML += "<br>";
             continue;
         }
         //Kerzen
         childNodeHTML += "<h3>Kerzen</h3>";
-        for (var i = 0; i < Aufgabe4.candle.length; i++) {
-            childNodeHTML += Aufgabe4.candle[i].name;
+        for (var i = 0; i < Aufgabe5.candle.length; i++) {
+            childNodeHTML += Aufgabe5.candle[i].name;
             childNodeHTML += " <input type='number' id='numberCandles" + i + "' name='Stepper' step='1' min='0' max='30' value='0'/>";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Lametta</h3>";
-        for (var i = 0; i < Aufgabe4.lametta.length; i++) {
-            childNodeHTML += Aufgabe4.lametta[i].name;
+        for (var i = 0; i < Aufgabe5.lametta.length; i++) {
+            childNodeHTML += Aufgabe5.lametta[i].name;
             childNodeHTML += " <input type='number' name='Stepper' id='numberLametta" + i + "' step='1' min='0' max='30' value='0'/>";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Halterung</h3>";
-        for (var i = 0; i < Aufgabe4.holder.length; i++) {
+        for (var i = 0; i < Aufgabe5.holder.length; i++) {
             childNodeHTML += " <input type='radio' name='Radiogroup' value='radio1' id='radio1' />";
-            childNodeHTML += "<label for='radio1'>" + Aufgabe4.holder[i].name + "</label>";
+            childNodeHTML += "<label for='radio1'>" + Aufgabe5.holder[i].name + "</label>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
         childNodeHTML += "<h3>Lieferant</h3>";
         childNodeHTML += "<select name='Select' id='shipment'>";
-        for (var i = 0; i < Aufgabe4.shipment.length; i++) {
-            childNodeHTML += "<option value='" + i + Aufgabe4.shipment[i].name + "'>" + Aufgabe4.shipment[i].name + "</option>";
+        for (var i = 0; i < Aufgabe5.shipment.length; i++) {
+            childNodeHTML += "<option value='" + i + Aufgabe5.shipment[i].name + "'>" + Aufgabe5.shipment[i].name + "</option>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
@@ -82,7 +82,7 @@ var Aufgabe4;
             var value = target.value;
             var priceIndex = parseInt(value.substr(0, 1));
             var childNodeHTML = void 0;
-            treePrice = Aufgabe4.tree[priceIndex].price;
+            treePrice = Aufgabe5.tree[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
@@ -95,7 +95,7 @@ var Aufgabe4;
             var value = target.value;
             var priceIndex = parseInt(value.substr(0, 1));
             var childNodeHTML = void 0;
-            ballPrice = Aufgabe4.christmasBall[priceIndex].price * ballValue1;
+            ballPrice = Aufgabe5.christmasBall[priceIndex].price * ballValue1;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
@@ -107,7 +107,7 @@ var Aufgabe4;
             var value = target.value;
             var priceIndex = parseInt(value.substr(0, 1));
             var childNodeHTML = void 0;
-            candlePrice = Aufgabe4.candle[priceIndex].price;
+            candlePrice = Aufgabe5.candle[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
@@ -120,7 +120,7 @@ var Aufgabe4;
             var value = target.value;
             var priceIndex = parseInt(value.substr(0, 1));
             var childNodeHTML = void 0;
-            lamettaPrice = Aufgabe4.lametta[priceIndex].price;
+            lamettaPrice = Aufgabe5.lametta[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
@@ -133,7 +133,7 @@ var Aufgabe4;
             var value = target.value;
             var priceIndex = parseInt(value.substr(0, 1));
             var childNodeHTML = void 0;
-            holderPrice = Aufgabe4.holder[priceIndex].price;
+            holderPrice = Aufgabe5.holder[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
@@ -146,7 +146,7 @@ var Aufgabe4;
             var value = target.value;
             var priceIndex = parseInt(value.substr(0, 1));
             var childNodeHTML = void 0;
-            shipmentPrice = Aufgabe4.shipment[priceIndex].price;
+            shipmentPrice = Aufgabe5.shipment[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
@@ -214,5 +214,5 @@ var Aufgabe4;
             document.getElementById("buttonCheck").innerHTML = "";
         }
     }
-})(Aufgabe4 || (Aufgabe4 = {}));
-//# sourceMappingURL=Aufgabe4.js.map
+})(Aufgabe5 || (Aufgabe5 = {}));
+//# sourceMappingURL=Aufgabe5.js.map

@@ -1,4 +1,4 @@
-namespace Aufgabe4 {
+namespace Aufgabe5 {
     export interface product {
         name: string;
         price: number;

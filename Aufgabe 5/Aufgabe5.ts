@@ -1,4 +1,4 @@
-namespace Aufgabe4 {
+namespace Aufgabe5 {
     document.addEventListener("DOMContentLoaded", writeHTML);
     document.addEventListener("DOMContentLoaded", init);
 
