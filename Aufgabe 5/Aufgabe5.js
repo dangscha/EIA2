@@ -97,7 +97,6 @@ var Aufgabe5;
                     childNodeHTML += "<a price='" + (Number(price_1) * value_1) + "'>";
                     childNodeHTML += " " + value_1 + name_1 + " " + (Number(price_1) * value_1) + " Euro";
                     childNodeHTML += "</a>";
-                    childNodeHTML += "<br>";
                     node_1.innerHTML += childNodeHTML;
                 }
             }

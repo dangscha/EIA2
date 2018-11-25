@@ -118,7 +118,6 @@ namespace Aufgabe5 {
                     childNodeHTML += "<a price='"+(Number(price) * value)+"'>";
                     childNodeHTML += " " + value + name +" "+ (Number(price) * value) + " Euro";
                     childNodeHTML += "</a>";
-                    childNodeHTML += "<br>";
                     node.innerHTML += childNodeHTML;
                 }
 
@@ -217,9 +216,11 @@ namespace Aufgabe5 {
 
 
             node.innerHTML = childNodeHTML;
+            
         }
         price()
     }
+    
     function price() {
         let checkout:HTMLElement=document.getElementById("deko");
         let price:number=0;
