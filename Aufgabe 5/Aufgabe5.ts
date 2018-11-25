@@ -201,7 +201,8 @@ namespace Aufgabe5 {
         let price:number=0;
         console.log(checkout.childNodes);
         for (let i:number=0;i<checkout.childNodes.length;i++){
-            let articlePrice: number = Number(document.getElementsByTagName("a")[i].getAttribute("price"));
+            let article:any=checkout.childNodes[i];
+            let articlePrice: number = Number(article.getAttribute("price"));
             price+=articlePrice;
             console.log(articlePrice);
             }

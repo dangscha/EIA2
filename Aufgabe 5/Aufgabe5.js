@@ -181,7 +181,8 @@ var Aufgabe5;
         var price = 0;
         console.log(checkout.childNodes);
         for (var i = 0; i < checkout.childNodes.length; i++) {
-            var articlePrice = Number(document.getElementsByTagName("a")[i].getAttribute("price"));
+            var article = checkout.childNodes[i];
+            var articlePrice = Number(article.getAttribute("price"));
             price += articlePrice;
             console.log(articlePrice);
         }
