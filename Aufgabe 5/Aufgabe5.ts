@@ -30,13 +30,11 @@ namespace Aufgabe5 {
         childNodeHTML += "<h3>Glasskugeln</h3>";
 
         for (let i: number = 0; i < christmasBall.length; i++) {
-
             childNodeHTML += christmasBall[i].name;
             childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + christmasBall[i].name + "' price='" + christmasBall[i].price + "'/>";
             childNodeHTML += "<br>";
             continue
         }
-
         //Kerzen
         childNodeHTML += "<h3>Kerzen</h3>";
         for (let i: number = 0; i < candle.length; i++) {
@@ -45,21 +43,17 @@ namespace Aufgabe5 {
             childNodeHTML += "<br>";
             continue
         }
-
-
         childNodeHTML += "<h3>Lametta</h3>";
         for (let i: number = 0; i < lametta.length; i++) {
             childNodeHTML += lametta[i].name;
             childNodeHTML += " <input type='number' id='numberLametta" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + lametta[i].name + "' price=" + lametta[i].price + " />"; childNodeHTML += "<br>";
             continue
         }
-
         childNodeHTML += "<h3>Halterung</h3>";
         childNodeHTML += "<select name='Select' id='holder'>";
         for (let i: number = 0; i < holder.length; i++) {
             childNodeHTML += "<option value='" + i + holder[i].name + "'>" + holder[i].name + "</option>";
         }
-
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
 
@@ -79,9 +73,6 @@ namespace Aufgabe5 {
         childNodeHTML += "<input id='place' type='text' name='Text' placeholder='Ort' required/>"
         childNodeHTML += "<br>";
         node.innerHTML += childNodeHTML
-
-
-
     }
 
     function init(_event: Event) {
@@ -97,21 +88,17 @@ namespace Aufgabe5 {
         let articles: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input")
         let node: HTMLElement = document.getElementById("deko");
         node.innerHTML = "";
-        console.log(articles);
 
         for (let i: number = 0; i < articles.length; i++) {
             let article: HTMLInputElement = articles[i];
             let value: number = parseInt(article.value)
             if (article.name == "Stepper") {
-
                 let node: HTMLElement = document.getElementById("deko");
                 let DOMValue: string = target.value;
                 target.setAttribute("value", DOMValue)
                 let value: number = parseInt(article.getAttribute("value"))
                 let name: string = article.getAttribute("title");
                 let price: string = article.getAttribute("price");
-                console.log("price: " + price)
-                console.log(name)
                 let childNodeHTML: string;
                 if (value > 0) {
                     childNodeHTML = "";
@@ -134,8 +121,6 @@ namespace Aufgabe5 {
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
-            console.log(treePrice)
-
         }
 
         if (target.id == "holder") {
@@ -149,7 +134,6 @@ namespace Aufgabe5 {
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
-            console.log(holderPrice)
         }
         if (target.id == "shipment") {
             let node: HTMLElement = document.getElementById("lieferant");
@@ -162,7 +146,6 @@ namespace Aufgabe5 {
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
-            console.log(shipmentPrice)
         }
 
         if (target.id == "strasse") {
@@ -174,7 +157,6 @@ namespace Aufgabe5 {
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
-
         }
 
         if (target.id == "hausnummer") {
@@ -186,7 +168,6 @@ namespace Aufgabe5 {
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
-
         }
 
         if (target.id == "plz") {
@@ -209,8 +190,6 @@ namespace Aufgabe5 {
             childNodeHTML += "<a>";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
-
-
             node.innerHTML = childNodeHTML;
             
         }
@@ -220,9 +199,9 @@ namespace Aufgabe5 {
     function price() {
         let checkout:HTMLElement=document.getElementById("deko");
         let price:number=0;
-        
+        console.log(checkout.childNodes);
         for (let i:number=0;i<checkout.childNodes.length;i++){
-            let articlePrice:number=Number(document.getElementsByTagName("a")[i].getAttribute("price"));
+            let articlePrice: number = Number(document.getElementsByTagName("a")[i].getAttribute("price"));
             price+=articlePrice;
             console.log(articlePrice);
             }
@@ -234,7 +213,6 @@ namespace Aufgabe5 {
         node.innerHTML = HTML
     }
     function checkInputs() {
-        console.log("lul");
         if (treePrice == 0 || holderPrice == 0 || shipmentPrice == 0 || ort == "" || nummer == "" || postleitzahl == "" || strass == "")
         { document.getElementById("buttonCheck").innerHTML = "Fehlende Angaben!"; }
         else {

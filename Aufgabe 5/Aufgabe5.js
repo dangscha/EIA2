@@ -78,7 +78,6 @@ var Aufgabe5;
         var articles = document.getElementsByTagName("input");
         var node = document.getElementById("deko");
         node.innerHTML = "";
-        console.log(articles);
         for (var i = 0; i < articles.length; i++) {
             var article = articles[i];
             var value = parseInt(article.value);
@@ -89,8 +88,6 @@ var Aufgabe5;
                 var value_1 = parseInt(article.getAttribute("value"));
                 var name_1 = article.getAttribute("title");
                 var price_1 = article.getAttribute("price");
-                console.log("price: " + price_1);
-                console.log(name_1);
                 var childNodeHTML = void 0;
                 if (value_1 > 0) {
                     childNodeHTML = "";
@@ -112,7 +109,6 @@ var Aufgabe5;
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node_2.innerHTML = childNodeHTML;
-            console.log(treePrice);
         }
         if (target.id == "holder") {
             var node_3 = document.getElementById("halterung");
@@ -125,7 +121,6 @@ var Aufgabe5;
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node_3.innerHTML = childNodeHTML;
-            console.log(holderPrice);
         }
         if (target.id == "shipment") {
             var node_4 = document.getElementById("lieferant");
@@ -138,7 +133,6 @@ var Aufgabe5;
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node_4.innerHTML = childNodeHTML;
-            console.log(shipmentPrice);
         }
         if (target.id == "strasse") {
             var node_5 = document.getElementById("strass");
@@ -185,6 +179,7 @@ var Aufgabe5;
     function price() {
         var checkout = document.getElementById("deko");
         var price = 0;
+        console.log(checkout.childNodes);
         for (var i = 0; i < checkout.childNodes.length; i++) {
             var articlePrice = Number(document.getElementsByTagName("a")[i].getAttribute("price"));
             price += articlePrice;
@@ -198,7 +193,6 @@ var Aufgabe5;
         node.innerHTML = HTML;
     }
     function checkInputs() {
-        console.log("lul");
         if (treePrice == 0 || holderPrice == 0 || shipmentPrice == 0 || ort == "" || nummer == "" || postleitzahl == "" || strass == "") {
             document.getElementById("buttonCheck").innerHTML = "Fehlende Angaben!";
         }
