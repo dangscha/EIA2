@@ -185,10 +185,10 @@ var Aufgabe5;
     function price() {
         var checkout = document.getElementById("deko");
         var price = 0;
-        console.log(checkout.childNodes);
         for (var i = 0; i < checkout.childNodes.length; i++) {
             var articlePrice = Number(document.getElementsByTagName("a")[i].getAttribute("price"));
             price += articlePrice;
+            console.log(articlePrice);
         }
         var HTML;
         var node = document.getElementById("preis");
