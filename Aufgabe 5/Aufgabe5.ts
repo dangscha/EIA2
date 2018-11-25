@@ -32,7 +32,7 @@ namespace Aufgabe5 {
         for (let i: number = 0; i < christmasBall.length; i++) {
 
             childNodeHTML += christmasBall[i].name;
-            childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='Stepper' step='1' min='0' max='30' value='0'/>";
+            childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + christmasBall[i].name + "' price='" + christmasBall[i].price + "'/>";
             childNodeHTML += "<br>";
             continue
         }
@@ -41,7 +41,7 @@ namespace Aufgabe5 {
         childNodeHTML += "<h3>Kerzen</h3>";
         for (let i: number = 0; i < candle.length; i++) {
             childNodeHTML += candle[i].name;
-            childNodeHTML += " <input type='number' id='numberCandles" + i + "' name='Stepper' step='1' min='0' max='30' value='0'/>";
+            childNodeHTML += " <input type='number' id='numberCandles" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + candle[i].name + "' price='" + candle[i].price + "' />";
             childNodeHTML += "<br>";
             continue
         }
@@ -50,19 +50,16 @@ namespace Aufgabe5 {
         childNodeHTML += "<h3>Lametta</h3>";
         for (let i: number = 0; i < lametta.length; i++) {
             childNodeHTML += lametta[i].name;
-            childNodeHTML += " <input type='number' name='Stepper' id='numberLametta" + i + "' step='1' min='0' max='30' value='0'/>";
-            childNodeHTML += "<br>";
+            childNodeHTML += " <input type='number' id='numberLametta" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + lametta[i].name + "' price=" + lametta[i].price + " />"; childNodeHTML += "<br>";
             continue
         }
 
-
-
         childNodeHTML += "<h3>Halterung</h3>";
+        childNodeHTML += "<select name='Select' id='holder'>";
         for (let i: number = 0; i < holder.length; i++) {
-            childNodeHTML += " <input type='radio' name='Radiogroup' value='radio1' id='radio1' />";
-            childNodeHTML += "<label for='radio1'>" + holder[i].name + "</label>";
-
+            childNodeHTML += "<option value='" + i + holder[i].name + "'>" + holder[i].name + "</option>";
         }
+
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
 
@@ -95,37 +92,42 @@ namespace Aufgabe5 {
 
     function handleChange(_event: Event) {
 
-        let target: HTMLInputElement = <HTMLInputElement>_event.target
+        let target: HTMLInputElement = <HTMLInputElement>_event.target;
+        console.log(target.id);
         let articles: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input")
-        let node: HTMLElement = document.getElementById("kugeln");
-        node.innerHTML = ""
+        let node: HTMLElement = document.getElementById("deko");
+        node.innerHTML = "";
+        console.log(articles);
+
         for (let i: number = 0; i < articles.length; i++) {
             let article: HTMLInputElement = articles[i];
             let value: number = parseInt(article.value)
-            if (target.id == "numberBalls" + i) {
+            if (article.name == "Stepper") {
 
-                let node: HTMLElement = document.getElementById("kugeln");
+                let node: HTMLElement = document.getElementById("deko");
                 let DOMValue: string = target.value;
                 target.setAttribute("value", DOMValue)
-                let value: number= parseInt(article.getAttribute("value"))
-                console.log(value)
-                //let value: number = parseInt(article.value)
+                let value: number = parseInt(article.getAttribute("value"))
+                let name: string = article.getAttribute("title");
+                let price: string = article.getAttribute("price");
+                console.log("price: " + price)
+                console.log(name)
                 let childNodeHTML: string;
-                ballPrice = value * christmasBall[i].price
-                childNodeHTML = "";
-                childNodeHTML += "<a>";
-                childNodeHTML += " " + value + christmasBall[i].name
-                childNodeHTML += "</a>";
-                node.innerHTML += childNodeHTML;
-
+                if (value > 0) {
+                    childNodeHTML = "";
+                    childNodeHTML += "<a price='"+(Number(price) * value)+"'>";
+                    childNodeHTML += " " + value + name +" "+ (Number(price) * value) + " Euro";
+                    childNodeHTML += "</a>";
+                    childNodeHTML += "<br>";
+                    node.innerHTML += childNodeHTML;
+                }
 
             }
 
+            
+
         }
-        /**
-        let ballsValue1: HTMLInputElement = <HTMLInputElement>document.getElementById("numberBalls1");
-        let ballValue1: any = ballsValue1.value;
-        console.log(ballsValue1.value);**/
+
         if (target.id == "tree") {
             let node: HTMLElement = document.getElementById("baum");
             let value: string = target.value;
@@ -140,49 +142,7 @@ namespace Aufgabe5 {
             console.log(treePrice)
 
         }
-        /*if (target.id == "christmasBalls") {
 
-            let node: HTMLElement = document.getElementById("kugeln");
-            let value: string = target.value;
-            let priceIndex: number = parseInt(value.substr(0, 1));
-            let childNodeHTML: string;
-            ballPrice = christmasBall[priceIndex].price
-            childNodeHTML = "";
-            childNodeHTML += "<a>";
-            childNodeHTML += " " + value.substr(1);
-            childNodeHTML += "</a>";
-            node.innerHTML = childNodeHTML;
-
-
-        }*/
-        if (target.id == "candles") {
-            let node: HTMLElement = document.getElementById("kerzen");
-            let value: string = target.value;
-            let priceIndex: number = parseInt(value.substr(0, 1));
-            let childNodeHTML: string;
-            candlePrice = candle[priceIndex].price;
-            childNodeHTML = "";
-            childNodeHTML += "<a>";
-            childNodeHTML += " " + value.substr(1);
-            childNodeHTML += "</a>";
-            node.innerHTML = childNodeHTML;
-            console.log(candlePrice)
-
-        }
-        if (target.id == "lamettas") {
-            let node: HTMLElement = document.getElementById("lametta");
-            let value: string = target.value;
-            let priceIndex: number = parseInt(value.substr(0, 1));
-            let childNodeHTML: string;
-            lamettaPrice = lametta[priceIndex].price;
-            childNodeHTML = "";
-            childNodeHTML += "<a>";
-            childNodeHTML += " " + value.substr(1);
-            childNodeHTML += "</a>";
-            node.innerHTML = childNodeHTML;
-            console.log(lamettaPrice)
-
-        }
         if (target.id == "holder") {
             let node: HTMLElement = document.getElementById("halterung");
             let value: string = target.value;
@@ -261,16 +221,23 @@ namespace Aufgabe5 {
         price()
     }
     function price() {
+        let checkout:HTMLElement=document.getElementById("deko");
+        let price:number=0;
+        console.log(checkout.childNodes);
+        for (let i:number=0;i<checkout.childNodes.length;i++){
+            let articlePrice:number=Number(document.getElementsByTagName("a")[i].getAttribute("price"));
+            price+=articlePrice;
+            }
         let HTML: string;
         let node: HTMLElement = document.getElementById("preis");
         HTML = " ";
-        HTML += (treePrice + ballPrice + candlePrice + lamettaPrice + holderPrice + shipmentPrice);
+        HTML += (treePrice + holderPrice + shipmentPrice+price);
         HTML += " Euro";
         node.innerHTML = HTML
     }
     function checkInputs() {
         console.log("lul");
-        if (treePrice == 0 || ballPrice == 0 || candlePrice == 0 || lamettaPrice == 0 || holderPrice == 0 || shipmentPrice == 0 || ort == "" || nummer == "" || postleitzahl == "" || strass == "")
+        if (treePrice == 0 || holderPrice == 0 || shipmentPrice == 0 || ort == "" || nummer == "" || postleitzahl == "" || strass == "")
         { document.getElementById("buttonCheck").innerHTML = "Fehlende Angaben!"; }
         else {
             document.getElementById("buttonCheck").innerHTML = "";

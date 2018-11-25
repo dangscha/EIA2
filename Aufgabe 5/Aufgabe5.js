@@ -25,7 +25,7 @@ var Aufgabe5;
         childNodeHTML += "<h3>Glasskugeln</h3>";
         for (var i = 0; i < Aufgabe5.christmasBall.length; i++) {
             childNodeHTML += Aufgabe5.christmasBall[i].name;
-            childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='Stepper' step='1' min='0' max='30' value='0'/>";
+            childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + Aufgabe5.christmasBall[i].name + "' price='" + Aufgabe5.christmasBall[i].price + "'/>";
             childNodeHTML += "<br>";
             continue;
         }
@@ -33,21 +33,21 @@ var Aufgabe5;
         childNodeHTML += "<h3>Kerzen</h3>";
         for (var i = 0; i < Aufgabe5.candle.length; i++) {
             childNodeHTML += Aufgabe5.candle[i].name;
-            childNodeHTML += " <input type='number' id='numberCandles" + i + "' name='Stepper' step='1' min='0' max='30' value='0'/>";
+            childNodeHTML += " <input type='number' id='numberCandles" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + Aufgabe5.candle[i].name + "' price='" + Aufgabe5.candle[i].price + "' />";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Lametta</h3>";
         for (var i = 0; i < Aufgabe5.lametta.length; i++) {
             childNodeHTML += Aufgabe5.lametta[i].name;
-            childNodeHTML += " <input type='number' name='Stepper' id='numberLametta" + i + "' step='1' min='0' max='30' value='0'/>";
+            childNodeHTML += " <input type='number' id='numberLametta" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + Aufgabe5.lametta[i].name + "' price=" + Aufgabe5.lametta[i].price + " />";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Halterung</h3>";
+        childNodeHTML += "<select name='Select' id='holder'>";
         for (var i = 0; i < Aufgabe5.holder.length; i++) {
-            childNodeHTML += " <input type='radio' name='Radiogroup' value='radio1' id='radio1' />";
-            childNodeHTML += "<label for='radio1'>" + Aufgabe5.holder[i].name + "</label>";
+            childNodeHTML += "<option value='" + i + Aufgabe5.holder[i].name + "'>" + Aufgabe5.holder[i].name + "</option>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
@@ -74,32 +74,34 @@ var Aufgabe5;
     }
     function handleChange(_event) {
         var target = _event.target;
+        console.log(target.id);
         var articles = document.getElementsByTagName("input");
-        var node = document.getElementById("kugeln");
+        var node = document.getElementById("deko");
         node.innerHTML = "";
+        console.log(articles);
         for (var i = 0; i < articles.length; i++) {
             var article = articles[i];
             var value = parseInt(article.value);
-            if (target.id == "numberBalls" + i) {
-                var node_1 = document.getElementById("kugeln");
+            if (article.name == "Stepper") {
+                var node_1 = document.getElementById("deko");
                 var DOMValue = target.value;
                 target.setAttribute("value", DOMValue);
                 var value_1 = parseInt(article.getAttribute("value"));
-                console.log(value_1);
-                //let value: number = parseInt(article.value)
+                var name_1 = article.getAttribute("title");
+                var price_1 = article.getAttribute("price");
+                console.log("price: " + price_1);
+                console.log(name_1);
                 var childNodeHTML = void 0;
-                ballPrice = value_1 * Aufgabe5.christmasBall[i].price;
-                childNodeHTML = "";
-                childNodeHTML += "<a>";
-                childNodeHTML += " " + value_1 + Aufgabe5.christmasBall[i].name;
-                childNodeHTML += "</a>";
-                node_1.innerHTML += childNodeHTML;
+                if (value_1 > 0) {
+                    childNodeHTML = "";
+                    childNodeHTML += "<a price='" + (Number(price_1) * value_1) + "'>";
+                    childNodeHTML += " " + value_1 + name_1 + " " + (Number(price_1) * value_1) + " Euro";
+                    childNodeHTML += "</a>";
+                    childNodeHTML += "<br>";
+                    node_1.innerHTML += childNodeHTML;
+                }
             }
         }
-        /**
-        let ballsValue1: HTMLInputElement = <HTMLInputElement>document.getElementById("numberBalls1");
-        let ballValue1: any = ballsValue1.value;
-        console.log(ballsValue1.value);**/
         if (target.id == "tree") {
             var node_2 = document.getElementById("baum");
             var value = target.value;
@@ -113,49 +115,8 @@ var Aufgabe5;
             node_2.innerHTML = childNodeHTML;
             console.log(treePrice);
         }
-        /*if (target.id == "christmasBalls") {
-
-            let node: HTMLElement = document.getElementById("kugeln");
-            let value: string = target.value;
-            let priceIndex: number = parseInt(value.substr(0, 1));
-            let childNodeHTML: string;
-            ballPrice = christmasBall[priceIndex].price
-            childNodeHTML = "";
-            childNodeHTML += "<a>";
-            childNodeHTML += " " + value.substr(1);
-            childNodeHTML += "</a>";
-            node.innerHTML = childNodeHTML;
-
-
-        }*/
-        if (target.id == "candles") {
-            var node_3 = document.getElementById("kerzen");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
-            var childNodeHTML = void 0;
-            candlePrice = Aufgabe5.candle[priceIndex].price;
-            childNodeHTML = "";
-            childNodeHTML += "<a>";
-            childNodeHTML += " " + value.substr(1);
-            childNodeHTML += "</a>";
-            node_3.innerHTML = childNodeHTML;
-            console.log(candlePrice);
-        }
-        if (target.id == "lamettas") {
-            var node_4 = document.getElementById("lametta");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
-            var childNodeHTML = void 0;
-            lamettaPrice = Aufgabe5.lametta[priceIndex].price;
-            childNodeHTML = "";
-            childNodeHTML += "<a>";
-            childNodeHTML += " " + value.substr(1);
-            childNodeHTML += "</a>";
-            node_4.innerHTML = childNodeHTML;
-            console.log(lamettaPrice);
-        }
         if (target.id == "holder") {
-            var node_5 = document.getElementById("halterung");
+            var node_3 = document.getElementById("halterung");
             var value = target.value;
             var priceIndex = parseInt(value.substr(0, 1));
             var childNodeHTML = void 0;
@@ -164,11 +125,11 @@ var Aufgabe5;
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
-            node_5.innerHTML = childNodeHTML;
+            node_3.innerHTML = childNodeHTML;
             console.log(holderPrice);
         }
         if (target.id == "shipment") {
-            var node_6 = document.getElementById("lieferant");
+            var node_4 = document.getElementById("lieferant");
             var value = target.value;
             var priceIndex = parseInt(value.substr(0, 1));
             var childNodeHTML = void 0;
@@ -177,12 +138,32 @@ var Aufgabe5;
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
-            node_6.innerHTML = childNodeHTML;
+            node_4.innerHTML = childNodeHTML;
             console.log(shipmentPrice);
         }
         if (target.id == "strasse") {
-            var node_7 = document.getElementById("strass");
+            var node_5 = document.getElementById("strass");
             strass = target.value;
+            var childNodeHTML = void 0;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+            node_5.innerHTML = childNodeHTML;
+        }
+        if (target.id == "hausnummer") {
+            var node_6 = document.getElementById("nummer");
+            nummer = target.value;
+            var childNodeHTML = void 0;
+            childNodeHTML = "";
+            childNodeHTML += "<a>";
+            childNodeHTML += " " + target.value;
+            childNodeHTML += "</a>";
+            node_6.innerHTML = childNodeHTML;
+        }
+        if (target.id == "plz") {
+            var node_7 = document.getElementById("postleitzahl");
+            postleitzahl = target.value;
             var childNodeHTML = void 0;
             childNodeHTML = "";
             childNodeHTML += "<a>";
@@ -190,9 +171,9 @@ var Aufgabe5;
             childNodeHTML += "</a>";
             node_7.innerHTML = childNodeHTML;
         }
-        if (target.id == "hausnummer") {
-            var node_8 = document.getElementById("nummer");
-            nummer = target.value;
+        if (target.id == "place") {
+            var node_8 = document.getElementById("ort");
+            ort = target.value;
             var childNodeHTML = void 0;
             childNodeHTML = "";
             childNodeHTML += "<a>";
@@ -200,39 +181,26 @@ var Aufgabe5;
             childNodeHTML += "</a>";
             node_8.innerHTML = childNodeHTML;
         }
-        if (target.id == "plz") {
-            var node_9 = document.getElementById("postleitzahl");
-            postleitzahl = target.value;
-            var childNodeHTML = void 0;
-            childNodeHTML = "";
-            childNodeHTML += "<a>";
-            childNodeHTML += " " + target.value;
-            childNodeHTML += "</a>";
-            node_9.innerHTML = childNodeHTML;
-        }
-        if (target.id == "place") {
-            var node_10 = document.getElementById("ort");
-            ort = target.value;
-            var childNodeHTML = void 0;
-            childNodeHTML = "";
-            childNodeHTML += "<a>";
-            childNodeHTML += " " + target.value;
-            childNodeHTML += "</a>";
-            node_10.innerHTML = childNodeHTML;
-        }
         price();
     }
     function price() {
+        var checkout = document.getElementById("deko");
+        var price = 0;
+        console.log(checkout.childNodes);
+        for (var i = 0; i < checkout.childNodes.length; i++) {
+            var articlePrice = Number(document.getElementsByTagName("a")[i].getAttribute("price"));
+            price += articlePrice;
+        }
         var HTML;
         var node = document.getElementById("preis");
         HTML = " ";
-        HTML += (treePrice + ballPrice + candlePrice + lamettaPrice + holderPrice + shipmentPrice);
+        HTML += (treePrice + holderPrice + shipmentPrice + price);
         HTML += " Euro";
         node.innerHTML = HTML;
     }
     function checkInputs() {
         console.log("lul");
-        if (treePrice == 0 || ballPrice == 0 || candlePrice == 0 || lamettaPrice == 0 || holderPrice == 0 || shipmentPrice == 0 || ort == "" || nummer == "" || postleitzahl == "" || strass == "") {
+        if (treePrice == 0 || holderPrice == 0 || shipmentPrice == 0 || ort == "" || nummer == "" || postleitzahl == "" || strass == "") {
             document.getElementById("buttonCheck").innerHTML = "Fehlende Angaben!";
         }
         else {
