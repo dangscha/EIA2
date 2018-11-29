@@ -1,4 +1,6 @@
-import * as Http from "http"; //Er importiert die Node.ts-Datei, mit HTTP from "http" wird auf die HTTP Objekte aus Node.d.ts zugegriffen
+
+import * as Http from "http"; 
+//Er importiert die Node.ts-Datei, mit HTTP from "http" wird auf die HTTP Objekte aus Node.d.ts zugegriffen
 
 namespace L06_SendData {
     console.log("Starting server");
