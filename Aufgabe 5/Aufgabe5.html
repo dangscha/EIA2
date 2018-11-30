@@ -15,10 +15,11 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 <title>Weihnachtsbaum</title>
 </head>
 <body>
-
-<fieldset id="fieldset">
+<form action="https://eia2-dangschat.herokuapp.com/" method="get">
+<div id="fieldset">
 <legend> Weihnachtsbaum </legend>
-</fieldset>
+</div>
+
 <div id="checkout">
 <h3>Checkout</h3>
 <a class="text">Baum:</a><a id="baum"></a><br>
@@ -31,8 +32,10 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 <a class="text">Ort:</a><a id="ort"></a><br>
 <a class="text">Preis:</a><a id="preis"></a><br>
 <button id="check">Pruefen</button>
+<button id="submit" type="submit">Submit</button>
 
 </div>
 <div id="buttonCheck"></div>
+</form>
 </body>
 </html>
