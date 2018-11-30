@@ -7,7 +7,7 @@
 *                                               *
 *               Node.js v7.x API                *
 *                                               *
-************************************************/
+************************************************/ 
 
 // This needs to be global to avoid TS2403 in case lib.dom.d.ts is present in the same build
 interface Console {
