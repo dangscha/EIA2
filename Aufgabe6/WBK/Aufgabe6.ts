@@ -19,7 +19,6 @@ namespace WBK {
 
         let node: HTMLElement = document.getElementById("fieldset");
         let childNodeHTML: string;
-
         childNodeHTML = "<h3>Baeume</h3>";
         childNodeHTML += "<select name='Select' id='tree'>";
         for (let i: number = 0; i < tree.length; i++) {
