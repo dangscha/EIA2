@@ -1,9 +1,8 @@
-import * as Http from "http";
-//Er importiert die Node.ts-Datei, mit HTTP from "http" wird auf die HTTP Objekte aus Node.d.ts zugegriffen
+import * as Http from "http";//Er importiert das Modul HTTP aus der Node.ts-Datei, "http" Objekte werden als HTTP Objekte deklariert. Das HTTP Objekt ist ähnlich wie z.B. Math.random. Es besitzt mehrere Klassen, welche ebenso importiert werden
 
 namespace L06_SendData {
-    console.log("Starting server");
-    let port: number = process.env.PORT; // Die Variable Port wird als Number deklariert, welchen den Wert des Ports des Heroku-Server hat
+    console.log("Starting server"); 
+    let port: number = process.env.PORT; // Die Variable Port wird als Number deklariert, welchen den Wert des Ports des Heroku-Server hat. Process ist ebenso ein Objekt von Node.d.ts
     if (port == undefined) //Wenn der Port nicht definiert ist...
         port = 8100;   //wird dieser auf 8100 gesetzt (führt zu EIA2 im Heroku)
 
@@ -11,6 +10,7 @@ namespace L06_SendData {
     server.addListener("request", handleRequest); //Ein Listener wird dem Server hinzugefügt. Wenn der Server nun einen "Request" erhält, also einen Anruf, wird die Funktion handleRequest ausgeführt
     server.addListener("listening", handleListen); //Ein weiterer Listener wird hinzugefügt. Solange der Nutzer drauf zugreift, wird die handleListen Funktion ausgeführt
     server.listen(port); //Der Server hört auf den vorher deklarierten Port
+    
 
     function handleListen(): void {
         console.log("Listening"); //die Funktion gibt in der Konsole "Listening" aus

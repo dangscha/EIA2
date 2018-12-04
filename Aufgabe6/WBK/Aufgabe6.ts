@@ -1,4 +1,4 @@
-namespace Aufgabe5 {
+namespace WBK {
     document.addEventListener("DOMContentLoaded", writeHTML);
     document.addEventListener("DOMContentLoaded", init);
 
