@@ -1,5 +1,5 @@
-var Aufgabe5;
-(function (Aufgabe5) {
+var WBK;
+(function (WBK) {
     document.addEventListener("DOMContentLoaded", writeHTML);
     document.addEventListener("DOMContentLoaded", init);
     var treePrice = 0;
@@ -17,44 +17,44 @@ var Aufgabe5;
         var childNodeHTML;
         childNodeHTML = "<h3>Baeume</h3>";
         childNodeHTML += "<select name='Select' id='tree'>";
-        for (var i = 0; i < Aufgabe5.tree.length; i++) {
-            childNodeHTML += "<option value='" + i + Aufgabe5.tree[i].name + "'>" + Aufgabe5.tree[i].name + "</option>";
+        for (var i = 0; i < WBK.tree.length; i++) {
+            childNodeHTML += "<option value='" + i + WBK.tree[i].name + "'>" + WBK.tree[i].name + "</option>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
         childNodeHTML += "<h3>Glasskugeln</h3>";
-        for (var i = 0; i < Aufgabe5.christmasBall.length; i++) {
-            childNodeHTML += Aufgabe5.christmasBall[i].name;
-            childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + Aufgabe5.christmasBall[i].name + "' price='" + Aufgabe5.christmasBall[i].price + "'/>";
+        for (var i = 0; i < WBK.christmasBall.length; i++) {
+            childNodeHTML += WBK.christmasBall[i].name;
+            childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='" + WBK.christmasBall[i].name + "' step='1' min='0' max='30' value='0' title='" + WBK.christmasBall[i].name + "' price='" + WBK.christmasBall[i].price + "'/>";
             childNodeHTML += "<br>";
             continue;
         }
         //Kerzen
         childNodeHTML += "<h3>Kerzen</h3>";
-        for (var i = 0; i < Aufgabe5.candle.length; i++) {
-            childNodeHTML += Aufgabe5.candle[i].name;
-            childNodeHTML += " <input type='number' id='numberCandles" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + Aufgabe5.candle[i].name + "' price='" + Aufgabe5.candle[i].price + "' />";
+        for (var i = 0; i < WBK.candle.length; i++) {
+            childNodeHTML += WBK.candle[i].name;
+            childNodeHTML += " <input type='number' id='numberCandles" + i + "' name='" + WBK.candle[i].name + "'  step='1' min='0' max='30' value='0' title='" + WBK.candle[i].name + "' price='" + WBK.candle[i].price + "' />";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Lametta</h3>";
-        for (var i = 0; i < Aufgabe5.lametta.length; i++) {
-            childNodeHTML += Aufgabe5.lametta[i].name;
-            childNodeHTML += " <input type='number' id='numberLametta" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + Aufgabe5.lametta[i].name + "' price=" + Aufgabe5.lametta[i].price + " />";
+        for (var i = 0; i < WBK.lametta.length; i++) {
+            childNodeHTML += WBK.lametta[i].name;
+            childNodeHTML += " <input type='number' id='numberLametta" + i + "' name='" + WBK.lametta[i].name + "'  step='1' min='0' max='30' value='0' title='" + WBK.lametta[i].name + "' price=" + WBK.lametta[i].price + " />";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Halterung</h3>";
         childNodeHTML += "<select name='Select' id='holder'>";
-        for (var i = 0; i < Aufgabe5.holder.length; i++) {
-            childNodeHTML += "<option value='" + i + Aufgabe5.holder[i].name + "'>" + Aufgabe5.holder[i].name + "</option>";
+        for (var i = 0; i < WBK.holder.length; i++) {
+            childNodeHTML += "<option value='" + i + WBK.holder[i].name + "'>" + WBK.holder[i].name + "</option>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
         childNodeHTML += "<h3>Lieferant</h3>";
         childNodeHTML += "<select name='Select' id='shipment'>";
-        for (var i = 0; i < Aufgabe5.shipment.length; i++) {
-            childNodeHTML += "<option value='" + i + Aufgabe5.shipment[i].name + "'>" + Aufgabe5.shipment[i].name + "</option>";
+        for (var i = 0; i < WBK.shipment.length; i++) {
+            childNodeHTML += "<option value='" + i + WBK.shipment[i].name + "'>" + WBK.shipment[i].name + "</option>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
@@ -103,7 +103,7 @@ var Aufgabe5;
             var value = target.value;
             var priceIndex = parseInt(value.substr(0, 1));
             var childNodeHTML = void 0;
-            treePrice = Aufgabe5.tree[priceIndex].price;
+            treePrice = WBK.tree[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
@@ -115,7 +115,7 @@ var Aufgabe5;
             var value = target.value;
             var priceIndex = parseInt(value.substr(0, 1));
             var childNodeHTML = void 0;
-            holderPrice = Aufgabe5.holder[priceIndex].price;
+            holderPrice = WBK.holder[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
@@ -127,7 +127,7 @@ var Aufgabe5;
             var value = target.value;
             var priceIndex = parseInt(value.substr(0, 1));
             var childNodeHTML = void 0;
-            shipmentPrice = Aufgabe5.shipment[priceIndex].price;
+            shipmentPrice = WBK.shipment[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
@@ -201,5 +201,5 @@ var Aufgabe5;
             document.getElementById("buttonCheck").innerHTML = "";
         }
     }
-})(Aufgabe5 || (Aufgabe5 = {}));
-//# sourceMappingURL=Aufgabe5.js.map
+})(WBK || (WBK = {}));
+//# sourceMappingURL=Aufgabe6.js.map

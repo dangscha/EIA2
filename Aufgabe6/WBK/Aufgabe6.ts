@@ -13,6 +13,7 @@ namespace WBK {
     let nummer: string = "";
     let postleitzahl: string = "";
 
+    
 
     function writeHTML() {
 
