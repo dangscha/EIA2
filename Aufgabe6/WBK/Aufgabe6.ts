@@ -31,7 +31,7 @@ namespace WBK {
 
         for (let i: number = 0; i < christmasBall.length; i++) {
             childNodeHTML += christmasBall[i].name;
-            childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + christmasBall[i].name + "' price='" + christmasBall[i].price + "'/>";
+            childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='" + christmasBall[i].name + "' step='1' min='0' max='30' value='0' title='" + christmasBall[i].name + "' price='" + christmasBall[i].price + "'/>";
             childNodeHTML += "<br>";
             continue
         }
@@ -39,14 +39,14 @@ namespace WBK {
         childNodeHTML += "<h3>Kerzen</h3>";
         for (let i: number = 0; i < candle.length; i++) {
             childNodeHTML += candle[i].name;
-            childNodeHTML += " <input type='number' id='numberCandles" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + candle[i].name + "' price='" + candle[i].price + "' />";
+            childNodeHTML += " <input type='number' id='numberCandles" + i + "' name='" + candle[i].name + "'  step='1' min='0' max='30' value='0' title='" + candle[i].name + "' price='" + candle[i].price + "' />";
             childNodeHTML += "<br>";
             continue
         }
         childNodeHTML += "<h3>Lametta</h3>";
         for (let i: number = 0; i < lametta.length; i++) {
             childNodeHTML += lametta[i].name;
-            childNodeHTML += " <input type='number' id='numberLametta" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + lametta[i].name + "' price=" + lametta[i].price + " />"; childNodeHTML += "<br>";
+            childNodeHTML += " <input type='number' id='numberLametta" + i + "' name='" + lametta[i].name + "'  step='1' min='0' max='30' value='0' title='" + lametta[i].name + "' price=" + lametta[i].price + " />"; childNodeHTML += "<br>";
             continue
         }
         childNodeHTML += "<h3>Halterung</h3>";
