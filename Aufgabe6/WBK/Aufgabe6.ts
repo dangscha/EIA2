@@ -20,7 +20,7 @@ namespace WBK {
         let node: HTMLElement = document.getElementById("fieldset");
         let childNodeHTML: string;
         childNodeHTML = "<h3>Baeume</h3>";
-        childNodeHTML += "<select name='Select' id='tree'>";
+        childNodeHTML += "<select name='Baum' id='tree'>";
         for (let i: number = 0; i < tree.length; i++) {
             childNodeHTML += "<option value='" + i + tree[i].name + "'>" + tree[i].name + "</option>";
         }
@@ -58,7 +58,7 @@ namespace WBK {
         childNodeHTML += "<br>";
 
         childNodeHTML += "<h3>Lieferant</h3>";
-        childNodeHTML += "<select name='Select' id='shipment'>";
+        childNodeHTML += "<select name='Lieferant' id='shipment'>";
         for (let i: number = 0; i < shipment.length; i++) {
             childNodeHTML += "<option value='" + i + shipment[i].name + "'>" + shipment[i].name + "</option>";
         }

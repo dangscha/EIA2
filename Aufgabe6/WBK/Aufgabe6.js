@@ -16,7 +16,7 @@ var WBK;
         var node = document.getElementById("fieldset");
         var childNodeHTML;
         childNodeHTML = "<h3>Baeume</h3>";
-        childNodeHTML += "<select name='Select' id='tree'>";
+        childNodeHTML += "<select name='Baum' id='tree'>";
         for (var i = 0; i < WBK.tree.length; i++) {
             childNodeHTML += "<option value='" + i + WBK.tree[i].name + "'>" + WBK.tree[i].name + "</option>";
         }
@@ -52,7 +52,7 @@ var WBK;
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
         childNodeHTML += "<h3>Lieferant</h3>";
-        childNodeHTML += "<select name='Select' id='shipment'>";
+        childNodeHTML += "<select name='Lieferant' id='shipment'>";
         for (var i = 0; i < WBK.shipment.length; i++) {
             childNodeHTML += "<option value='" + i + WBK.shipment[i].name + "'>" + WBK.shipment[i].name + "</option>";
         }
