@@ -1,111 +1,111 @@
 var Aufgabe2;
 (function (Aufgabe2) {
     function uno() {
-        var k0 = {
+        let k0 = {
             name: "0",
             red: 1,
             blue: 1,
             green: 1,
             yellow: 1
         };
-        var k1 = {
+        let k1 = {
             name: "1",
             red: 2,
             blue: 2,
             green: 2,
             yellow: 2
         };
-        var k2 = {
+        let k2 = {
             name: "2",
             red: 2,
             blue: 2,
             green: 2,
             yellow: 2
         };
-        var k3 = {
+        let k3 = {
             name: "3",
             red: 2,
             blue: 2,
             green: 2,
             yellow: 2
         };
-        var k4 = {
+        let k4 = {
             name: "4",
             red: 2,
             blue: 2,
             green: 2,
             yellow: 2
         };
-        var k5 = {
+        let k5 = {
             name: "5",
             red: 2,
             blue: 2,
             green: 2,
             yellow: 2
         };
-        var k6 = {
+        let k6 = {
             name: "6",
             red: 2,
             blue: 2,
             green: 2,
             yellow: 2
         };
-        var k7 = {
+        let k7 = {
             name: "7",
             red: 2,
             blue: 2,
             green: 2,
             yellow: 2
         };
-        var k8 = {
+        let k8 = {
             name: "8",
             red: 2,
             blue: 2,
             green: 2,
             yellow: 2
         };
-        var k9 = {
+        let k9 = {
             name: "9",
             red: 2,
             blue: 2,
             green: 2,
             yellow: 2
         };
-        var kr = {
+        let kr = {
             name: "Reverse",
             red: 2,
             blue: 2,
             green: 2,
             yellow: 2
         };
-        var kp2 = {
+        let kp2 = {
             name: "Plus 2",
             red: 2,
             blue: 2,
             green: 2,
             yellow: 2
         };
-        var ka = {
+        let ka = {
             name: "Aussetzen",
             red: 2,
             blue: 2,
             green: 2,
             yellow: 2
         };
-        var AlleKarten = [k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, kr, kp2, ka]; //Alle Karten im Array gespeichert, um Zugriff darauf zu vereinfachen
-        var s1 = 4; //Die schwarzen Karten werden extra deklariert und brauchen lediglich den Zahlenwert 4. Sp�ter f�r den Switch erfoderlich
-        var s2 = 4;
-        var c = ""; //Variable c ist ein leerer String, sp�ter wird die jeweilige Farbe f�r c eingesetzt
+        let AlleKarten = [k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, kr, kp2, ka]; //Alle Karten im Array gespeichert, um Zugriff darauf zu vereinfachen
+        let s1 = 4; //Die schwarzen Karten werden extra deklariert und brauchen lediglich den Zahlenwert 4. Sp�ter f�r den Switch erfoderlich
+        let s2 = 4;
+        let c = ""; //Variable c ist ein leerer String, sp�ter wird die jeweilige Farbe f�r c eingesetzt
         function random1(x) {
             return Math.floor(Math.random() * Math.floor(x));
         }
         ;
         function placeDiv(_color, _v, _y) {
-            var div = document.createElement("div");
+            let div = document.createElement("div");
             document.body.appendChild(div);
             div.setAttribute("id", "a" + _y); //div bekommt eine ID, damit document.getElementById funktioniert.
             document.getElementById("a" + _y).innerHTML += _v; //Es wird auf die oben erstellte Id zugegriffen und _v �bergibt den Text der in der Karte stehen soll
-            var s = div.style;
+            let s = div.style;
             s.border = "thin solid black";
             s.textAlign = "center";
             s.position = "absolute";
@@ -121,11 +121,11 @@ var Aufgabe2;
                 s.color = "white";
             }
         }
-        var z;
-        var input = prompt("Anzahl der Karten auswaehlen"); //prompt �ffnet ein Dialogfenster, jedoch wird das Eingabe als string angegeben
+        let z;
+        let input = prompt("Anzahl der Karten auswaehlen"); //prompt �ffnet ein Dialogfenster, jedoch wird das Eingabe als string angegeben
         z = Number(input); //der Input wird in eine Number gewechselt und damit an z �bergeben
-        for (var d = 0; d < z; d++) {
-            var l = random1(15); //Funktion random wird ausgef�hrt und gibt eine Zahl von 0-14 aus
+        for (let d = 0; d < z; d++) {
+            let l = random1(15); //Funktion random wird ausgef�hrt und gibt eine Zahl von 0-14 aus
             if (l == 13 && s1 > 0) {
                 c = "#000000"; //...wird die Farbe auf Schwarz gesetzt...
                 s1--; //...und die Anzahl der schwarzen Karte -1 gesetzt
@@ -148,7 +148,7 @@ var Aufgabe2;
                     continue;
                 }
                 else {
-                    var b = random1(4); //random-Funktion wird ausgef�hrt, um die Farbe zu ermitteln
+                    let b = random1(4); //random-Funktion wird ausgef�hrt, um die Farbe zu ermitteln
                     switch (b) {
                         case 0:
                             c = "#ff0000";
@@ -187,11 +187,11 @@ var Aufgabe2;
             }
         }
         function Stapel() {
-            var div = document.createElement("div");
+            let div = document.createElement("div");
             document.body.appendChild(div);
             div.setAttribute("id", "Kartenstapel");
             document.getElementById("Kartenstapel").innerHTML += "Kartenstapel";
-            var s = div.style;
+            let s = div.style;
             s.border = "solid black";
             s.textAlign = "center";
             s.position = "absolute";
@@ -202,11 +202,11 @@ var Aufgabe2;
             s.top = 20 + "px";
         }
         function AblageStapel() {
-            var div = document.createElement("div");
+            let div = document.createElement("div");
             document.body.appendChild(div);
             div.setAttribute("id", "Ablage");
             document.getElementById("Ablage").innerHTML += "Ablage";
-            var s = div.style;
+            let s = div.style;
             s.border = "solid black";
             s.textAlign = "center";
             s.position = "absolute";

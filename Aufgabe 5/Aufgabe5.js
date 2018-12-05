@@ -2,28 +2,28 @@ var Aufgabe5;
 (function (Aufgabe5) {
     document.addEventListener("DOMContentLoaded", writeHTML);
     document.addEventListener("DOMContentLoaded", init);
-    var treePrice = 0;
-    var ballPrice = 0;
-    var candlePrice = 0;
-    var lamettaPrice = 0;
-    var holderPrice = 0;
-    var shipmentPrice = 0;
-    var ort = "";
-    var strass = "";
-    var nummer = "";
-    var postleitzahl = "";
+    let treePrice = 0;
+    let ballPrice = 0;
+    let candlePrice = 0;
+    let lamettaPrice = 0;
+    let holderPrice = 0;
+    let shipmentPrice = 0;
+    let ort = "";
+    let strass = "";
+    let nummer = "";
+    let postleitzahl = "";
     function writeHTML() {
-        var node = document.getElementById("fieldset");
-        var childNodeHTML;
+        let node = document.getElementById("fieldset");
+        let childNodeHTML;
         childNodeHTML = "<h3>Baeume</h3>";
         childNodeHTML += "<select name='Select' id='tree'>";
-        for (var i = 0; i < Aufgabe5.tree.length; i++) {
+        for (let i = 0; i < Aufgabe5.tree.length; i++) {
             childNodeHTML += "<option value='" + i + Aufgabe5.tree[i].name + "'>" + Aufgabe5.tree[i].name + "</option>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
         childNodeHTML += "<h3>Glasskugeln</h3>";
-        for (var i = 0; i < Aufgabe5.christmasBall.length; i++) {
+        for (let i = 0; i < Aufgabe5.christmasBall.length; i++) {
             childNodeHTML += Aufgabe5.christmasBall[i].name;
             childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + Aufgabe5.christmasBall[i].name + "' price='" + Aufgabe5.christmasBall[i].price + "'/>";
             childNodeHTML += "<br>";
@@ -31,14 +31,14 @@ var Aufgabe5;
         }
         //Kerzen
         childNodeHTML += "<h3>Kerzen</h3>";
-        for (var i = 0; i < Aufgabe5.candle.length; i++) {
+        for (let i = 0; i < Aufgabe5.candle.length; i++) {
             childNodeHTML += Aufgabe5.candle[i].name;
             childNodeHTML += " <input type='number' id='numberCandles" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + Aufgabe5.candle[i].name + "' price='" + Aufgabe5.candle[i].price + "' />";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Lametta</h3>";
-        for (var i = 0; i < Aufgabe5.lametta.length; i++) {
+        for (let i = 0; i < Aufgabe5.lametta.length; i++) {
             childNodeHTML += Aufgabe5.lametta[i].name;
             childNodeHTML += " <input type='number' id='numberLametta" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + Aufgabe5.lametta[i].name + "' price=" + Aufgabe5.lametta[i].price + " />";
             childNodeHTML += "<br>";
@@ -46,14 +46,14 @@ var Aufgabe5;
         }
         childNodeHTML += "<h3>Halterung</h3>";
         childNodeHTML += "<select name='Select' id='holder'>";
-        for (var i = 0; i < Aufgabe5.holder.length; i++) {
+        for (let i = 0; i < Aufgabe5.holder.length; i++) {
             childNodeHTML += "<option value='" + i + Aufgabe5.holder[i].name + "'>" + Aufgabe5.holder[i].name + "</option>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
         childNodeHTML += "<h3>Lieferant</h3>";
         childNodeHTML += "<select name='Select' id='shipment'>";
-        for (var i = 0; i < Aufgabe5.shipment.length; i++) {
+        for (let i = 0; i < Aufgabe5.shipment.length; i++) {
             childNodeHTML += "<option value='" + i + Aufgabe5.shipment[i].name + "'>" + Aufgabe5.shipment[i].name + "</option>";
         }
         childNodeHTML += "</select>";
@@ -68,126 +68,126 @@ var Aufgabe5;
         node.innerHTML += childNodeHTML;
     }
     function init(_event) {
-        var fieldset = document.getElementById("fieldset");
+        let fieldset = document.getElementById("fieldset");
         fieldset.addEventListener("change", handleChange);
         document.getElementById("check").addEventListener("click", checkInputs);
     }
     function handleChange(_event) {
-        var target = _event.target;
+        let target = _event.target;
         console.log(target.id);
-        var articles = document.getElementsByTagName("input");
-        var node = document.getElementById("deko");
+        let articles = document.getElementsByTagName("input");
+        let node = document.getElementById("deko");
         node.innerHTML = "";
-        for (var i = 0; i < articles.length; i++) {
-            var article = articles[i];
-            var value = parseInt(article.value);
+        for (let i = 0; i < articles.length; i++) {
+            let article = articles[i];
+            let value = parseInt(article.value);
             if (article.name == "Stepper") {
-                var node_1 = document.getElementById("deko");
-                var DOMValue = target.value;
+                let node = document.getElementById("deko");
+                let DOMValue = target.value;
                 target.setAttribute("value", DOMValue);
-                var value_1 = parseInt(article.getAttribute("value"));
-                var name_1 = article.getAttribute("title");
-                var price_1 = article.getAttribute("price");
-                var childNodeHTML = void 0;
-                if (value_1 > 0) {
+                let value = parseInt(article.getAttribute("value"));
+                let name = article.getAttribute("title");
+                let price = article.getAttribute("price");
+                let childNodeHTML;
+                if (value > 0) {
                     childNodeHTML = "";
-                    childNodeHTML += "<a price='" + (Number(price_1) * value_1) + "'>";
-                    childNodeHTML += " " + value_1 + name_1 + " " + (Number(price_1) * value_1) + " Euro";
+                    childNodeHTML += "<a price='" + (Number(price) * value) + "'>";
+                    childNodeHTML += " " + value + name + " " + (Number(price) * value) + " Euro";
                     childNodeHTML += "</a>";
-                    node_1.innerHTML += childNodeHTML;
+                    node.innerHTML += childNodeHTML;
                 }
             }
         }
         if (target.id == "tree") {
-            var node_2 = document.getElementById("baum");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
-            var childNodeHTML = void 0;
+            let node = document.getElementById("baum");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
+            let childNodeHTML;
             treePrice = Aufgabe5.tree[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
-            node_2.innerHTML = childNodeHTML;
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "holder") {
-            var node_3 = document.getElementById("halterung");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
-            var childNodeHTML = void 0;
+            let node = document.getElementById("halterung");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
+            let childNodeHTML;
             holderPrice = Aufgabe5.holder[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
-            node_3.innerHTML = childNodeHTML;
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "shipment") {
-            var node_4 = document.getElementById("lieferant");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
-            var childNodeHTML = void 0;
+            let node = document.getElementById("lieferant");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
+            let childNodeHTML;
             shipmentPrice = Aufgabe5.shipment[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
-            node_4.innerHTML = childNodeHTML;
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "strasse") {
-            var node_5 = document.getElementById("strass");
+            let node = document.getElementById("strass");
             strass = target.value;
-            var childNodeHTML = void 0;
+            let childNodeHTML;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
-            node_5.innerHTML = childNodeHTML;
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "hausnummer") {
-            var node_6 = document.getElementById("nummer");
+            let node = document.getElementById("nummer");
             nummer = target.value;
-            var childNodeHTML = void 0;
+            let childNodeHTML;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
-            node_6.innerHTML = childNodeHTML;
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "plz") {
-            var node_7 = document.getElementById("postleitzahl");
+            let node = document.getElementById("postleitzahl");
             postleitzahl = target.value;
-            var childNodeHTML = void 0;
+            let childNodeHTML;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
-            node_7.innerHTML = childNodeHTML;
+            node.innerHTML = childNodeHTML;
         }
         if (target.id == "place") {
-            var node_8 = document.getElementById("ort");
+            let node = document.getElementById("ort");
             ort = target.value;
-            var childNodeHTML = void 0;
+            let childNodeHTML;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
-            node_8.innerHTML = childNodeHTML;
+            node.innerHTML = childNodeHTML;
         }
         price();
     }
     function price() {
-        var checkout = document.getElementById("deko");
-        var price = 0;
+        let checkout = document.getElementById("deko");
+        let price = 0;
         console.log(checkout.childNodes);
-        for (var i = 0; i < checkout.childNodes.length; i++) {
-            var article = checkout.childNodes[i];
-            var articlePrice = Number(article.getAttribute("price"));
+        for (let i = 0; i < checkout.childNodes.length; i++) {
+            let article = checkout.childNodes[i];
+            let articlePrice = Number(article.getAttribute("price"));
             price += articlePrice;
             console.log(articlePrice);
         }
-        var HTML;
-        var node = document.getElementById("preis");
+        let HTML;
+        let node = document.getElementById("preis");
         HTML = " ";
         HTML += (treePrice + holderPrice + shipmentPrice + price);
         HTML += " Euro";

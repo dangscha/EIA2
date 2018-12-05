@@ -1,10 +1,10 @@
 import * as Http from "http";//Er importiert das Modul HTTP aus der Node.ts-Datei, "http" Objekte werden als HTTP Objekte deklariert. Das HTTP Objekt ist ähnlich wie z.B. Math.random. Es besitzt mehrere Klassen, welche ebenso importiert werden
-
+import * as Url from "url"
 namespace L06_SendData {
     console.log("Starting server"); 
     let port: number = process.env.PORT; // Die Variable Port wird als Number deklariert, welchen den Wert des Ports des Heroku-Server hat. Process ist ebenso ein Objekt von Node.d.ts
     if (port == undefined) //Wenn der Port nicht definiert ist...
-        port = 8100;   //wird dieser auf 8100 gesetzt (führt zu EIA2 im Heroku)
+         port = 8100;   //wird dieser auf 8100 gesetzt (führt zu EIA2 im Heroku)
 
     let server: Http.Server = Http.createServer(); //Die Variable Server wird als Http.Server definiert und benutzt die Method Http.createrServer() um einen lokalen Server auf dem Computer zu erstellen
     server.addListener("request", handleRequest); //Ein Listener wird dem Server hinzugefügt. Wenn der Server nun einen "Request" erhält, also einen Anruf, wird die Funktion handleRequest ausgeführt
@@ -21,7 +21,27 @@ namespace L06_SendData {
 
         _response.setHeader("content-type", "text/html; charset=utf-8"); //die Variable _response setzt in den Header der HTML-Datei "content-type","text/html:charset=utf-8"
         _response.setHeader("Access-Control-Allow-Origin", "*"); //Access-Control-Allow-Origin wird ebenso im Header gesetzt. Es dient dazu, die Antwort des Servers mit dem abgerufenen Code der Quelle zu teilen
+        let articles:string[]=[];
+        let url: string = _request.url;
+        if (url != "/favicon.ico") {
+            let urlSection: string = Url.parse(url).search.substr(1);
+            let childNodeHTML: string = "<br>";
+            for (let i: number = 0; i < urlSection.length; i++) {
+                if (urlSection[i] == "&") {
+                    articles.push(childNodeHTML);
+                    childNodeHTML = "<br>";
+                }
+                else {
+                    childNodeHTML += urlSection[i];
+                }
+            }
+            articles.push(childNodeHTML);
 
+            for (let i: number = 0; i < articles.length; i++) {
+                _response.write(articles[i]);
+            }
+            console.log(articles);
+        }
         _response.write(_request.url); //mit_response.write wird auf die _request.url zugegriffen
         
         _response.end(); //response wird beendet

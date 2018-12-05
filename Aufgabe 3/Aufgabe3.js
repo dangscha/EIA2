@@ -9,9 +9,9 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 var Aufgabe31;
 (function (Aufgabe31) {
     document.addEventListener("DOMContentLoaded", uno);
-    var allCards = [{ color: "#0000ff", typ: "0" }, { color: "#0000ff", typ: "1" }, { color: "#0000ff", typ: "1" }, { color: "#0000ff", typ: "2" }, { color: "#0000ff", typ: "2" }, { color: "#0000ff", typ: "3" }, { color: "#0000ff", typ: "3" }, { color: "#0000ff", typ: "4" }, { color: "#0000ff", typ: "4" }, { color: "#0000ff", typ: "5" }, { color: "#0000ff", typ: "5" }, { color: "#0000ff", typ: "6" }, { color: "#0000ff", typ: "6" }, { color: "#0000ff", typ: "7" }, { color: "#0000ff", typ: "7" }, { color: "#0000ff", typ: "8" }, { color: "#0000ff", typ: "8" }, { color: "#0000ff", typ: "9" }, { color: "#0000ff", typ: "9" }, { color: "#0000ff", typ: "Reverse" }, { color: "#0000ff", typ: "Reverse" }, { color: "#0000ff", typ: "Plus 2" }, { color: "#0000ff", typ: "Plus 2" }, { color: "#0000ff", typ: "Skip" }, { color: "#0000ff", typ: "Skip" }, { color: "#ff0000", typ: "0" }, { color: "#ff0000", typ: "1" }, { color: "#ff0000", typ: "1" }, { color: "#ff0000", typ: "2" }, { color: "#ff0000", typ: "2" }, { color: "#ff0000", typ: "3" }, { color: "#ff0000", typ: "3" }, { color: "#ff0000", typ: "4" }, { color: "#ff0000", typ: "4" }, { color: "#ff0000", typ: "5" }, { color: "#ff0000", typ: "5" }, { color: "#ff0000", typ: "6" }, { color: "#ff0000", typ: "6" }, { color: "#ff0000", typ: "7" }, { color: "#ff0000", typ: "7" }, { color: "#ff0000", typ: "8" }, { color: "#ff0000", typ: "8" }, { color: "#ff0000", typ: "9" }, { color: "#ff0000", typ: "9" }, { color: "#ff0000", typ: "Reverse" }, { color: "#ff0000", typ: "Reverse" }, { color: "#ff0000", typ: "Plus 2" }, { color: "#ff0000", typ: "Plus 2" }, { color: "#ff0000", typ: "Skip" }, { color: "#ff0000", typ: "Skip" }, { color: "#ffff00", typ: "0" }, { color: "#ffff00", typ: "1" }, { color: "#ffff00", typ: "1" }, { color: "#ffff00", typ: "2" }, { color: "#ffff00", typ: "2" }, { color: "#ffff00", typ: "3" }, { color: "#ffff00", typ: "3" }, { color: "#ffff00", typ: "4" }, { color: "#ffff00", typ: "4" }, { color: "#ffff00", typ: "5" }, { color: "#ffff00", typ: "5" }, { color: "#ffff00", typ: "6" }, { color: "#ffff00", typ: "6" }, { color: "#ffff00", typ: "7" }, { color: "#ffff00", typ: "7" }, { color: "#ffff00", typ: "8" }, { color: "#ffff00", typ: "8" }, { color: "#ffff00", typ: "9" }, { color: "#ffff00", typ: "9" }, { color: "#ffff00", typ: "Reverse" }, { color: "#ffff00", typ: "Reverse" }, { color: "#ffff00", typ: "Plus 2" }, { color: "#ffff00", typ: "Plus 2" }, { color: "#ffff00", typ: "Skip" }, { color: "#ffff00", typ: "Skip" }, { color: "#00ff00", typ: "0" }, { color: "#00ff00", typ: "1" }, { color: "#00ff00", typ: "1" }, { color: "#00ff00", typ: "2" }, { color: "#00ff00", typ: "2" }, { color: "#00ff00", typ: "3" }, { color: "#00ff00", typ: "3" }, { color: "#00ff00", typ: "4" }, { color: "#00ff00", typ: "4" }, { color: "#00ff00", typ: "5" }, { color: "#00ff00", typ: "5" }, { color: "#00ff00", typ: "6" }, { color: "#00ff00", typ: "6" }, { color: "#00ff00", typ: "7" }, { color: "#00ff00", typ: "7" }, { color: "#00ff00", typ: "8" }, { color: "#00ff00", typ: "8" }, { color: "#00ff00", typ: "9" }, { color: "#00ff00", typ: "9" }, { color: "#00ff00", typ: "Reverse" }, { color: "#00ff00", typ: "Reverse" }, { color: "#00ff00", typ: "Plus 2" }, { color: "#00ff00", typ: "Plus 2" }, { color: "#00ff00", typ: "Skip" }, { color: "#00ff00", typ: "Skip" }, { color: "#000000", typ: "Plus 4" }, { color: "#000000", typ: "Plus 4" }, { color: "#000000", typ: "Plus 4" }, { color: "#000000", typ: "Plus 4" }, { color: "#000000", typ: "Color" }, { color: "#000000", typ: "Color" }, { color: "#000000", typ: "Color" }, { color: "#000000", typ: "Color" },];
-    var handCards = [];
-    var pileCards = [];
+    let allCards = [{ color: "#0000ff", typ: "0" }, { color: "#0000ff", typ: "1" }, { color: "#0000ff", typ: "1" }, { color: "#0000ff", typ: "2" }, { color: "#0000ff", typ: "2" }, { color: "#0000ff", typ: "3" }, { color: "#0000ff", typ: "3" }, { color: "#0000ff", typ: "4" }, { color: "#0000ff", typ: "4" }, { color: "#0000ff", typ: "5" }, { color: "#0000ff", typ: "5" }, { color: "#0000ff", typ: "6" }, { color: "#0000ff", typ: "6" }, { color: "#0000ff", typ: "7" }, { color: "#0000ff", typ: "7" }, { color: "#0000ff", typ: "8" }, { color: "#0000ff", typ: "8" }, { color: "#0000ff", typ: "9" }, { color: "#0000ff", typ: "9" }, { color: "#0000ff", typ: "Reverse" }, { color: "#0000ff", typ: "Reverse" }, { color: "#0000ff", typ: "Plus 2" }, { color: "#0000ff", typ: "Plus 2" }, { color: "#0000ff", typ: "Skip" }, { color: "#0000ff", typ: "Skip" }, { color: "#ff0000", typ: "0" }, { color: "#ff0000", typ: "1" }, { color: "#ff0000", typ: "1" }, { color: "#ff0000", typ: "2" }, { color: "#ff0000", typ: "2" }, { color: "#ff0000", typ: "3" }, { color: "#ff0000", typ: "3" }, { color: "#ff0000", typ: "4" }, { color: "#ff0000", typ: "4" }, { color: "#ff0000", typ: "5" }, { color: "#ff0000", typ: "5" }, { color: "#ff0000", typ: "6" }, { color: "#ff0000", typ: "6" }, { color: "#ff0000", typ: "7" }, { color: "#ff0000", typ: "7" }, { color: "#ff0000", typ: "8" }, { color: "#ff0000", typ: "8" }, { color: "#ff0000", typ: "9" }, { color: "#ff0000", typ: "9" }, { color: "#ff0000", typ: "Reverse" }, { color: "#ff0000", typ: "Reverse" }, { color: "#ff0000", typ: "Plus 2" }, { color: "#ff0000", typ: "Plus 2" }, { color: "#ff0000", typ: "Skip" }, { color: "#ff0000", typ: "Skip" }, { color: "#ffff00", typ: "0" }, { color: "#ffff00", typ: "1" }, { color: "#ffff00", typ: "1" }, { color: "#ffff00", typ: "2" }, { color: "#ffff00", typ: "2" }, { color: "#ffff00", typ: "3" }, { color: "#ffff00", typ: "3" }, { color: "#ffff00", typ: "4" }, { color: "#ffff00", typ: "4" }, { color: "#ffff00", typ: "5" }, { color: "#ffff00", typ: "5" }, { color: "#ffff00", typ: "6" }, { color: "#ffff00", typ: "6" }, { color: "#ffff00", typ: "7" }, { color: "#ffff00", typ: "7" }, { color: "#ffff00", typ: "8" }, { color: "#ffff00", typ: "8" }, { color: "#ffff00", typ: "9" }, { color: "#ffff00", typ: "9" }, { color: "#ffff00", typ: "Reverse" }, { color: "#ffff00", typ: "Reverse" }, { color: "#ffff00", typ: "Plus 2" }, { color: "#ffff00", typ: "Plus 2" }, { color: "#ffff00", typ: "Skip" }, { color: "#ffff00", typ: "Skip" }, { color: "#00ff00", typ: "0" }, { color: "#00ff00", typ: "1" }, { color: "#00ff00", typ: "1" }, { color: "#00ff00", typ: "2" }, { color: "#00ff00", typ: "2" }, { color: "#00ff00", typ: "3" }, { color: "#00ff00", typ: "3" }, { color: "#00ff00", typ: "4" }, { color: "#00ff00", typ: "4" }, { color: "#00ff00", typ: "5" }, { color: "#00ff00", typ: "5" }, { color: "#00ff00", typ: "6" }, { color: "#00ff00", typ: "6" }, { color: "#00ff00", typ: "7" }, { color: "#00ff00", typ: "7" }, { color: "#00ff00", typ: "8" }, { color: "#00ff00", typ: "8" }, { color: "#00ff00", typ: "9" }, { color: "#00ff00", typ: "9" }, { color: "#00ff00", typ: "Reverse" }, { color: "#00ff00", typ: "Reverse" }, { color: "#00ff00", typ: "Plus 2" }, { color: "#00ff00", typ: "Plus 2" }, { color: "#00ff00", typ: "Skip" }, { color: "#00ff00", typ: "Skip" }, { color: "#000000", typ: "Plus 4" }, { color: "#000000", typ: "Plus 4" }, { color: "#000000", typ: "Plus 4" }, { color: "#000000", typ: "Plus 4" }, { color: "#000000", typ: "Color" }, { color: "#000000", typ: "Color" }, { color: "#000000", typ: "Color" }, { color: "#000000", typ: "Color" },];
+    let handCards = [];
+    let pileCards = [];
     //Hauptfunktion
     function uno() {
         document.getElementById("button").addEventListener("click", sortCards);
@@ -19,14 +19,14 @@ var Aufgabe31;
         document.addEventListener("keydown", addCardSpace);
         document.getElementById("content").addEventListener("click", removeCard);
         //Prompt
-        var numberCards;
-        var input = prompt("Anzahl der Karten auswaehlen");
+        let numberCards;
+        let input = prompt("Anzahl der Karten auswaehlen");
         numberCards = Number(input);
         //Karten ausgeben
-        for (var i = 0; i < numberCards; i++) {
-            var randomNumber = createRandomNumber(allCards.length);
+        for (let i = 0; i < numberCards; i++) {
+            let randomNumber = createRandomNumber(allCards.length);
             placeDiv(allCards[randomNumber].color, allCards[randomNumber].typ, i);
-            var card = allCards.splice(randomNumber, 1)[0];
+            let card = allCards.splice(randomNumber, 1)[0];
             handCards.push(card);
             continue;
         }
@@ -37,36 +37,36 @@ var Aufgabe31;
     }
     //discard
     function removeCard(_event) {
-        var main = document.getElementById("content");
-        var domCard = _event.target;
+        let main = document.getElementById("content");
+        let domCard = _event.target;
         if (domCard != main) {
-            var index = void 0;
-            var domAttribute = domCard.getAttribute("id");
+            let index;
+            let domAttribute = domCard.getAttribute("id");
             domAttribute = domAttribute.substr(4);
             index = parseInt(domAttribute);
-            var karte = handCards.splice(index, 1)[0];
+            let karte = handCards.splice(index, 1)[0];
             pileCards.push(karte);
             deleteCards();
             deletePile();
-            for (var i = 0; i < handCards.length; i++) {
+            for (let i = 0; i < handCards.length; i++) {
                 placeDiv(handCards[i].color, handCards[i].typ, i);
             }
-            for (var i = 0; i < pileCards.length; i++) {
+            for (let i = 0; i < pileCards.length; i++) {
                 placePile(pileCards[i].color, pileCards[i].typ, i);
             }
         }
     }
     function deletePile() {
-        var node = document.getElementById("Ablagestapel");
+        let node = document.getElementById("Ablagestapel");
         node.innerHTML = "Ablagestapel";
     }
     function placePile(_color, _typ, _y) {
-        var div = document.createElement("div");
+        let div = document.createElement("div");
         document.getElementById("Ablagestapel").appendChild(div);
         div.setAttribute("id", "pile" + _y);
         div.setAttribute("class", "pile");
         document.getElementById("pile" + _y).innerHTML += _typ;
-        var s = div.style;
+        let s = div.style;
         s.backgroundColor = _color;
         if (_color == "#000000") {
             s.color = "white";
@@ -79,7 +79,7 @@ var Aufgabe31;
     function sortCards() {
         handCards.sort(compareCards);
         deleteCards();
-        for (var i = 0; i < handCards.length; i++) {
+        for (let i = 0; i < handCards.length; i++) {
             placeDiv(handCards[i].color, handCards[i].typ, i);
         }
     }
@@ -91,12 +91,12 @@ var Aufgabe31;
     //add Card
     function addCard() {
         deleteCards();
-        for (var i = 0; i < 1; i++) {
-            var randomNumber = createRandomNumber(allCards.length);
-            var card = allCards.splice(randomNumber, 1)[0];
+        for (let i = 0; i < 1; i++) {
+            let randomNumber = createRandomNumber(allCards.length);
+            let card = allCards.splice(randomNumber, 1)[0];
             handCards.push(card);
         }
-        for (var i = 0; i < handCards.length; i++) {
+        for (let i = 0; i < handCards.length; i++) {
             console.log(handCards);
             placeDiv(handCards[i].color, handCards[i].typ, i);
         }
@@ -109,16 +109,16 @@ var Aufgabe31;
     }
     //Delete Cards
     function deleteCards() {
-        var node = document.getElementById("content");
+        let node = document.getElementById("content");
         node.innerHTML = "";
     }
     //PlaceDiv
     function placeDiv(_color, _typ, _y) {
-        var div = document.createElement("div");
+        let div = document.createElement("div");
         document.getElementById("content").appendChild(div);
         div.setAttribute("id", "card" + _y);
         document.getElementById("card" + _y).innerHTML += _typ;
-        var s = div.style;
+        let s = div.style;
         s.backgroundColor = _color;
         s.left = (_y + 0.2) * 110 + "px";
         if (_color == "#000000") {

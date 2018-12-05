@@ -2,28 +2,28 @@ var Aufgabe4;
 (function (Aufgabe4) {
     document.addEventListener("DOMContentLoaded", writeHTML);
     document.addEventListener("DOMContentLoaded", init);
-    var treePrice = 0;
-    var ballPrice = 0;
-    var candlePrice = 0;
-    var lamettaPrice = 0;
-    var holderPrice = 0;
-    var shipmentPrice = 0;
-    var ort = "";
-    var strass = "";
-    var nummer = "";
-    var postleitzahl = "";
+    let treePrice = 0;
+    let ballPrice = 0;
+    let candlePrice = 0;
+    let lamettaPrice = 0;
+    let holderPrice = 0;
+    let shipmentPrice = 0;
+    let ort = "";
+    let strass = "";
+    let nummer = "";
+    let postleitzahl = "";
     function writeHTML() {
-        var node = document.getElementById("fieldset");
-        var childNodeHTML;
+        let node = document.getElementById("fieldset");
+        let childNodeHTML;
         childNodeHTML = "<h3>Baeume</h3>";
         childNodeHTML += "<select name='Select' id='tree'>";
-        for (var i = 0; i < Aufgabe4.tree.length; i++) {
+        for (let i = 0; i < Aufgabe4.tree.length; i++) {
             childNodeHTML += "<option value='" + i + Aufgabe4.tree[i].name + "'>" + Aufgabe4.tree[i].name + "</option>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
         childNodeHTML += "<h3>Glasskugeln</h3>";
-        for (var i = 0; i < Aufgabe4.christmasBall.length; i++) {
+        for (let i = 0; i < Aufgabe4.christmasBall.length; i++) {
             childNodeHTML += Aufgabe4.christmasBall[i].name;
             childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='Stepper' step='1' min='0' max='30' value='0'/>";
             childNodeHTML += "<br>";
@@ -31,21 +31,21 @@ var Aufgabe4;
         }
         //Kerzen
         childNodeHTML += "<h3>Kerzen</h3>";
-        for (var i = 0; i < Aufgabe4.candle.length; i++) {
+        for (let i = 0; i < Aufgabe4.candle.length; i++) {
             childNodeHTML += Aufgabe4.candle[i].name;
             childNodeHTML += " <input type='number' id='numberCandles" + i + "' name='Stepper' step='1' min='0' max='30' value='0'/>";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Lametta</h3>";
-        for (var i = 0; i < Aufgabe4.lametta.length; i++) {
+        for (let i = 0; i < Aufgabe4.lametta.length; i++) {
             childNodeHTML += Aufgabe4.lametta[i].name;
             childNodeHTML += " <input type='number' name='Stepper' id='numberLametta" + i + "' step='1' min='0' max='30' value='0'/>";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Halterung</h3>";
-        for (var i = 0; i < Aufgabe4.holder.length; i++) {
+        for (let i = 0; i < Aufgabe4.holder.length; i++) {
             childNodeHTML += " <input type='radio' name='Radiogroup' value='radio1' id='radio1' />";
             childNodeHTML += "<label for='radio1'>" + Aufgabe4.holder[i].name + "</label>";
         }
@@ -53,7 +53,7 @@ var Aufgabe4;
         childNodeHTML += "<br>";
         childNodeHTML += "<h3>Lieferant</h3>";
         childNodeHTML += "<select name='Select' id='shipment'>";
-        for (var i = 0; i < Aufgabe4.shipment.length; i++) {
+        for (let i = 0; i < Aufgabe4.shipment.length; i++) {
             childNodeHTML += "<option value='" + i + Aufgabe4.shipment[i].name + "'>" + Aufgabe4.shipment[i].name + "</option>";
         }
         childNodeHTML += "</select>";
@@ -68,20 +68,20 @@ var Aufgabe4;
         node.innerHTML += childNodeHTML;
     }
     function init(_event) {
-        var fieldset = document.getElementById("fieldset");
+        let fieldset = document.getElementById("fieldset");
         fieldset.addEventListener("change", handleChange);
         document.getElementById("check").addEventListener("click", checkInputs);
     }
     function handleChange(_event) {
-        var target = _event.target;
-        var ballsValue1 = document.getElementById("numberBalls1");
-        var ballValue1 = ballsValue1.value;
+        let target = _event.target;
+        let ballsValue1 = document.getElementById("numberBalls1");
+        let ballValue1 = ballsValue1.value;
         console.log(ballsValue1.value);
         if (target.id == "tree") {
-            var node = document.getElementById("baum");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
-            var childNodeHTML = void 0;
+            let node = document.getElementById("baum");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
+            let childNodeHTML;
             treePrice = Aufgabe4.tree[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
@@ -91,10 +91,10 @@ var Aufgabe4;
             console.log(treePrice);
         }
         if (target.id == "christmasBalls") {
-            var node = document.getElementById("kugeln");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
-            var childNodeHTML = void 0;
+            let node = document.getElementById("kugeln");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
+            let childNodeHTML;
             ballPrice = Aufgabe4.christmasBall[priceIndex].price * ballValue1;
             childNodeHTML = "";
             childNodeHTML += "<a>";
@@ -103,10 +103,10 @@ var Aufgabe4;
             node.innerHTML = childNodeHTML;
         }
         if (target.id == "candles") {
-            var node = document.getElementById("kerzen");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
-            var childNodeHTML = void 0;
+            let node = document.getElementById("kerzen");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
+            let childNodeHTML;
             candlePrice = Aufgabe4.candle[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
@@ -116,10 +116,10 @@ var Aufgabe4;
             console.log(candlePrice);
         }
         if (target.id == "lamettas") {
-            var node = document.getElementById("lametta");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
-            var childNodeHTML = void 0;
+            let node = document.getElementById("lametta");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
+            let childNodeHTML;
             lamettaPrice = Aufgabe4.lametta[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
@@ -129,10 +129,10 @@ var Aufgabe4;
             console.log(lamettaPrice);
         }
         if (target.id == "holder") {
-            var node = document.getElementById("halterung");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
-            var childNodeHTML = void 0;
+            let node = document.getElementById("halterung");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
+            let childNodeHTML;
             holderPrice = Aufgabe4.holder[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
@@ -142,10 +142,10 @@ var Aufgabe4;
             console.log(holderPrice);
         }
         if (target.id == "shipment") {
-            var node = document.getElementById("lieferant");
-            var value = target.value;
-            var priceIndex = parseInt(value.substr(0, 1));
-            var childNodeHTML = void 0;
+            let node = document.getElementById("lieferant");
+            let value = target.value;
+            let priceIndex = parseInt(value.substr(0, 1));
+            let childNodeHTML;
             shipmentPrice = Aufgabe4.shipment[priceIndex].price;
             childNodeHTML = "";
             childNodeHTML += "<a>";
@@ -155,9 +155,9 @@ var Aufgabe4;
             console.log(shipmentPrice);
         }
         if (target.id == "strasse") {
-            var node = document.getElementById("strass");
+            let node = document.getElementById("strass");
             strass = target.value;
-            var childNodeHTML = void 0;
+            let childNodeHTML;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + target.value;
@@ -165,9 +165,9 @@ var Aufgabe4;
             node.innerHTML = childNodeHTML;
         }
         if (target.id == "hausnummer") {
-            var node = document.getElementById("nummer");
+            let node = document.getElementById("nummer");
             nummer = target.value;
-            var childNodeHTML = void 0;
+            let childNodeHTML;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + target.value;
@@ -175,9 +175,9 @@ var Aufgabe4;
             node.innerHTML = childNodeHTML;
         }
         if (target.id == "plz") {
-            var node = document.getElementById("postleitzahl");
+            let node = document.getElementById("postleitzahl");
             postleitzahl = target.value;
-            var childNodeHTML = void 0;
+            let childNodeHTML;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + target.value;
@@ -185,9 +185,9 @@ var Aufgabe4;
             node.innerHTML = childNodeHTML;
         }
         if (target.id == "place") {
-            var node = document.getElementById("ort");
+            let node = document.getElementById("ort");
             ort = target.value;
-            var childNodeHTML = void 0;
+            let childNodeHTML;
             childNodeHTML = "";
             childNodeHTML += "<a>";
             childNodeHTML += " " + target.value;
@@ -198,8 +198,8 @@ var Aufgabe4;
         console.log(ballPrice);
     }
     function price() {
-        var HTML;
-        var node = document.getElementById("preis");
+        let HTML;
+        let node = document.getElementById("preis");
         HTML = " ";
         HTML += (treePrice + ballPrice + candlePrice + lamettaPrice + holderPrice + shipmentPrice);
         HTML += " Euro";
