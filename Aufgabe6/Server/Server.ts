@@ -42,7 +42,7 @@ namespace L06_SendData {
             }
             console.log(articles);
         }
-        _response.write(_request.url); //mit_response.write wird auf die _request.url zugegriffen
+       // _response.write(_request.url); //mit_response.write wird auf die _request.url zugegriffen
         
         _response.end(); //response wird beendet
     }
