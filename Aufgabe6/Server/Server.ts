@@ -22,7 +22,7 @@ namespace L06_SendData {
         _response.setHeader("content-type", "text/html; charset=utf-8"); //die Variable _response setzt in den Header der HTML-Datei "content-type","text/html:charset=utf-8"
         _response.setHeader("Access-Control-Allow-Origin", "*"); //Access-Control-Allow-Origin wird ebenso im Header gesetzt. Es dient dazu, die Antwort des Servers mit dem abgerufenen Code der Quelle zu teilen
        
-                let url: Url.Url = Url.parse(_request.url, true);
+        let url: Url.Url = Url.parse(_request.url, true);
         for (let key in url.query)
             _response.write(key + ":" + url.query[key] + "<br/>");
        // _response.write(_request.url); //mit_response.write wird auf die _request.url zugegriffen
