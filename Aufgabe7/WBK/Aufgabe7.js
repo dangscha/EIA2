@@ -2,6 +2,7 @@ var WBK7;
 (function (WBK7) {
     document.addEventListener("DOMContentLoaded", writeHTML);
     document.addEventListener("DOMContentLoaded", init);
+    let address = "http://localhost:8100";
     let treePrice = 0;
     let ballPrice = 0;
     let candlePrice = 0;
@@ -45,7 +46,7 @@ var WBK7;
             continue;
         }
         childNodeHTML += "<h3>Halterung</h3>";
-        childNodeHTML += "<select name='Select' id='holder'>";
+        childNodeHTML += "<select name='Halterung' id='holder'>";
         for (let i = 0; i < WBK7.holder.length; i++) {
             childNodeHTML += "<option value='" + i + WBK7.holder[i].name + "'>" + WBK7.holder[i].name + "</option>";
         }
@@ -70,6 +71,7 @@ var WBK7;
     function init(_event) {
         let fieldset = document.getElementById("fieldset");
         fieldset.addEventListener("change", handleChange);
+        document.getElementById("lul").addEventListener("click", sendRequestWithCustomData);
         document.getElementById("check").addEventListener("click", checkInputs);
     }
     function handleChange(_event) {
@@ -105,7 +107,7 @@ var WBK7;
             let childNodeHTML;
             treePrice = WBK7.tree[priceIndex].price;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + value.substr(1) + ">";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -117,7 +119,7 @@ var WBK7;
             let childNodeHTML;
             holderPrice = WBK7.holder[priceIndex].price;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + value.substr(1) + ">";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -129,47 +131,47 @@ var WBK7;
             let childNodeHTML;
             shipmentPrice = WBK7.shipment[priceIndex].price;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + value.substr(1) + ">";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
         }
         if (target.id == "strasse") {
             let node = document.getElementById("strass");
-            strass = target.value;
+            let strass = target.value;
             let childNodeHTML;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + strass.substr(1) + ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
         }
         if (target.id == "hausnummer") {
             let node = document.getElementById("nummer");
-            nummer = target.value;
+            let nummer = target.value;
             let childNodeHTML;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + nummer.substr(1) + ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
         }
         if (target.id == "plz") {
             let node = document.getElementById("postleitzahl");
-            postleitzahl = target.value;
+            let postleitzahl = target.value;
             let childNodeHTML;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + postleitzahl.substr(1) + ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
         }
         if (target.id == "place") {
             let node = document.getElementById("ort");
-            ort = target.value;
+            let ort = target.value;
             let childNodeHTML;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + ort.substr(1) + ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -199,6 +201,53 @@ var WBK7;
         }
         else {
             document.getElementById("buttonCheck").innerHTML = "";
+        }
+    }
+    function sendRequestWithCustomData() {
+        let num = document.getElementsByClassName("checkout").length;
+        let HTMLString = "";
+        //console.log(num);
+        for (let i = 0; i < num; i++) {
+            let article = document.getElementsByClassName("checkout")[i];
+            //console.log(article.childElementCount);
+            if (article.childElementCount > 0) {
+                // console.log("!=null");
+                HTMLString += article.children[0].getAttribute("name") + ":";
+                HTMLString += article.children[0].getAttribute("value");
+            }
+            else {
+                continue;
+            }
+        }
+        console.log("HTMLString:" + HTMLString);
+        /*
+        let price: number = 0;
+        console.log(num.childNodes);
+        for (let i: number = 0; i < num.childNodes.length; i++) {
+            let article: any = num.childNodes[i];
+            let articlePrice: number = Number(article.getAttribute("price"));
+            price += articlePrice;
+            console.log(articlePrice);
+        } */
+        let xhr = new XMLHttpRequest();
+        let co = document.getElementById("fieldset");
+        let checkout = "";
+        /*   for (let i: number = 0; i < co.childNodes.length; i++) {
+               let value: string = document.getElementsByTagName("p")[i].getAttribute("value");
+               let name: string = document.getElementsByTagName("p")[i].getAttribute("name");
+               checkout += name + ":" + value + "<br/>";
+           } */
+        alert(checkout);
+        console.log(checkout);
+        xhr.open("GET", address + "?" + checkout, true);
+        xhr.addEventListener("readystatechange", handleStateChange);
+        xhr.send();
+    }
+    function handleStateChange(_event) {
+        var xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
+            console.log("response: " + xhr.response);
         }
     }
 })(WBK7 || (WBK7 = {}));

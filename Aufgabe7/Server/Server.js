@@ -1,9 +1,10 @@
 "use strict";
 const Http = require("http"); //Er importiert das Modul HTTP aus der Node.ts-Datei, "http" Objekte werden als HTTP Objekte deklariert. Das HTTP Objekt ist �hnlich wie z.B. Math.random. Es besitzt mehrere Klassen, welche ebenso importiert werden
 const Url = require("url");
-var L06_SendData;
-(function (L06_SendData) {
+var L07_SendData;
+(function (L07_SendData) {
     console.log("Starting server");
+    let address = "http://localhost:8100";
     let port = process.env.PORT; // Die Variable Port wird als Number deklariert, welchen den Wert des Ports des Heroku-Server hat. Process ist ebenso ein Objekt von Node.d.ts
     if (port == undefined)
         port = 8100; //wird dieser auf 8100 gesetzt (f�hrt zu EIA2 im Heroku)
@@ -24,5 +25,5 @@ var L06_SendData;
         // _response.write(_request.url); //mit_response.write wird auf die _request.url zugegriffen
         _response.end(); //response wird beendet
     }
-})(L06_SendData || (L06_SendData = {}));
+})(L07_SendData || (L07_SendData = {}));
 //# sourceMappingURL=Server.js.map

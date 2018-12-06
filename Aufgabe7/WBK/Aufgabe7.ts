@@ -2,6 +2,9 @@ namespace WBK7 {
     document.addEventListener("DOMContentLoaded", writeHTML);
     document.addEventListener("DOMContentLoaded", init);
 
+
+
+    let address: string = "http://localhost:8100";
     let treePrice: number = 0;
     let ballPrice: number = 0;
     let candlePrice: number = 0;
@@ -13,7 +16,7 @@ namespace WBK7 {
     let nummer: string = "";
     let postleitzahl: string = "";
 
-    
+
 
     function writeHTML() {
 
@@ -50,7 +53,7 @@ namespace WBK7 {
             continue
         }
         childNodeHTML += "<h3>Halterung</h3>";
-        childNodeHTML += "<select name='Select' id='holder'>";
+        childNodeHTML += "<select name='Halterung' id='holder'>";
         for (let i: number = 0; i < holder.length; i++) {
             childNodeHTML += "<option value='" + i + holder[i].name + "'>" + holder[i].name + "</option>";
         }
@@ -78,6 +81,7 @@ namespace WBK7 {
     function init(_event: Event) {
         let fieldset: HTMLElement = document.getElementById("fieldset")
         fieldset.addEventListener("change", handleChange);
+        document.getElementById("lul").addEventListener("click", sendRequestWithCustomData);
         document.getElementById("check").addEventListener("click", checkInputs);
     }
 
@@ -102,8 +106,8 @@ namespace WBK7 {
                 let childNodeHTML: string;
                 if (value > 0) {
                     childNodeHTML = "";
-                    childNodeHTML += "<a price='"+(Number(price) * value)+"'>";
-                    childNodeHTML += " " + value + name +" "+ (Number(price) * value) + " Euro";
+                    childNodeHTML += "<a price='" + (Number(price) * value) + "'>";
+                    childNodeHTML += " " + value + name + " " + (Number(price) * value) + " Euro";
                     childNodeHTML += "</a>";
                     node.innerHTML += childNodeHTML;
                 }
@@ -117,7 +121,7 @@ namespace WBK7 {
             let childNodeHTML: string;
             treePrice = tree[priceIndex].price;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + value.substr(1) + ">";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -130,7 +134,7 @@ namespace WBK7 {
             let childNodeHTML: string;
             holderPrice = holder[priceIndex].price;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + value.substr(1) + ">";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -142,7 +146,7 @@ namespace WBK7 {
             let childNodeHTML: string;
             shipmentPrice = shipment[priceIndex].price;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + value.substr(1) + ">";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -150,10 +154,10 @@ namespace WBK7 {
 
         if (target.id == "strasse") {
             let node: HTMLElement = document.getElementById("strass");
-            strass = target.value;
+            let strass = target.value;
             let childNodeHTML: string;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + strass.substr(1) + ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -161,10 +165,10 @@ namespace WBK7 {
 
         if (target.id == "hausnummer") {
             let node: HTMLElement = document.getElementById("nummer");
-            nummer = target.value;
+            let nummer = target.value;
             let childNodeHTML: string;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + nummer.substr(1) + ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -172,10 +176,10 @@ namespace WBK7 {
 
         if (target.id == "plz") {
             let node: HTMLElement = document.getElementById("postleitzahl");
-            postleitzahl = target.value;
+            let postleitzahl = target.value;
             let childNodeHTML: string;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + postleitzahl.substr(1) + ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -184,32 +188,32 @@ namespace WBK7 {
 
         if (target.id == "place") {
             let node: HTMLElement = document.getElementById("ort");
-            ort = target.value;
+            let ort = target.value;
             let childNodeHTML: string;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + ort.substr(1) + ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
-            
+
         }
         price()
     }
-    
+
     function price() {
-        let checkout:HTMLElement=document.getElementById("deko");
-        let price:number=0;
+        let checkout: HTMLElement = document.getElementById("deko");
+        let price: number = 0;
         console.log(checkout.childNodes);
-        for (let i:number=0;i<checkout.childNodes.length;i++){
-            let article:any=checkout.childNodes[i];
+        for (let i: number = 0; i < checkout.childNodes.length; i++) {
+            let article: any = checkout.childNodes[i];
             let articlePrice: number = Number(article.getAttribute("price"));
-            price+=articlePrice;
+            price += articlePrice;
             console.log(articlePrice);
-            }
+        }
         let HTML: string;
         let node: HTMLElement = document.getElementById("preis");
         HTML = " ";
-        HTML += (treePrice + holderPrice + shipmentPrice+price);
+        HTML += (treePrice + holderPrice + shipmentPrice + price);
         HTML += " Euro";
         node.innerHTML = HTML
     }
@@ -218,6 +222,60 @@ namespace WBK7 {
         { document.getElementById("buttonCheck").innerHTML = "Fehlende Angaben!"; }
         else {
             document.getElementById("buttonCheck").innerHTML = "";
+        }
+    }
+
+
+    function sendRequestWithCustomData(): void {
+        let num: number = document.getElementsByClassName("checkout").length;
+        let HTMLString: string = "";
+        //console.log(num);
+    for (let i: number = 0; i < num ; i++) {
+        
+        let article: HTMLElement = <HTMLElement>document.getElementsByClassName("checkout")[i];
+        //console.log(article.childElementCount);
+        if (article.childElementCount > 0) {
+           // console.log("!=null");
+        HTMLString += article.children[0].getAttribute("name") + ":";
+        HTMLString += article.children[0].getAttribute("value");
+        }
+        else {
+            continue;
+            }
+        }
+        console.log("HTMLString:" + HTMLString);
+        /*
+        let price: number = 0;
+        console.log(num.childNodes);
+        for (let i: number = 0; i < num.childNodes.length; i++) {
+            let article: any = num.childNodes[i];
+            let articlePrice: number = Number(article.getAttribute("price"));
+            price += articlePrice;
+            console.log(articlePrice); 
+        } */
+
+
+        let xhr: XMLHttpRequest = new XMLHttpRequest();
+        let co: HTMLElement = document.getElementById("fieldset");
+        let checkout: string = "";
+     /*   for (let i: number = 0; i < co.childNodes.length; i++) {
+            let value: string = document.getElementsByTagName("p")[i].getAttribute("value");
+            let name: string = document.getElementsByTagName("p")[i].getAttribute("name");
+            checkout += name + ":" + value + "<br/>";
+        } */
+        alert(checkout);
+        console.log(checkout);
+
+        xhr.open("GET", address + "?" + checkout, true);
+        xhr.addEventListener("readystatechange", handleStateChange);
+        xhr.send();
+    }
+
+    function handleStateChange(_event: ProgressEvent): void {
+        var xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
+            console.log("response: " + xhr.response);
         }
     }
 }

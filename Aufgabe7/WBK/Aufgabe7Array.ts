@@ -1,4 +1,4 @@
-namespace Aufgabe5 {
+namespace WBK7 {
     export interface product {
         name: string;
         price: number;

@@ -2,6 +2,7 @@ var Aufgabe5;
 (function (Aufgabe5) {
     document.addEventListener("DOMContentLoaded", writeHTML);
     document.addEventListener("DOMContentLoaded", init);
+    let address = "https://eia2-dangschat.herokuapp.com/";
     let treePrice = 0;
     let ballPrice = 0;
     let candlePrice = 0;
@@ -16,7 +17,7 @@ var Aufgabe5;
         let node = document.getElementById("fieldset");
         let childNodeHTML;
         childNodeHTML = "<h3>Baeume</h3>";
-        childNodeHTML += "<select name='Select' id='tree'>";
+        childNodeHTML += "<select name='Baum' id='tree'>";
         for (let i = 0; i < Aufgabe5.tree.length; i++) {
             childNodeHTML += "<option value='" + i + Aufgabe5.tree[i].name + "'>" + Aufgabe5.tree[i].name + "</option>";
         }
@@ -25,7 +26,7 @@ var Aufgabe5;
         childNodeHTML += "<h3>Glasskugeln</h3>";
         for (let i = 0; i < Aufgabe5.christmasBall.length; i++) {
             childNodeHTML += Aufgabe5.christmasBall[i].name;
-            childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + Aufgabe5.christmasBall[i].name + "' price='" + Aufgabe5.christmasBall[i].price + "'/>";
+            childNodeHTML += " <input type='number' id='numberBalls" + i + "' name='Glasskugeln' step='1' min='0' max='30' value='0' title='" + Aufgabe5.christmasBall[i].name + "' price='" + Aufgabe5.christmasBall[i].price + "'/>";
             childNodeHTML += "<br>";
             continue;
         }
@@ -33,26 +34,26 @@ var Aufgabe5;
         childNodeHTML += "<h3>Kerzen</h3>";
         for (let i = 0; i < Aufgabe5.candle.length; i++) {
             childNodeHTML += Aufgabe5.candle[i].name;
-            childNodeHTML += " <input type='number' id='numberCandles" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + Aufgabe5.candle[i].name + "' price='" + Aufgabe5.candle[i].price + "' />";
+            childNodeHTML += " <input type='number' id='numberCandles" + i + "' name='Kerzen' step='1' min='0' max='30' value='0' title='" + Aufgabe5.candle[i].name + "' price='" + Aufgabe5.candle[i].price + "' />";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Lametta</h3>";
         for (let i = 0; i < Aufgabe5.lametta.length; i++) {
             childNodeHTML += Aufgabe5.lametta[i].name;
-            childNodeHTML += " <input type='number' id='numberLametta" + i + "' name='Stepper' step='1' min='0' max='30' value='0' title='" + Aufgabe5.lametta[i].name + "' price=" + Aufgabe5.lametta[i].price + " />";
+            childNodeHTML += " <input type='number' id='numberLametta" + i + "' name='Lametta' step='1' min='0' max='30' value='0' title='" + Aufgabe5.lametta[i].name + "' price=" + Aufgabe5.lametta[i].price + " />";
             childNodeHTML += "<br>";
             continue;
         }
         childNodeHTML += "<h3>Halterung</h3>";
-        childNodeHTML += "<select name='Select' id='holder'>";
+        childNodeHTML += "<select name='Halterung' id='holder'>";
         for (let i = 0; i < Aufgabe5.holder.length; i++) {
             childNodeHTML += "<option value='" + i + Aufgabe5.holder[i].name + "'>" + Aufgabe5.holder[i].name + "</option>";
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<br>";
         childNodeHTML += "<h3>Lieferant</h3>";
-        childNodeHTML += "<select name='Select' id='shipment'>";
+        childNodeHTML += "<select name='Lieferant' id='shipment'>";
         for (let i = 0; i < Aufgabe5.shipment.length; i++) {
             childNodeHTML += "<option value='" + i + Aufgabe5.shipment[i].name + "'>" + Aufgabe5.shipment[i].name + "</option>";
         }
@@ -70,6 +71,7 @@ var Aufgabe5;
     function init(_event) {
         let fieldset = document.getElementById("fieldset");
         fieldset.addEventListener("change", handleChange);
+        document.getElementById("lul").addEventListener("click", sendRequestWithCustomData);
         document.getElementById("check").addEventListener("click", checkInputs);
     }
     function handleChange(_event) {
@@ -81,7 +83,7 @@ var Aufgabe5;
         for (let i = 0; i < articles.length; i++) {
             let article = articles[i];
             let value = parseInt(article.value);
-            if (article.name == "Stepper") {
+            if (article.name == "Lametta" || article.name == "Kerzen" || article.name == "Glasskugeln") {
                 let node = document.getElementById("deko");
                 let DOMValue = target.value;
                 target.setAttribute("value", DOMValue);
@@ -91,7 +93,7 @@ var Aufgabe5;
                 let childNodeHTML;
                 if (value > 0) {
                     childNodeHTML = "";
-                    childNodeHTML += "<a price='" + (Number(price) * value) + "'>";
+                    childNodeHTML += "<a name=" + target.name + " value=" + value + " price=" + (Number(price) * value) + " hiddenName=" + name + ">";
                     childNodeHTML += " " + value + name + " " + (Number(price) * value) + " Euro";
                     childNodeHTML += "</a>";
                     node.innerHTML += childNodeHTML;
@@ -105,7 +107,7 @@ var Aufgabe5;
             let childNodeHTML;
             treePrice = Aufgabe5.tree[priceIndex].price;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + value.substr(1) + ">";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -117,7 +119,7 @@ var Aufgabe5;
             let childNodeHTML;
             holderPrice = Aufgabe5.holder[priceIndex].price;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + value.substr(1) + ">";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -129,47 +131,47 @@ var Aufgabe5;
             let childNodeHTML;
             shipmentPrice = Aufgabe5.shipment[priceIndex].price;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + value.substr(1) + ">";
             childNodeHTML += " " + value.substr(1);
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
         }
         if (target.id == "strasse") {
             let node = document.getElementById("strass");
-            strass = target.value;
+            let strass = target.value;
             let childNodeHTML;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + strass.substr(1) + ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
         }
         if (target.id == "hausnummer") {
             let node = document.getElementById("nummer");
-            nummer = target.value;
+            let nummer = target.value;
             let childNodeHTML;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + nummer.substr(1) + ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
         }
         if (target.id == "plz") {
             let node = document.getElementById("postleitzahl");
-            postleitzahl = target.value;
+            let postleitzahl = target.value;
             let childNodeHTML;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + postleitzahl.substr(1) + ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
         }
         if (target.id == "place") {
             let node = document.getElementById("ort");
-            ort = target.value;
+            let ort = target.value;
             let childNodeHTML;
             childNodeHTML = "";
-            childNodeHTML += "<a>";
+            childNodeHTML += "<a name=" + target.name + " value=" + ort.substr(1) + ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -199,6 +201,41 @@ var Aufgabe5;
         }
         else {
             document.getElementById("buttonCheck").innerHTML = "";
+        }
+    }
+    function sendRequestWithCustomData() {
+        let num = document.getElementsByClassName("checkout").length;
+        let HTMLString = "";
+        //console.log(num);
+        for (let i = 0; i < num; i++) {
+            let article = document.getElementsByClassName("checkout")[i];
+            //console.log(article.childElementCount);
+            if (article.childElementCount > 0) {
+                for (let i = 0; i < article.childElementCount; i++) {
+                    HTMLString += article.children[i].getAttribute("name") + ":";
+                    if (article.children[i].getAttribute("name") == "Glasskugeln" || article.children[i].getAttribute("name") == "Kerzen" || article.children[i].getAttribute("name") == "Lametta") {
+                        HTMLString += article.children[i].getAttribute("hiddenName");
+                    }
+                    HTMLString += article.children[i].getAttribute("value");
+                    HTMLString += "&";
+                }
+            }
+            else {
+                continue;
+            }
+        }
+        console.log("HTMLString:" + HTMLString);
+        let xhr = new XMLHttpRequest();
+        alert(HTMLString);
+        xhr.open("GET", address + "?" + HTMLString, true);
+        xhr.addEventListener("readystatechange", handleStateChange);
+        xhr.send();
+    }
+    function handleStateChange(_event) {
+        var xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
+            console.log("response: " + xhr.response);
         }
     }
 })(Aufgabe5 || (Aufgabe5 = {}));

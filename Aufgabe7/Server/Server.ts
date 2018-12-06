@@ -1,7 +1,9 @@
 import * as Http from "http";//Er importiert das Modul HTTP aus der Node.ts-Datei, "http" Objekte werden als HTTP Objekte deklariert. Das HTTP Objekt ist ähnlich wie z.B. Math.random. Es besitzt mehrere Klassen, welche ebenso importiert werden
 import * as Url from "url"
-namespace L06_SendData {
+namespace L07_SendData {
     console.log("Starting server"); 
+
+    let address: string = "http://localhost:8100";
     let port: number = process.env.PORT; // Die Variable Port wird als Number deklariert, welchen den Wert des Ports des Heroku-Server hat. Process ist ebenso ein Objekt von Node.d.ts
     if (port == undefined) //Wenn der Port nicht definiert ist...
          port = 8100;   //wird dieser auf 8100 gesetzt (führt zu EIA2 im Heroku)
