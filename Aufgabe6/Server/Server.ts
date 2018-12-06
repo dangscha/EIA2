@@ -21,27 +21,10 @@ namespace L06_SendData {
 
         _response.setHeader("content-type", "text/html; charset=utf-8"); //die Variable _response setzt in den Header der HTML-Datei "content-type","text/html:charset=utf-8"
         _response.setHeader("Access-Control-Allow-Origin", "*"); //Access-Control-Allow-Origin wird ebenso im Header gesetzt. Es dient dazu, die Antwort des Servers mit dem abgerufenen Code der Quelle zu teilen
-        let articles:string[]=[];
-        let url: string = _request.url;
-        if (url != "/favicon.ico") {
-            let urlSection: string = Url.parse(url).search.substr(1);
-            let childNodeHTML: string = "<br>";
-            for (let i: number = 0; i < urlSection.length; i++) {
-                if (urlSection[i] == "&") {
-                    articles.push(childNodeHTML);
-                    childNodeHTML = "<br>";
-                }
-                else {
-                    childNodeHTML += urlSection[i];
-                }
-            }
-            articles.push(childNodeHTML);
-
-            for (let i: number = 0; i < articles.length; i++) {
-                _response.write(articles[i]);
-            }
-            console.log(articles);
-        }
+       
+                let url: Url.Url = Url.parse(_request.url, true);
+        for (let key in url.query)
+            _response.write(key + ":" + url.query[key] + "<br/>");
        // _response.write(_request.url); //mit_response.write wird auf die _request.url zugegriffen
         
         _response.end(); //response wird beendet
