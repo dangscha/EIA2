@@ -73,7 +73,7 @@ namespace Aufgabe5 {
         childNodeHTML += "<input id='place' type='text' name='Ort' placeholder='Ort' required/>"
         childNodeHTML += "<br>";
         node.innerHTML += childNodeHTML
-    }
+    } 
 
     function init(_event: Event) {
         let fieldset: HTMLElement = document.getElementById("fieldset")
