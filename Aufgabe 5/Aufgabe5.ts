@@ -103,7 +103,7 @@ namespace Aufgabe5 {
                 let childNodeHTML: string;
                 if (value > 0) {
                     childNodeHTML = "";
-                    childNodeHTML += "<a name=" + target.name + " value=" + value + " price=" + (Number(price) * value) + " hiddenName=" + name +">";
+                    childNodeHTML += "<a name=" + target.name + " value=" + value + " price=" + (Number(price) * value) + " hiddenName=" + name + ">";
 
                     childNodeHTML += " " + value + name + " " + (Number(price) * value) + " Euro";
                     childNodeHTML += "</a>";
@@ -155,7 +155,7 @@ namespace Aufgabe5 {
             let strass = target.value;
             let childNodeHTML: string;
             childNodeHTML = "";
-            childNodeHTML += "<a name=" + target.name + " value=" + strass.substr(1) + ">";
+            childNodeHTML += "<a name=" + target.name + " value=" + strass+ ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -166,7 +166,7 @@ namespace Aufgabe5 {
             let nummer = target.value;
             let childNodeHTML: string;
             childNodeHTML = "";
-            childNodeHTML += "<a name=" + target.name + " value=" + nummer.substr(1) + ">";
+            childNodeHTML += "<a name=" + target.name + " value=" + nummer+ ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -177,7 +177,7 @@ namespace Aufgabe5 {
             let postleitzahl = target.value;
             let childNodeHTML: string;
             childNodeHTML = "";
-            childNodeHTML += "<a name=" + target.name + " value=" + postleitzahl.substr(1) + ">";
+            childNodeHTML += "<a name=" + target.name + " value=" + postleitzahl+ ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -189,7 +189,7 @@ namespace Aufgabe5 {
             let ort = target.value;
             let childNodeHTML: string;
             childNodeHTML = "";
-            childNodeHTML += "<a name=" + target.name + " value=" + ort.substr(1) + ">";
+            childNodeHTML += "<a name=" + target.name + " value=" + ort+ ">";
             childNodeHTML += " " + target.value;
             childNodeHTML += "</a>";
             node.innerHTML = childNodeHTML;
@@ -232,12 +232,13 @@ namespace Aufgabe5 {
             //console.log(article.childElementCount);
             if (article.childElementCount > 0) {
                 for (let i: number = 0; i < article.childElementCount; i++) {
-                    HTMLString += article.children[i].getAttribute("name") + ":";
+                 //   HTMLString += article.children[i].getAttribute("name") + ":";
                     if (article.children[i].getAttribute("name") == "Glasskugeln" || article.children[i].getAttribute("name") == "Kerzen" || article.children[i].getAttribute("name") == "Lametta") {
-                    HTMLString += article.children[i].getAttribute("hiddenName");
-                        }
+                        HTMLString += article.children[i].getAttribute("hiddenName");
+                        console.log(article.children[i].getAttribute("hiddenNamen"));
+                    }
                     HTMLString += article.children[i].getAttribute("value");
-                    HTMLString += "&";
+                    HTMLString += "<br>";
                 }
             }
             else {
@@ -245,9 +246,15 @@ namespace Aufgabe5 {
             }
         }
         console.log("HTMLString:" + HTMLString);
-   
+        
+        let node: HTMLElement = document.getElementById("ausgabe");
+        let childNodeHTML: string;
+        childNodeHTML = "";
+        childNodeHTML += HTMLString
+        node.innerHTML += childNodeHTML;
+
         let xhr: XMLHttpRequest = new XMLHttpRequest();
-        alert(HTMLString);
+       // alert(HTMLString);
 
         xhr.open("GET", address + "?" + HTMLString, true);
         xhr.addEventListener("readystatechange", handleStateChange);
