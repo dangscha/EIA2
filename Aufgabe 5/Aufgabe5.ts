@@ -66,11 +66,11 @@ namespace Aufgabe5 {
         childNodeHTML += "<br>";
 
         childNodeHTML += "<h3>Adresse</h3>";
-        childNodeHTML += "<input id='strasse' type='text' name='Text' placeholder='Strasse' required/>"
-        childNodeHTML += "<input id='hausnummer' type='text' name='Text' placeholder='Hausnummer' required/>"
+        childNodeHTML += "<input id='strasse' type='text' name='Strasse' placeholder='Strasse' required/>"
+        childNodeHTML += "<input id='hausnummer' type='text' name='Hausnummer' placeholder='Hausnummer' required/>"
         childNodeHTML += "<br>";
-        childNodeHTML += "<input id='plz' type='text' name='Pattern' pattern='[0-9]{5}' placeholder='PLZ' required/>"
-        childNodeHTML += "<input id='place' type='text' name='Text' placeholder='Ort' required/>"
+        childNodeHTML += "<input id='plz' type='text' name='Postleitzahl' pattern='[0-9]{5}' placeholder='PLZ' required/>"
+        childNodeHTML += "<input id='place' type='text' name='Ort' placeholder='Ort' required/>"
         childNodeHTML += "<br>";
         node.innerHTML += childNodeHTML
     }
