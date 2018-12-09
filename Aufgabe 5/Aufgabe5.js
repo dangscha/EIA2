@@ -206,13 +206,11 @@ var Aufgabe5;
     function sendRequestWithCustomData() {
         let num = document.getElementsByClassName("checkout").length;
         let HTMLString = "";
-        //console.log(num);
         for (let i = 0; i < num; i++) {
             let article = document.getElementsByClassName("checkout")[i];
-            //console.log(article.childElementCount);
             if (article.childElementCount > 0) {
                 for (let i = 0; i < article.childElementCount; i++) {
-                    //   HTMLString += article.children[i].getAttribute("name") + ":";
+                    HTMLString += article.children[i].getAttribute("name") + ":";
                     if (article.children[i].getAttribute("name") == "Glasskugeln" || article.children[i].getAttribute("name") == "Kerzen" || article.children[i].getAttribute("name") == "Lametta") {
                         HTMLString += article.children[i].getAttribute("hiddenName");
                         console.log(article.children[i].getAttribute("hiddenNamen"));
