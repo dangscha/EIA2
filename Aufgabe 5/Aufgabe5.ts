@@ -103,7 +103,7 @@ namespace Aufgabe5 {
                 let childNodeHTML: string;
                 if (value > 0) {
                     childNodeHTML = "";
-                    childNodeHTML += "<a name=" + target.name + " value=" + value + " price=" + (Number(price) * value) + " hiddenName=" + name + ">";
+                    childNodeHTML += "<a name=" + name + " value=" + value + " price=" + (Number(price) * value) + " hiddenName=" + name + ">";
 
                     childNodeHTML += " " + value + name + " " + (Number(price) * value) + " Euro";
                     childNodeHTML += "</a>";
