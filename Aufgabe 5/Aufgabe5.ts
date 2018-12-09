@@ -254,7 +254,7 @@ namespace Aufgabe5 {
         node.innerHTML += childNodeHTML;
 
         let xhr: XMLHttpRequest = new XMLHttpRequest();
-       // alert(HTMLString);
+
 
         xhr.open("GET", address + "?" + HTMLString, true);
         xhr.addEventListener("readystatechange", handleStateChange);

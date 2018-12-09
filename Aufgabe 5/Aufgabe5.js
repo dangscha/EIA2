@@ -232,7 +232,6 @@ var Aufgabe5;
         childNodeHTML += HTMLString;
         node.innerHTML += childNodeHTML;
         let xhr = new XMLHttpRequest();
-        // alert(HTMLString);
         xhr.open("GET", address + "?" + HTMLString, true);
         xhr.addEventListener("readystatechange", handleStateChange);
         xhr.send();
