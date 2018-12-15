@@ -1,7 +1,6 @@
 "use strict";
 /**
  * Simple database insertion and query for MongoDB
- * @author: Jirka Dell'Oro-Friedl
  */
 const Mongo = require("mongodb");
 console.log("Database starting");
@@ -36,6 +35,21 @@ exports.insert = insert;
 function handleInsert(_e) {
     console.log("Database insertion returned -> " + _e);
 }
+function search(_callback, _matrikel) {
+    var cursor = students.find();
+    cursor.toArray(prepareAnswer);
+    function prepareAnswer(_e, studentArray) {
+        if (_e)
+            _callback("Error" + _e);
+        else
+            for (let i = 0; i < studentArray.length; i++) {
+                if (studentArray[i].matrikel == Number(_matrikel)) {
+                    _callback(JSON.stringify(studentArray[i]));
+                }
+            }
+    }
+}
+exports.search = search;
 // try to fetch all documents from database, then activate callback
 function findAll(_callback) {
     // cursor points to the retreived set of documents in memory

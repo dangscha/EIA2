@@ -1,6 +1,5 @@
 /**
  * Simple database insertion and query for MongoDB
- * @author: Jirka Dell'Oro-Friedl
  */
 import * as Mongo from "mongodb";
 console.log("Database starting");
@@ -39,6 +38,22 @@ export function insert(_doc: StudentData): void {
 // insertion-handler receives an error object as standard parameter
 function handleInsert(_e: Mongo.MongoError): void {
     console.log("Database insertion returned -> " + _e);
+}
+
+export function search(_callback: Function, _matrikel: string): void {
+    var cursor: Mongo.Cursor = students.find();
+    cursor.toArray(prepareAnswer);
+    function prepareAnswer(_e: Mongo.MongoError, studentArray: StudentData[]): void {
+        if (_e)
+            _callback("Error" + _e);
+        else
+
+            for (let i: number = 0; i < studentArray.length; i++) {
+                if (studentArray[i].matrikel == Number(_matrikel)) {
+                    _callback(JSON.stringify(studentArray[i]));
+                }
+            }
+    }
 }
 
 // try to fetch all documents from database, then activate callback
