@@ -17,8 +17,9 @@ var L09_Canvas;
     function drawChild1() {
         for (let i = 0; i < 2; i++) {
             let a = 80;
-            let b = 40;
+            let b = 50;
             crc2.fillStyle = "black";
+            crc2.strokeStyle = "black";
             crc2.lineWidth = 3;
             crc2.beginPath();
             crc2.arc((i * a + 200), (i * b + 600), 5, 0, 2 * Math.PI);
@@ -50,6 +51,13 @@ var L09_Canvas;
             crc2.beginPath();
             crc2.moveTo(i * a + 200, i * b + 635);
             crc2.lineTo(i * a + 190, i * b + 642);
+            crc2.closePath();
+            crc2.stroke();
+            crc2.strokeStyle = "brown";
+            crc2.beginPath();
+            crc2.moveTo(i * a + 190, i * b + 630);
+            ;
+            crc2.lineTo(i * a + 180, i * b + 640);
             crc2.closePath();
             crc2.stroke();
             continue;
