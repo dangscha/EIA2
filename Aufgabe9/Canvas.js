@@ -6,8 +6,8 @@ var L09_Canvas;
     function init(_event) {
         console.log("Canvas started");
         let canvas = document.getElementsByTagName("canvas")[0];
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // canvas.width = window.innerWidth;
+        // canvas.height = window.innerHeight;
         crc2 = canvas.getContext("2d");
         drawLine();
         drawSky();
