@@ -12,7 +12,7 @@ namespace L09_Canvas {
         drawLine();
         drawSky();
         drawSun();
-         drawChild1();
+        //drawChild1();
         drawChild1body();
         createFlakes();
         createTrees();
@@ -31,18 +31,7 @@ namespace L09_Canvas {
 
     }
     
-    function drawChild1body(){
-        crc2.fillStyle = "yellow";
-        crc2.strokeStyle = "black";
-        crc2.lineWidth = 3;
-        crc2.beginPath();
-        crc2.moveTo(100,100)
-        crc2.moveTo(200,200)
-        crc2.moveTo(300,300)
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fill();
-        }
+
     function drawTree(_x: number, _y: number) {
 
         crc2.lineWidth = 1;
@@ -122,6 +111,19 @@ namespace L09_Canvas {
         crc2.closePath();
         crc2.stroke();
     }
+    
+        function drawChild1body(){
+        crc2.fillStyle = "yellow";
+        crc2.strokeStyle = "black";
+        crc2.lineWidth = 3;
+        crc2.beginPath();
+        crc2.moveTo(100,100)
+        crc2.moveTo(200,200)
+        crc2.moveTo(300,300)
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fill();
+        }
 
     function createFlakes() {
         for (let i: number = 0; i < 150; i++) {
