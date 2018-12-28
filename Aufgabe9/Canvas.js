@@ -10,24 +10,30 @@ var L09_Canvas;
         drawLine();
         drawSky();
         drawSun();
+        drawChild1();
         createFlakes();
         createTrees();
+        drawChild1body();
     }
-    function createTrees() {
-        for (let i = 0; i < 5; i++) {
-            let x = Math.random() * crc2.canvas.width;
-            let y = Math.random() * crc2.canvas.height;
-            crc2.moveTo(0, 650);
-            crc2.lineTo(360, 730);
-            crc2.lineTo(360, 400);
-            crc2.lineTo(0, 650);
-            if (crc2.isPointInPath(x, y)) {
-                drawTree(x, y);
-            }
-            else {
-                i--;
-            }
-        }
+    function drawChild1() {
+        crc2.fillStyle = "black";
+        crc2.lineWidth = 3;
+        crc2.beginPath();
+        crc2.arc(200, 600, 5, 0, 2 * Math.PI);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fill();
+    }
+    function drawChild1body() {
+        crc2.fillStyle = "black";
+        crc2.lineWidth = 3;
+        crc2.beginPath();
+        crc2.moveTo(200, 600);
+        crc2.moveTo(250, 630);
+        crc2.moveTo(300, 300);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fill();
     }
     function drawTree(_x, _y) {
         crc2.lineWidth = 1;
@@ -83,13 +89,6 @@ var L09_Canvas;
         crc2.fill();
         crc2.stroke();
     }
-    function createFlakes() {
-        for (let i = 0; i < 150; i++) {
-            let x = Math.random() * crc2.canvas.width;
-            let y = Math.random() * crc2.canvas.height;
-            drawFlake(x, y);
-        }
-    }
     function drawFlake(_x, _y) {
         crc2.strokeStyle = "#FFFFFF";
         crc2.lineWidth = 3;
@@ -101,6 +100,28 @@ var L09_Canvas;
         crc2.lineTo(_x - 3, _y);
         crc2.closePath();
         crc2.stroke();
+    }
+    function createFlakes() {
+        for (let i = 0; i < 150; i++) {
+            let x = Math.random() * crc2.canvas.width;
+            let y = Math.random() * crc2.canvas.height;
+            drawFlake(x, y);
+        }
+    }
+    function createTrees() {
+        for (let i = 0; i < 5; i++) {
+            let x = Math.random() * crc2.canvas.width;
+            let y = Math.random() * crc2.canvas.height;
+            crc2.beginPath;
+            crc2.moveTo(0, 650);
+            crc2.lineTo(360, 730);
+            if (crc2.isPointInPath(x, y)) {
+                drawTree(x, y);
+            }
+            else {
+                i--;
+            }
+        }
     }
 })(L09_Canvas || (L09_Canvas = {}));
 //# sourceMappingURL=Canvas.js.map
