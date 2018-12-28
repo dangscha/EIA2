@@ -7,14 +7,16 @@ namespace L09_Canvas {
         console.log("Canvas started");
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
-
+       
+        
         drawLine();
         drawSky();
         drawSun();
-        drawChild1();
+         drawChild1();
+        drawChild1body();
         createFlakes();
         createTrees();
-        drawChild1body();
+        
     }
 
     function drawChild1() {
@@ -25,18 +27,17 @@ namespace L09_Canvas {
         crc2.arc(200, 600, 5, 0, 2 * Math.PI);
         crc2.closePath();
         crc2.stroke();
-        crc2.fill();
-        
-       
+        crc2.fill(); 
 
     }
     
     function drawChild1body(){
- crc2.fillStyle = "black";
+        crc2.fillStyle = "yellow";
+        crc2.strokeStyle = "black";
         crc2.lineWidth = 3;
         crc2.beginPath();
-        crc2.moveTo(200,600)
-        crc2.moveTo(250,630)
+        crc2.moveTo(100,100)
+        crc2.moveTo(200,200)
         crc2.moveTo(300,300)
         crc2.closePath();
         crc2.stroke();
@@ -47,16 +48,16 @@ namespace L09_Canvas {
         crc2.lineWidth = 1;
         crc2.fillStyle = "brown";
         crc2.strokeStyle = "#000000";
+        
         crc2.beginPath();
         crc2.moveTo(_x - 10, _y);
         crc2.lineTo(_x - 10, _y + 40);
         crc2.lineTo(_x + 10, _y + 40);
         crc2.lineTo(_x + 10, _y);
-
         crc2.closePath();
-
         crc2.fill();
         crc2.stroke();
+        
         crc2.fillStyle = "green";
         crc2.strokeStyle = "#000000";
 
@@ -64,7 +65,6 @@ namespace L09_Canvas {
         crc2.moveTo(_x - 22.5, _y);
         crc2.lineTo(_x, _y - 40);
         crc2.lineTo(_x + 22.5, _y);
-
         crc2.fill();
         crc2.stroke();
     }
@@ -82,17 +82,14 @@ namespace L09_Canvas {
         crc2.fillStyle = "white";
         crc2.strokeStyle = "black";
         crc2.lineWidth = 3;
-
-
+        
         crc2.beginPath();
-
         crc2.moveTo(0, 730);
         crc2.lineTo(360, 730);
         crc2.lineTo(360, 400);
         crc2.lineTo(0, 650);
 
         crc2.closePath();
-
         crc2.fill();
         crc2.stroke();
     }
@@ -126,8 +123,6 @@ namespace L09_Canvas {
         crc2.stroke();
     }
 
-
-
     function createFlakes() {
         for (let i: number = 0; i < 150; i++) {
             let x: number = Math.random() * crc2.canvas.width;
@@ -143,7 +138,8 @@ namespace L09_Canvas {
             crc2.beginPath;
             crc2.moveTo(0, 650);
             crc2.lineTo(360, 730);
-           
+            crc2.lineTo(360, 400);
+            crc2.lineTo(0, 650);
             if (crc2.isPointInPath(x, y)) {
                 drawTree(x, y);
             }

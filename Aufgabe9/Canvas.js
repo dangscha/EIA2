@@ -11,9 +11,9 @@ var L09_Canvas;
         drawSky();
         drawSun();
         drawChild1();
+        drawChild1body();
         createFlakes();
         createTrees();
-        drawChild1body();
     }
     function drawChild1() {
         crc2.fillStyle = "black";
@@ -25,11 +25,12 @@ var L09_Canvas;
         crc2.fill();
     }
     function drawChild1body() {
-        crc2.fillStyle = "black";
+        crc2.fillStyle = "yellow";
+        crc2.strokeStyle = "black";
         crc2.lineWidth = 3;
         crc2.beginPath();
-        crc2.moveTo(200, 600);
-        crc2.moveTo(250, 630);
+        crc2.moveTo(100, 100);
+        crc2.moveTo(200, 200);
         crc2.moveTo(300, 300);
         crc2.closePath();
         crc2.stroke();
@@ -115,6 +116,8 @@ var L09_Canvas;
             crc2.beginPath;
             crc2.moveTo(0, 650);
             crc2.lineTo(360, 730);
+            crc2.lineTo(360, 400);
+            crc2.lineTo(0, 650);
             if (crc2.isPointInPath(x, y)) {
                 drawTree(x, y);
             }
