@@ -30,6 +30,7 @@ var A10_Animation;
             A10_Animation.crc2.lineTo(360, 730);
             A10_Animation.crc2.lineTo(360, 400);
             A10_Animation.crc2.lineTo(0, 650);
+            A10_Animation.crc2.closePath();
             if (A10_Animation.crc2.isPointInPath(tree.x, tree.y)) {
                 trees.push(tree);
             }
@@ -37,8 +38,8 @@ var A10_Animation;
                 i--;
             }
         }
-        //drawChild1();
-        //drawChild2();
+        drawChild1();
+        drawChild2();
         update();
     }
     function update() {

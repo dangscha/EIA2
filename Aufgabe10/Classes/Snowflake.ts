@@ -7,6 +7,11 @@ namespace A10_Animation {
 
         move(): void {
             this.y += this.dy;
+            
+            if (this.y > 600) {
+                this.y = 0;
+            }
+            this.draw();
         }
 
         draw(): void {

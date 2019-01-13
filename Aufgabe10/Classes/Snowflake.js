@@ -3,6 +3,10 @@ var A10_Animation;
     class Snowflake {
         move() {
             this.y += this.dy;
+            if (this.y > 600) {
+                this.y = 0;
+            }
+            this.draw();
         }
         draw() {
             A10_Animation.crc2.strokeStyle = "#FFFFFF";

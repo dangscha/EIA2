@@ -37,6 +37,7 @@ namespace A10_Animation {
             crc2.lineTo(360, 730);
             crc2.lineTo(360, 400);
             crc2.lineTo(0, 650);
+            crc2.closePath()
 
             if (crc2.isPointInPath(tree.x, tree.y)) {
                 trees.push(tree);
@@ -47,9 +48,8 @@ namespace A10_Animation {
 
         }
 
-
-        //drawChild1();
-        //drawChild2();
+        drawChild1();
+        drawChild2();
         update();
 
     }
