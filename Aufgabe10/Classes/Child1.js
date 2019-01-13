@@ -4,8 +4,9 @@ var A10_Animation;
         move() {
             this.y += this.dy;
             this.x += this.dx;
-            if (this.x > 400) {
-                this.x = 0;
+            if (this.x < 0 || this.y > 730) {
+                this.x = 360;
+                this.y = Math.random() * 330 + 400;
             }
             this.draw();
         }

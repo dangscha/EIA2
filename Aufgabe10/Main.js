@@ -7,6 +7,7 @@ var A10_Animation;
     let snowflakes = [];
     let trees = [];
     let children1 = [];
+    let children2 = [];
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
         A10_Animation.crc2 = canvas.getContext("2d");
@@ -22,20 +23,33 @@ var A10_Animation;
             flake.color = "#00ff00";
             snowflakes.push(flake);
         }
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 5; i++) {
             let child1 = new A10_Animation.Child1();
-            child1.x = Math.random() * A10_Animation.crc2.canvas.width;
-            child1.y = Math.random() * A10_Animation.crc2.canvas.height;
-            child1.dx = Math.random() * 3 - 4;
-            child1.dy = Math.random() * 4;
+            A10_Animation.crc2.beginPath();
+            A10_Animation.crc2.moveTo(0, 730);
+            A10_Animation.crc2.lineTo(360, 730);
+            A10_Animation.crc2.lineTo(360, 400);
+            A10_Animation.crc2.lineTo(0, 650);
+            child1.x = 360;
+            child1.y = Math.random() * 330 + 400;
+            child1.dx = Math.random() * 3 - 5;
+            child1.dy = -child1.dx;
+            children1.push(child1);
+        }
+        for (let i = 0; i < 5; i++) {
+            let child2 = new A10_Animation.Child2();
+            child2.x = Math.random() * A10_Animation.crc2.canvas.width;
+            child2.y = Math.random() * 360 + 400;
+            child2.dx = Math.random() * 10;
+            child2.dy = Math.random() * 0;
             A10_Animation.crc2.beginPath();
             A10_Animation.crc2.moveTo(0, 650);
             A10_Animation.crc2.lineTo(360, 730);
             A10_Animation.crc2.lineTo(360, 400);
             A10_Animation.crc2.lineTo(0, 650);
             A10_Animation.crc2.closePath();
-            if (A10_Animation.crc2.isPointInPath(child1.x, child1.y)) {
-                children1.push(child1);
+            if (A10_Animation.crc2.isPointInPath(child2.x, child2.y)) {
+                children2.push(child2);
             }
             else {
                 i--;
@@ -68,10 +82,15 @@ var A10_Animation;
             flake.move();
             flake.draw();
         }
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 5; i++) {
             let child1 = children1[i];
             child1.move();
             child1.draw();
+        }
+        for (let i = 0; i < 5; i++) {
+            let child2 = children2[i];
+            child2.move();
+            child2.draw();
         }
         for (let i = 0; i < 5; i++) {
             let tree = trees[i];
@@ -82,7 +101,7 @@ var A10_Animation;
         drawLine();
         drawSky();
         drawSun();
-        //drawClouds();
+        drawClouds();
     }
     function drawSun() {
         A10_Animation.crc2.fillStyle = "#FFFF00";
@@ -145,126 +164,6 @@ var A10_Animation;
         A10_Animation.crc2.closePath();
         A10_Animation.crc2.fill();
         A10_Animation.crc2.stroke();
-    }
-    function drawChild2() {
-        function drawChild2(_x, _y) {
-            A10_Animation.crc2.fillStyle = "black";
-            A10_Animation.crc2.strokeStyle = "black";
-            A10_Animation.crc2.lineWidth = 3;
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.arc((_x), (_y), 5, 0, 2 * Math.PI);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.fill();
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(_x, _y);
-            A10_Animation.crc2.lineTo(_x, _y + 30);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(_x, _y + 30);
-            A10_Animation.crc2.lineTo(_x - 20, _y + 35);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(_x, _y + 10);
-            A10_Animation.crc2.lineTo(_x - 15, _y + 13);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.strokeStyle = "black";
-            A10_Animation.crc2.fillStyle = "brown";
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(_x - 20, _y + 35);
-            A10_Animation.crc2.lineTo(_x - 20, _y + 40);
-            A10_Animation.crc2.lineTo(_x - 20, _y + 50);
-            A10_Animation.crc2.lineTo(_x + 10, _y + 50);
-            A10_Animation.crc2.lineTo(_x + 10, _y + 30);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.fill();
-        }
-    }
-    function drawChild1() {
-        for (let i = 0; i < 2; i++) {
-            let x = 80;
-            let y = 60;
-            A10_Animation.crc2.fillStyle = "black";
-            A10_Animation.crc2.strokeStyle = "black";
-            A10_Animation.crc2.lineWidth = 3;
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.arc((i * x + 200), (i * y + 600), 5, 0, 2 * Math.PI);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.fill();
-            A10_Animation.crc2.strokeStyle = "black";
-            A10_Animation.crc2.lineWidth = 1;
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(i * x + 200, i * y + 600);
-            A10_Animation.crc2.lineTo(i * x + 200, i * y + 635);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(i * x + 200, i * y + 615);
-            A10_Animation.crc2.lineTo(i * x + 210, i * y + 610);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(i * x + 200, i * y + 615);
-            A10_Animation.crc2.lineTo(i * x + 190, i * y + 630);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(i * x + 200, i * y + 635);
-            A10_Animation.crc2.lineTo(i * x + 210, i * y + 640);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(i * x + 200, i * y + 635);
-            A10_Animation.crc2.lineTo(i * x + 190, i * y + 642);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.strokeStyle = "red";
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(i * x + 190, i * y + 630);
-            ;
-            A10_Animation.crc2.lineTo(i * x + 180, i * y + 640);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.strokeStyle = "brown";
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(i * x + 180, i * y + 640);
-            ;
-            A10_Animation.crc2.lineTo(i * x + 180, i * y + 650);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(i * x + 180, i * y + 650);
-            ;
-            A10_Animation.crc2.lineTo(i * x + 160, i * y + 650);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(i * x + 160, i * y + 650);
-            A10_Animation.crc2.lineTo(i * x + 160, i * y + 640);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(i * x + 160, i * y + 640);
-            A10_Animation.crc2.lineTo(i * x + 175, i * y + 640);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(i * x + 163, i * y + 640);
-            A10_Animation.crc2.lineTo(i * x + 163, i * y + 650);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            A10_Animation.crc2.beginPath();
-            A10_Animation.crc2.moveTo(i * x + 170, i * y + 640);
-            A10_Animation.crc2.lineTo(i * x + 170, i * y + 650);
-            A10_Animation.crc2.closePath();
-            A10_Animation.crc2.stroke();
-            continue;
-        }
     }
 })(A10_Animation || (A10_Animation = {}));
 //# sourceMappingURL=Main.js.map
