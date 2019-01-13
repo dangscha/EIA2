@@ -1,0 +1,26 @@
+namespace A10_Animation {
+    export class Snowflake {
+        x: number;
+        y: number;
+        dy: number;
+        color: string;
+
+        move(): void {
+            this.y += this.dy;
+        }
+
+        draw(): void {
+            crc2.strokeStyle = "#FFFFFF";
+            crc2.lineWidth = 3;
+
+            crc2.beginPath();
+            crc2.moveTo(this.x, this.y - 3);
+            crc2.lineTo(this.x, this.y + 3);
+            crc2.closePath();
+            crc2.moveTo(this.x + 3, this.y);
+            crc2.lineTo(this.x - 3, this.y);
+            crc2.closePath();
+            crc2.stroke();
+        }
+    }
+}
