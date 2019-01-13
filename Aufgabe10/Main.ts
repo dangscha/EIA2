@@ -4,13 +4,18 @@ namespace A10_Animation {
     export let crc2: CanvasRenderingContext2D;
     let crc3: CanvasRenderingContext2D;
     let fps: number = 25;
+    let imgData: ImageData;
     let snowflakes: Snowflake[] = [];
     let trees: Tree[] = [];
 
     function init(_event: Event): void {
-        console.log("Canvas started");
+
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
+        drawLine();
+        drawSky();
+        drawSun();
+        imgData = crc2.getImageData(0, 0, 360, 730);
 
         for (let i: number = 0; i < 100; i++) {
             let flake: Snowflake = new Snowflake();
@@ -26,32 +31,32 @@ namespace A10_Animation {
             let tree: Tree = new Tree();
             tree.x = Math.random() * crc2.canvas.width;
             tree.y = Math.random() * crc2.canvas.height;
-           
+
             crc2.beginPath;
             crc2.moveTo(0, 650);
             crc2.lineTo(360, 730);
             crc2.lineTo(360, 400);
             crc2.lineTo(0, 650);
-            
+
             if (crc2.isPointInPath(tree.x, tree.y)) {
                 trees.push(tree);
             }
             else {
                 i--;
             }
-   
+
         }
 
-        createBackground();
-        drawChild1();
-        drawChild2();
+
+        //drawChild1();
+        //drawChild2();
         update();
 
     }
 
     function update(): void {
         window.setTimeout(update, 1000 / fps);
-        crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        crc2.putImageData(imgData, 0, 0);
 
         for (let i: number = 0; i < 100; i++) {
             let flake: Snowflake = snowflakes[i];

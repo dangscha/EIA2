@@ -3,12 +3,16 @@ var A10_Animation;
     window.addEventListener("load", init);
     let crc3;
     let fps = 25;
+    let imgData;
     let snowflakes = [];
     let trees = [];
     function init(_event) {
-        console.log("Canvas started");
         let canvas = document.getElementsByTagName("canvas")[0];
         A10_Animation.crc2 = canvas.getContext("2d");
+        drawLine();
+        drawSky();
+        drawSun();
+        imgData = A10_Animation.crc2.getImageData(0, 0, 360, 730);
         for (let i = 0; i < 100; i++) {
             let flake = new A10_Animation.Snowflake();
             flake.x = Math.random() * A10_Animation.crc2.canvas.width;
@@ -33,14 +37,13 @@ var A10_Animation;
                 i--;
             }
         }
-        createBackground();
-        drawChild1();
-        drawChild2();
+        //drawChild1();
+        //drawChild2();
         update();
     }
     function update() {
         window.setTimeout(update, 1000 / fps);
-        A10_Animation.crc2.clearRect(0, 0, A10_Animation.crc2.canvas.width, A10_Animation.crc2.canvas.height);
+        A10_Animation.crc2.putImageData(imgData, 0, 0);
         for (let i = 0; i < 100; i++) {
             let flake = snowflakes[i];
             flake.move();
