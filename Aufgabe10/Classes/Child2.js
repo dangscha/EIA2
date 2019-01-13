@@ -4,4 +4,4 @@ var A10_Animation;
     }
     A10_Animation.Child2 = Child2;
 })(A10_Animation || (A10_Animation = {}));
-//# sourceMappingURL=ChildUp.js.map
+//# sourceMappingURL=Child2.js.map
