@@ -19,6 +19,7 @@ var A10_Animation;
             A10_Animation.crc2.moveTo(this.x - 22.5, this.y);
             A10_Animation.crc2.lineTo(this.x, this.y - 40);
             A10_Animation.crc2.lineTo(this.x + 22.5, this.y);
+            A10_Animation.crc2.closePath();
             A10_Animation.crc2.fill();
             A10_Animation.crc2.stroke();
         }
