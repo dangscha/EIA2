@@ -1,11 +1,11 @@
 namespace A10_Animation {
-    export class Child1 {
+    export class Child2 {
         x: number;
         y: number;
         dx:number;
         dy:number;
         color: string;
-       
+       /**
 
     draw(): void {
             let x: number = 80;
@@ -22,35 +22,35 @@ namespace A10_Animation {
             crc2.strokeStyle = "black";
             crc2.lineWidth = 1;
             crc2.beginPath();
-            crc2.moveTo(x + 200, i * y + 600);
-            crc2.lineTo(i * x + 200, i * y + 635);
+            crc2.moveTo(x + 200, y + 600);
+            crc2.lineTo(x + 200, y + 635);
             crc2.closePath();
             crc2.stroke();
             crc2.beginPath();
-            crc2.moveTo(i * x + 200, i * y + 615);
-            crc2.lineTo(i * x + 210, i * y + 610);
+            crc2.moveTo(x + 200, y + 615);
+            crc2.lineTo(x + 210, y + 610);
             crc2.closePath();
             crc2.stroke();
             crc2.beginPath();
-            crc2.moveTo(i * x + 200, i * y + 615);
-            crc2.lineTo(i * x + 190, i * y + 630);
+            crc2.moveTo(x + 200, y + 615);
+            crc2.lineTo(x + 190, y + 630);
             crc2.closePath();
             crc2.stroke();
             crc2.beginPath();
-            crc2.moveTo(i * x + 200, i * y + 635);
-            crc2.lineTo(i * x + 210, i * y + 640);
+            crc2.moveTo(x + 200, y + 635);
+            crc2.lineTo(x + 210, y + 640);
             crc2.closePath();
             crc2.stroke();
             crc2.beginPath();
-            crc2.moveTo(i * x + 200, i * y + 635);
-            crc2.lineTo(i * x + 190, i * y + 642);
+            crc2.moveTo(x + 200, y + 635);
+            crc2.lineTo(x + 190, y + 642);
             crc2.closePath();
             crc2.stroke();
 
             crc2.strokeStyle = "red";
             crc2.beginPath();
-            crc2.moveTo(i * x + 190, i * y + 630);;
-            crc2.lineTo(i * x + 180, i * y + 640);
+            crc2.moveTo(x + 190, y + 630);;
+            crc2.lineTo(x + 180, y + 640);
             crc2.closePath();
             crc2.stroke();
 
@@ -95,6 +95,6 @@ namespace A10_Animation {
 
             crc2.stroke();
             continue
-    }
+    }**/
 }
 }

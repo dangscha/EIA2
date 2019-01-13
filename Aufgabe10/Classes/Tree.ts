@@ -2,8 +2,6 @@ namespace A10_Animation {
     export class Tree {
         x: number;
         y: number;
-        dy: number;
-        dx: number;
         color: string;
 
 

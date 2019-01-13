@@ -7,6 +7,7 @@ namespace A10_Animation {
     let imgData: ImageData;
     let snowflakes: Snowflake[] = [];
     let trees: Tree[] = [];
+    let children1: Child1[]=[]
 
     function init(_event: Event): void {
 
@@ -26,13 +27,36 @@ namespace A10_Animation {
 
             snowflakes.push(flake);
         }
+        
+         for (let i: number = 0; i < 10; i++) {
+            let child1: Child1 = new Child1();
+             
+            child1.x = Math.random() * crc2.canvas.width;
+            child1.y = Math.random() * crc2.canvas.height;
+            child1.dx = Math.random() * 3-4;
+            child1.dy = Math.random() * 4;
+
+             crc2.beginPath();
+            crc2.moveTo(0, 650);
+            crc2.lineTo(360, 730);
+            crc2.lineTo(360, 400);
+            crc2.lineTo(0, 650);
+            crc2.closePath();
+             if (crc2.isPointInPath(child1.x, child1.y)) {
+                children1.push(child1);
+            }
+            else {
+                i--;
+            }
+        }
+
 
         for (let i: number = 0; i < 5; i++) {
             let tree: Tree = new Tree();
             tree.x = Math.random() * crc2.canvas.width;
             tree.y = Math.random() * crc2.canvas.height;
 
-            crc2.beginPath;
+            crc2.beginPath();
             crc2.moveTo(0, 650);
             crc2.lineTo(360, 730);
             crc2.lineTo(360, 400);
@@ -47,9 +71,6 @@ namespace A10_Animation {
             }
 
         }
-
-        drawChild1();
-        drawChild2();
         update();
 
     }
@@ -62,6 +83,12 @@ namespace A10_Animation {
             let flake: Snowflake = snowflakes[i];
             flake.move();
             flake.draw();
+        }
+        
+        for (let i: number = 0; i < 10; i++) {
+            let child1: Child1 = children1[i];
+            child1.move();
+            child1.draw();
         }
 
         for (let i: number = 0; i < 5; i++) {
@@ -94,7 +121,7 @@ namespace A10_Animation {
         crc2.fillStyle = "white";
         crc2.strokeStyle = "black";
         crc2.lineWidth = 1;
-        crc2.beginPath;
+        crc2.beginPath();
         crc2.moveTo(170, 80);
         crc2.bezierCurveTo(130, 100, 130, 150, 230, 150);
         crc2.bezierCurveTo(250, 180, 320, 180, 340, 150);
@@ -106,7 +133,7 @@ namespace A10_Animation {
         crc2.stroke();
         crc2.fill();
 
-        crc2.beginPath;
+        crc2.beginPath();
         crc2.moveTo(70, 250);
         crc2.bezierCurveTo(30, 300, 30, 350, 130, 350);
         crc2.bezierCurveTo(150, 380, 220, 380, 240, 350);
@@ -154,61 +181,47 @@ namespace A10_Animation {
 
 
     function drawChild2() {
-        for (let i: number = 0; i < 2; i++) {
-            let x: number = 85;
-            let y: number = 50;
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
-            crc2.lineWidth = 3;
-            crc2.beginPath();
-            crc2.arc((i * x + 200), (i * y + 500), 5, 0, 2 * Math.PI);
-            crc2.closePath();
-            crc2.stroke();
-            crc2.fill();
+         function drawChild2(_x: number, _y: number) {
+        crc2.fillStyle = "black";
+        crc2.strokeStyle = "black";
+        crc2.lineWidth = 3;
+        crc2.beginPath();
+        crc2.arc((_x), (_y), 5, 0, 2 * Math.PI);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fill();
 
-            crc2.lineWidth = 1;
-            crc2.beginPath();
-            crc2.moveTo(i * x + 202, i * y + 500);
-            crc2.lineTo(i * x + 202, i * y + 530);
-            crc2.closePath();
-            crc2.stroke();
+        crc2.beginPath();
+        crc2.moveTo(_x, _y);
+        crc2.lineTo(_x, _y + 30);
+        crc2.closePath();
+        crc2.stroke();
 
-            crc2.beginPath();
-            crc2.moveTo(i * x + 202, i * y + 515);
-            crc2.lineTo(i * x + 190, i * y + 505);
-            crc2.closePath();
-            crc2.stroke();
+        crc2.beginPath();
+        crc2.moveTo(_x, _y + 30);
+        crc2.lineTo(_x - 20, _y + 35);
+        crc2.closePath();
+        crc2.stroke();
 
-            crc2.beginPath();
-            crc2.moveTo(i * x + 202, i * y + 530);
-            crc2.lineTo(i * x + 185, i * y + 536);
-            crc2.closePath();
-            crc2.stroke();
+        crc2.beginPath();
+        crc2.moveTo(_x, _y + 10);
+        crc2.lineTo(_x - 15, _y + 13);
+        crc2.closePath();
+        crc2.stroke();
 
-            crc2.strokeStyle = "brown";
-            crc2.beginPath();
-            crc2.moveTo(i * x + 202, i * y + 530);
-            crc2.lineTo(i * x + 185, i * y + 540);
-            crc2.closePath();
-            crc2.stroke();
+        crc2.strokeStyle = "black";
+        crc2.fillStyle = "brown";
+        crc2.beginPath();
+        crc2.moveTo(_x - 20, _y + 35);
+        crc2.lineTo(_x - 20, _y + 40);
 
-            crc2.beginPath();
-            crc2.moveTo(i * x + 185, i * y + 540);
-            crc2.lineTo(i * x + 195, i * y + 545);
-            crc2.closePath();
-            crc2.stroke();
+        crc2.lineTo(_x - 20, _y + 50);
 
-            crc2.beginPath();
-            crc2.moveTo(i * x + 195, i * y + 545);
-            crc2.lineTo(i * x + 210, i * y + 540);
-            crc2.closePath();
-            crc2.stroke();
-
-            crc2.beginPath();
-            crc2.moveTo(i * x + 210, i * y + 540);
-            crc2.lineTo(i * x + 202, i * y + 530);
-            crc2.closePath();
-            crc2.stroke();
+        crc2.lineTo(_x + 10, _y + 50);
+        crc2.lineTo(_x + 10, _y + 30);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fill();
         }
     }
 

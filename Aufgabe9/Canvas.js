@@ -9,10 +9,10 @@ var L09_Canvas;
         // canvas.width = window.innerWidth;
         // canvas.height = window.innerHeight;
         crc2 = canvas.getContext("2d");
-        createBackground();
-        createTrees();
-        drawChild1();
-        drawChild2();
+        //createBackground();
+        //createTrees();
+        drawChild2(300, 200);
+        // drawChild2(); 
         createFlakes();
     }
     function createBackground() {
@@ -190,56 +190,48 @@ var L09_Canvas;
         crc2.closePath();
         crc2.stroke();
     }
-    function drawChild2() {
-        for (let i = 0; i < 2; i++) {
-            let x = 85;
-            let y = 50;
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
-            crc2.lineWidth = 3;
-            crc2.beginPath();
-            crc2.arc((i * x + 200), (i * y + 500), 5, 0, 2 * Math.PI);
-            crc2.closePath();
-            crc2.stroke();
-            crc2.fill();
-            crc2.lineWidth = 1;
-            crc2.beginPath();
-            crc2.moveTo(i * x + 202, i * y + 500);
-            crc2.lineTo(i * x + 202, i * y + 530);
-            crc2.closePath();
-            crc2.stroke();
-            crc2.beginPath();
-            crc2.moveTo(i * x + 202, i * y + 515);
-            crc2.lineTo(i * x + 190, i * y + 505);
-            crc2.closePath();
-            crc2.stroke();
-            crc2.beginPath();
-            crc2.moveTo(i * x + 202, i * y + 530);
-            crc2.lineTo(i * x + 185, i * y + 536);
-            crc2.closePath();
-            crc2.stroke();
-            crc2.strokeStyle = "brown";
-            crc2.beginPath();
-            crc2.moveTo(i * x + 202, i * y + 530);
-            crc2.lineTo(i * x + 185, i * y + 540);
-            crc2.closePath();
-            crc2.stroke();
-            crc2.beginPath();
-            crc2.moveTo(i * x + 185, i * y + 540);
-            crc2.lineTo(i * x + 195, i * y + 545);
-            crc2.closePath();
-            crc2.stroke();
-            crc2.beginPath();
-            crc2.moveTo(i * x + 195, i * y + 545);
-            crc2.lineTo(i * x + 210, i * y + 540);
-            crc2.closePath();
-            crc2.stroke();
-            crc2.beginPath();
-            crc2.moveTo(i * x + 210, i * y + 540);
-            crc2.lineTo(i * x + 202, i * y + 530);
-            crc2.closePath();
-            crc2.stroke();
-        }
+    function drawChild2(_x, _y) {
+        crc2.fillStyle = "black";
+        crc2.strokeStyle = "black";
+        crc2.lineWidth = 3;
+        crc2.beginPath();
+        crc2.arc((_x), (_y), 5, 0, 2 * Math.PI);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fill();
+        crc2.beginPath();
+        crc2.moveTo(_x, _y);
+        crc2.lineTo(_x, _y + 30);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.beginPath();
+        crc2.moveTo(_x, _y + 30);
+        crc2.lineTo(_x - 20, _y + 35);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.beginPath();
+        crc2.moveTo(_x, _y + 10);
+        crc2.lineTo(_x - 15, _y + 13);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.strokeStyle = "black";
+        crc2.fillStyle = "brown";
+        crc2.beginPath();
+        crc2.moveTo(_x - 20, _y + 35);
+        crc2.lineTo(_x - 20, _y + 40);
+        crc2.lineTo(_x - 20, _y + 50);
+        crc2.lineTo(_x + 10, _y + 50);
+        crc2.lineTo(_x + 10, _y + 30);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fill();
+        /**
+                crc2.beginPath();
+                crc2.moveTo(i * x + 210, i * y + 540);
+                crc2.lineTo(i * x + 202, i * y + 530);
+                crc2.closePath();
+                crc2.stroke();
+            **/
     }
     function drawChild1() {
         for (let i = 0; i < 2; i++) {
