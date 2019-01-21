@@ -5,7 +5,7 @@ namespace A11_Inheritance {
     let crc3: CanvasRenderingContext2D;
     let fps: number = 25;
     let imgData: ImageData;
-    let snowflakes: Snowflake[] = [];
+    let snowflakes: Objects[] = [];
     let trees: Tree[] = [];
     let children1: Child1[] = []
     let children2: Child2[] = []
@@ -19,7 +19,7 @@ namespace A11_Inheritance {
         imgData = crc2.getImageData(0, 0, 360, 730);
 
         for (let i: number = 0; i < 100; i++) {
-            let flake: Snowflake = new Snowflake();
+            let flake: Objects = new Snowflake();
             flake.x = Math.random() * crc2.canvas.width;
             flake.y = Math.random() * crc2.canvas.height;
             flake.dy = Math.random() * 4;
