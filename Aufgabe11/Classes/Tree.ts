@@ -1,9 +1,5 @@
-namespace A10_Animation {
-    export class Tree {
-        x: number;
-        y: number;
-        color: string;
-
+namespace A11_Inheritance {
+    export class Tree extends Objects  {
 
         draw(): void {
             crc2.lineWidth = 1;

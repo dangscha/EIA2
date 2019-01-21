@@ -1,17 +1,13 @@
-namespace A10_Animation {
-    export class Child2 {
-        x: number;
-        y: number;
-        dx: number;
-        dy: number;
-        
+namespace A11_Inheritance {
+    export class Child2 extends Children {
+
         move(): void {
             this.y += this.dy;
-             this.x += this.dx;
-            
+            this.x += this.dx;
+
             if (this.x > 600) {
                 this.x = 0;
-                this.y= Math.random()*360 + 520
+                this.y = Math.random() * 360 + 520
             }
             this.draw();
         }

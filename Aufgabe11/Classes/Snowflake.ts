@@ -1,9 +1,8 @@
-namespace A10_Animation {
-    export class Snowflake {
-        x: number;
-        y: number;
+namespace A11_Inheritance {
+    
+    export class Snowflake extends Objects {
         dy: number;
-        color: string;
+        color:string
 
         move(): void {
             this.y += this.dy;

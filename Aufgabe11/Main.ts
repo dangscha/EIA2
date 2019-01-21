@@ -1,4 +1,4 @@
-namespace A10_Animation {
+namespace A11_Inheritance {
 
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
