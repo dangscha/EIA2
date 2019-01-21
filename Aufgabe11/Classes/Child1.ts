@@ -1,5 +1,5 @@
 namespace A11_Inheritance {
-    export class Child1 extends Children {
+    export class Child1 extends Movement {
 
         move(): void {
             this.y += this.dy;

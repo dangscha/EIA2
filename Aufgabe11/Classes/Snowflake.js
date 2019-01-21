@@ -1,6 +1,6 @@
 var A11_Inheritance;
 (function (A11_Inheritance) {
-    class Snowflake extends A11_Inheritance.Objects {
+    class Snowflake extends A11_Inheritance.Movement {
         move() {
             this.y += this.dy;
             if (this.y > 600) {

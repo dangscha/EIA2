@@ -1,9 +1,6 @@
 namespace A11_Inheritance {
     
-    export class Snowflake extends Objects {
-        dy: number;
-        color:string
-
+    export class Snowflake extends Movement {
         move(): void {
             this.y += this.dy;
             

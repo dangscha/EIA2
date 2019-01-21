@@ -6,9 +6,9 @@ namespace A11_Inheritance {
     let fps: number = 25;
     let imgData: ImageData;
     let snowflakes: Objects[] = [];
-    let trees: Tree[] = [];
-    let children1: Child1[] = []
-    let children2: Child2[] = []
+    let trees: Objects[] = [];
+    let children1: Objects[] = []
+    let children2: Objects[] = []
 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
@@ -19,16 +19,15 @@ namespace A11_Inheritance {
         imgData = crc2.getImageData(0, 0, 360, 730);
 
         for (let i: number = 0; i < 100; i++) {
-            let flake: Objects = new Snowflake();
+            let flake: Movement = new Snowflake();
             flake.x = Math.random() * crc2.canvas.width;
             flake.y = Math.random() * crc2.canvas.height;
             flake.dy = Math.random() * 4;
-            flake.color = "#00ff00";
             snowflakes.push(flake);
         }
 
         for (let i: number = 0; i < 5; i++) {
-            let child1: Child1 = new Child1();
+            let child1: Movement = new Child1();
             crc2.beginPath();
             crc2.moveTo(0, 730);
             crc2.lineTo(360, 730);
@@ -42,7 +41,7 @@ namespace A11_Inheritance {
 
         }
         for (let i: number = 0; i < 5; i++) {
-            let child2: Child2 = new Child2();
+            let child2: Movement = new Child2();
             child2.x = Math.random() * crc2.canvas.width;
             child2.y = Math.random() * 360 + 400;
             child2.dx = Math.random() * 10;
@@ -63,7 +62,7 @@ namespace A11_Inheritance {
         }
 
         for (let i: number = 0; i < 5; i++) {
-            let tree: Tree = new Tree();
+            let tree: Objects = new Tree();
             tree.x = Math.random() * crc2.canvas.width;
             tree.y = Math.random() * crc2.canvas.height;
             crc2.beginPath();
@@ -88,19 +87,19 @@ namespace A11_Inheritance {
         crc2.putImageData(imgData, 0, 0);
 
         for (let i: number = 0; i < 100; i++) {
-            let flake: Snowflake = snowflakes[i];
+            let flake: Objects = snowflakes[i];
             flake.move();
             flake.draw();
         }
 
         for (let i: number = 0; i < 5; i++) {
-            let child1: Child1 = children1[i];
+            let child1: Objects = children1[i];
             child1.move();
             child1.draw();
         }
 
         for (let i: number = 0; i < 5; i++) {
-            let child2: Child2 = children2[i];
+            let child2: Objects = children2[i];
             child2.move();
             child2.draw();
         }

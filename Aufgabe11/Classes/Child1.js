@@ -1,6 +1,6 @@
 var A11_Inheritance;
 (function (A11_Inheritance) {
-    class Child1 extends A11_Inheritance.Children {
+    class Child1 extends A11_Inheritance.Movement {
         move() {
             this.y += this.dy;
             this.x += this.dx;
