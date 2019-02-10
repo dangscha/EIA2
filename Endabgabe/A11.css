@@ -1,0 +1,20 @@
+#div{
+position:absolute;
+display:inline;
+z-index:3;}
+
+h1{
+text-decoration: underline;
+margin-left:20px;
+color:red;
+}
+
+#start{
+width:360px;
+height:40px;}
+
+#scores{
+width:360px;
+height:40px;}
+
+#canvas{position:absolute;z-index:2}
