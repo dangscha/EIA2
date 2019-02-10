@@ -1,27 +1,40 @@
 namespace end {
 
     window.addEventListener("load", init);
+
     export let crc2: CanvasRenderingContext2D;
     let fps: number = 25;
     let imgData: ImageData;
     let snowflakes: Objects[] = [];
     let trees: Objects[] = [];
-    let children1: Objects[] = []
-    let children2: Objects[] = []
+    let children1: Objects[] = [];
+    let snowballs: Objects[] = [];
 
- 
+
     function init(): void {
         document.getElementById("start").addEventListener("click", canvasDraw);
 
+    }
+    
+    function mouseDown(_event: MouseEvent): void {
+        let ball: Movement = new Snowball;
+        ball.x = _event.clientX;
+        ball.y = _event.clientY;
+        snowballs.push(ball);
+        let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
+        canvas.addEventListener("click", mouseDown);
     }
 
     function canvasDraw(_event: Event): void {
         let button: HTMLElement = document.getElementById("div");
         button.parentNode.removeChild(button);
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
+        canvas.addEventListener("click", mouseDown);
         crc2 = canvas.getContext("2d");
         createBackground();
         imgData = crc2.getImageData(0, 0, 360, 730);
+
+
 
         for (let i: number = 0; i < 100; i++) {
             let flake: Movement = new Snowflake();
@@ -71,6 +84,8 @@ namespace end {
         window.setTimeout(update, 1000 / fps);
         crc2.putImageData(imgData, 0, 0);
 
+       
+
         for (let i: number = 0; i < 100; i++) {
             let flake: Objects = snowflakes[i];
             flake.move();
@@ -87,16 +102,21 @@ namespace end {
             let tree: Tree = trees[i];
             tree.draw();
         }
+         for (let i: number = 0; i < 20; i++) {
+            let ball: Objects = snowballs[i];
+            ball.move();
+            ball.draw();
+        }
     }
 
     function createBackground() {
-        
+
         drawLine();
         drawSky();
         drawSun();
     }
-    
-    
+
+
     function drawSun() {
 
         crc2.fillStyle = "#FFFF00";

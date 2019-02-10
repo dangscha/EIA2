@@ -6,14 +6,23 @@ var end;
     let snowflakes = [];
     let trees = [];
     let children1 = [];
-    let children2 = [];
+    let snowballs = [];
     function init() {
         document.getElementById("start").addEventListener("click", canvasDraw);
+    }
+    function mouseDown(_event) {
+        let ball = new end.Snowball;
+        ball.x = _event.clientX;
+        ball.y = _event.clientY;
+        snowballs.push(ball);
+        let canvas = document.getElementsByTagName("canvas")[0];
+        canvas.addEventListener("click", mouseDown);
     }
     function canvasDraw(_event) {
         let button = document.getElementById("div");
         button.parentNode.removeChild(button);
         let canvas = document.getElementsByTagName("canvas")[0];
+        canvas.addEventListener("click", mouseDown);
         end.crc2 = canvas.getContext("2d");
         createBackground();
         imgData = end.crc2.getImageData(0, 0, 360, 730);
@@ -72,6 +81,11 @@ var end;
         for (let i = 0; i < 5; i++) {
             let tree = trees[i];
             tree.draw();
+        }
+        for (let i = 0; i < 20; i++) {
+            let ball = snowballs[i];
+            ball.move();
+            ball.draw();
         }
     }
     function createBackground() {
