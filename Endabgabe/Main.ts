@@ -8,16 +8,17 @@ namespace end {
     let snowflakes: Objects[] = [];
     let trees: Objects[] = [];
     let children1: Objects[] = [];
-    let snowballs: Objects[] = [];
+    let snowballs: Snowball[] = [];
 
 
     function init(): void {
         document.getElementById("start").addEventListener("click", canvasDraw);
+        document.getElementById("restart").addEventListener("click", canvasDraw);
 
     }
-    
+
     function mouseDown(_event: MouseEvent): void {
-        let ball: Movement = new Snowball;
+        let ball: Snowball = new Snowball;
         ball.x = _event.clientX;
         ball.y = _event.clientY;
         snowballs.push(ball);
@@ -84,8 +85,6 @@ namespace end {
         window.setTimeout(update, 1000 / fps);
         crc2.putImageData(imgData, 0, 0);
 
-       
-
         for (let i: number = 0; i < 100; i++) {
             let flake: Objects = snowflakes[i];
             flake.move();
@@ -102,15 +101,27 @@ namespace end {
             let tree: Tree = trees[i];
             tree.draw();
         }
-         for (let i: number = 0; i < 20; i++) {
-            let ball: Objects = snowballs[i];
-            ball.move();
-            ball.draw();
+        if (snowballs.length > 0) {
+            for (let i: number = 0; i < 20; i++) {
+                let ball: Snowball = snowballs[i];
+                ball.move();
+                ball.draw();
+                
+                }
+            }
+        
+            if (snowballs.length>19){
+                document.getElementById("canvas").style.display="none";
+                let node: HTMLBodyElement = <HTMLBodyElement>document.getElementsByTagName("body")[0];
+                let childNodeHTML: string;
+                childNodeHTML = "<h3>Game Over</h3>";
+                childNodeHTML += "<button id='restart'>Restart</button>";
+                node.innerHTML=childNodeHTML;
+                return;
         }
     }
 
     function createBackground() {
-
         drawLine();
         drawSky();
         drawSun();

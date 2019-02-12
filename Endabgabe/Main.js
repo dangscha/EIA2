@@ -9,6 +9,7 @@ var end;
     let snowballs = [];
     function init() {
         document.getElementById("start").addEventListener("click", canvasDraw);
+        document.getElementById("restart").addEventListener("click", canvasDraw);
     }
     function mouseDown(_event) {
         let ball = new end.Snowball;
@@ -82,10 +83,21 @@ var end;
             let tree = trees[i];
             tree.draw();
         }
-        for (let i = 0; i < 20; i++) {
-            let ball = snowballs[i];
-            ball.move();
-            ball.draw();
+        if (snowballs.length > 0) {
+            for (let i = 0; i < 20; i++) {
+                let ball = snowballs[i];
+                ball.move();
+                ball.draw();
+            }
+        }
+        if (snowballs.length > 19) {
+            document.getElementById("canvas").style.display = "none";
+            let node = document.getElementsByTagName("body")[0];
+            let childNodeHTML;
+            childNodeHTML = "<h3>Game Over</h3>";
+            childNodeHTML += "<button id='restart'>Restart</button>";
+            node.innerHTML = childNodeHTML;
+            return;
         }
     }
     function createBackground() {
