@@ -98,29 +98,30 @@ var end;
             let tree = trees[i];
             tree.draw();
         }
-        if (snowballs.length > 0) {
-            for (let i = 0; i < 20; i++) {
-                let ball = snowballs[i];
-                if (snowballs[i].radius > 30) {
-                    ball.move();
-                    ball.draw();
-                }
-                else {
-                    if (ball.radius == 30) {
-                        snowballs[i].draw();
-                        for (let i2 = 0; i2 < children1.length; i2++) {
-                            if (snowballs[i].hitDetection(children1[i2].x, children1[i2].y) == true && children1[i2].state == "down") {
-                                children1[i2].state = "hit";
-                                score += (children1[i2].x + children1[i2].y) * 10;
-                                console.log("score:" + score);
-                            }
+        for (let i = 0; i < snowballs.length; i++) {
+            if (snowballs[i].radius > 0) {
+                snowballs[i].move();
+                snowballs[i].draw();
+            }
+            else {
+                if (snowballs[i].radius == 0) {
+                    snowballs[i].move();
+                    snowballs[i].draw();
+                    for (let i2 = 0; i2 < children1.length; i2++) {
+                        if (snowballs[i].hitDetection(children1[i2].x, children1[i2].y) == true && children1[i2].state == "down") {
+                            children1[i2].state = "hit";
+                            score += children1[i2].dx * children1[i2].dy * 10;
+                            console.log("score:" + score);
                         }
-                    }
-                    if (snowballs.length > 10) {
-                        end();
+                        else {
+                            console.log("else");
+                        }
                     }
                 }
             }
+        }
+        if (snowballs.length > 10) {
+            end();
         }
     }
     function end() {
