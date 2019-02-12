@@ -9,16 +9,12 @@ namespace DatabaseClient {
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
-        document.getElementById("matrikelsearch").addEventListener("input", change);
-        document.getElementById("buttonsearch").addEventListener("click", search);
     }
 
     function insert(_event: Event): void {
         let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
         let query: string = "command=insert";
         query += "&name=" + inputs[0].value;
-        query += "&firstname=" + inputs[1].value;
-        query += "&matrikel=" + inputs[2].value;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
@@ -33,25 +29,6 @@ namespace DatabaseClient {
         target.setAttribute("value", target.value)
         }
     
-
-    function search(_event: Event): void {
-        let matrikel: number = parseInt(document.getElementById("matrikelsearch").getAttribute("value"));
-        if (matrikel.toString().length > 0) {
-            console.log("test");
-            let xhr: XMLHttpRequest = new XMLHttpRequest();
-            xhr.open("GET", serverAddress + "?command=search&matrikel=" + matrikel, true);
-            xhr.addEventListener("readystatechange", searchMatrikel);
-            xhr.send();
-        }
-    }
-
-    function searchMatrikel(_event: ProgressEvent): void {
-        let output: HTMLElement = document.getElementById("outputSearch");
-        var xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            output.innerHTML = xhr.response;
-        }
-    }
 
     function sendRequest(_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();

@@ -5,7 +5,7 @@ import * as Mongo from "mongodb";
 console.log("Database starting");
 
 let databaseURL: string = "mongodb://localhost:27017";
-let databaseName: string = "Test";
+let databaseName: string = "eia2";
 let db: Mongo.Db;
 let students: Mongo.Collection;
 
@@ -26,7 +26,7 @@ function handleConnect(_e: Mongo.MongoError, _db: Mongo.Db): void {
     else {
         console.log("Connected to database!");
         db = _db.db(databaseName);
-        students = db.collection("students");
+        students = db.collection("scores");
     }
 }
 
@@ -46,13 +46,7 @@ export function search(_callback: Function, _matrikel: string): void {
     function prepareAnswer(_e: Mongo.MongoError, studentArray: StudentData[]): void {
         if (_e)
             _callback("Error" + _e);
-        else
-
-            for (let i: number = 0; i < studentArray.length; i++) {
-                if (studentArray[i].matrikel == Number(_matrikel)) {
-                    _callback(JSON.stringify(studentArray[i]));
-                }
-            }
+   
     }
 }
 

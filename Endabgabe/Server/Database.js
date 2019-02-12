@@ -5,7 +5,7 @@
 const Mongo = require("mongodb");
 console.log("Database starting");
 let databaseURL = "mongodb://localhost:27017";
-let databaseName = "Test";
+let databaseName = "eia2";
 let db;
 let students;
 // running on heroku?
@@ -23,7 +23,7 @@ function handleConnect(_e, _db) {
     else {
         console.log("Connected to database!");
         db = _db.db(databaseName);
-        students = db.collection("students");
+        students = db.collection("scores");
     }
 }
 function insert(_doc) {
@@ -41,12 +41,6 @@ function search(_callback, _matrikel) {
     function prepareAnswer(_e, studentArray) {
         if (_e)
             _callback("Error" + _e);
-        else
-            for (let i = 0; i < studentArray.length; i++) {
-                if (studentArray[i].matrikel == Number(_matrikel)) {
-                    _callback(JSON.stringify(studentArray[i]));
-                }
-            }
     }
 }
 exports.search = search;

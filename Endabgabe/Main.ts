@@ -128,7 +128,7 @@ namespace end {
                     for (let i2: number = 0; i2 < children1.length; i2++) {
                         if (snowballs[i].hitDetection(children1[i2].x, children1[i2].y) == true && children1[i2].state == "down") {
                             children1[i2].state = "hit";
-                            score += children1[i2].dx * children1[i2].dy * 10;
+                            score += (children1[i2].dx * children1[i2].dy) * 10;
                             console.log("score:" + score);
                         }
                         else {

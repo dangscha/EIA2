@@ -33,19 +33,14 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
     switch (command) {
         case "insert":
             let student: StudentData = {
-                name: query["name"],
-                firstname: query["firstname"],
-                matrikel: parseInt(query["matrikel"])
+                name: query["name"]
             };
             Database.insert(student);
             respond(_response, "storing data");
             break;
         case "refresh":
+            console.log(student.name);
             Database.findAll(findCallback);
-            break;
-        case "search":
-            console.log(query["matrikel"]);
-            Database.search(findCallback, query["matrikel"]);
             break;
         default:
             respond(_response, "unknown command: " + command);

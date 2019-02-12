@@ -12,8 +12,22 @@
 <script src="Classes/Tree.js" type="text/javascript" charset="utf-8"></script>
 <script src="Classes/Child1.js" type="text/javascript" charset="utf-8"></script>
 <script src="Classes/Snowball.js" type="text/javascript" charset="utf-8"></script>
+<script src="Client/DatabaseClient.js" type="text/javascript" charset="utf-8"></script>
+
  </head>
 <body>
+<	<fieldset id="input">
+		<legend> Type student data here </legend>
+		<input type="text" name="name" placeholder="name" id="name" />
+		
+		<button type="button" id="insert">Insert to database</button>
+	</fieldset>
+	<fieldset id="output">
+		<legend> All student data </legend>
+		<button type="button" id="refresh">Refresh</button>
+		<textarea rows="20" cols="90"> </textarea>
+	</fieldset>
+
 <div id="timer"></div>
 <div id="Baelle"></div>
 <div id="div">
