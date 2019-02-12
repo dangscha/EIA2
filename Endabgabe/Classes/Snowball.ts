@@ -4,12 +4,12 @@ namespace end {
 
 
         move(): void {
-                this.radius -= 1;
-            
+            this.radius -= 1;
+
         }
 
         draw(): void {
-            if (this.radius > 5) {
+            if (this.radius > 30) {
                 crc2.fillStyle = "white";
                 crc2.strokeStyle = "black";
                 crc2.beginPath();
@@ -17,6 +17,27 @@ namespace end {
                 crc2.closePath();
                 crc2.stroke();
                 crc2.fill();
+            }
+        }
+
+        hitDetection(_x: number, _y: number): boolean {
+            crc2.lineWidth = 30
+            crc2.beginPath();
+            crc2.moveTo(_x - 20, _y + 35);
+            crc2.lineTo(_x - 20, _y + 40);
+            crc2.lineTo(_x - 20, _y + 50);
+            crc2.lineTo(_x + 10, _y + 50);
+            crc2.lineTo(_x + 10, _y + 30);
+            crc2.closePath();
+            crc2.stroke();
+            
+
+            if (crc2.isPointInPath(_x, _y)) {
+                return true;
+                
+            }
+            else {
+                return false;
             }
         }
     }

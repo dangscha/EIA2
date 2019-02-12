@@ -1,6 +1,14 @@
 var end;
 (function (end) {
     class Child1 extends end.Movement {
+        draw() {
+            if (this.state = "down") {
+                this.drawChild();
+                if (this.state = "hit") {
+                    this.drawHit;
+                }
+            }
+        }
         move() {
             this.y += this.dy;
             this.x += this.dx;
@@ -10,7 +18,20 @@ var end;
             }
             this.draw();
         }
-        draw() {
+        drawHit() {
+            end.crc2.strokeStyle = "black";
+            end.crc2.fillStyle = "brown";
+            end.crc2.beginPath();
+            end.crc2.moveTo(this.x - 20, this.y + 35);
+            end.crc2.lineTo(this.x - 20, this.y + 40);
+            end.crc2.lineTo(this.x - 20, this.y + 50);
+            end.crc2.lineTo(this.x + 10, this.y + 50);
+            end.crc2.lineTo(this.x + 10, this.y + 30);
+            end.crc2.closePath();
+            end.crc2.stroke();
+            end.crc2.fill();
+        }
+        drawChild() {
             end.crc2.fillStyle = "black";
             end.crc2.strokeStyle = "black";
             end.crc2.lineWidth = 3;
