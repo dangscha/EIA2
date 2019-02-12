@@ -139,7 +139,7 @@ namespace end {
 
             }
         }
-        if (snowballs.length > 10) {
+        if (snowballs.length > 20) {
 
             end();
 
