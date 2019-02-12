@@ -1,6 +1,6 @@
 namespace DatabaseClient {
     window.addEventListener("load", init);
-    let serverAddress: string = "https://databass-eia2.herokuapp.com/";
+    let serverAddress: string = "https://eia2-dangschat.herokuapp.com/";
     //let serverAddress: string = "https://<your>.herokuapp.com/";    
 
     function init(_event: Event): void {
@@ -18,7 +18,7 @@ namespace DatabaseClient {
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
-
+    
     function refresh(_event: Event): void {
         let query: string = "command=refresh";
         sendRequest(query, handleFindResponse);
