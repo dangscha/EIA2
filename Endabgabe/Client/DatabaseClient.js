@@ -2,7 +2,6 @@ var end;
 (function (end) {
     window.addEventListener("load", init);
     let serverAddress = "https://eia2-dangschat.herokuapp.com/";
-    //let serverAddress: string = "https://<your>.herokuapp.com/";    
     function init(_event) {
         console.log("Init");
         let insertButton = document.getElementById("insert");
@@ -23,10 +22,6 @@ var end;
         let query = "command=refresh";
         sendRequest(query, handleFindResponse);
     }
-    /**   function change(_event: Event): void {
-           let target: HTMLInputElement = <HTMLInputElement>_event.target;
-           target.setAttribute("value", target.value)
-           }**/
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
@@ -60,9 +55,9 @@ var end;
             let responseAsJson = JSON.parse(xhr.response);
             responseAsJson.sort(playerDataSort);
             for (let i = 0; i < responseAsJson.length; i++) {
-                output.innerHTML += "<h3>" + responseAsJson[i].name + " | Score:" + responseAsJson[i].score + "<br>";
+                console.log(responseAsJson[i].name);
+                output.innerHTML += "<p>" + responseAsJson[i].name + " | Score:" + responseAsJson[i].score + "<br>";
             }
-            console.log(Math.max(...scores));
         }
     }
 })(end || (end = {}));

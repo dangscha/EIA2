@@ -1,7 +1,6 @@
 namespace end {
     window.addEventListener("load", init);
     let serverAddress: string = "https://eia2-dangschat.herokuapp.com/";
-    //let serverAddress: string = "https://<your>.herokuapp.com/";    
 
     function init(_event: Event): void {
         console.log("Init");
@@ -26,12 +25,6 @@ namespace end {
         sendRequest(query, handleFindResponse);
     }
     
- /**   function change(_event: Event): void {
-        let target: HTMLInputElement = <HTMLInputElement>_event.target;
-        target.setAttribute("value", target.value)
-        }**/
-    
-
     function sendRequest(_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
@@ -68,23 +61,9 @@ function playerDataSort(_a: StudentData, _b: StudentData): number {
             let responseAsJson: StudentData[] = JSON.parse(xhr.response);
             responseAsJson.sort(playerDataSort);
             for (let i: number = 0; i < responseAsJson.length; i++) {
-                output.innerHTML += "<h3>" + responseAsJson[i].name + " | Score:" + responseAsJson[i].score + "<br>";
-                /* if (responseAsJson[i].score > maxNumber) {
-                     maxNumber = responseAsJson[i].score;
-                 } 
-                 scores.push(responseAsJson[i].score);*/
+                console.log(responseAsJson[i].name);
+                output.innerHTML += "<p>" + responseAsJson[i].name + " | Score:" + responseAsJson[i].score + "<br>";
             }
-            console.log(Math.max(...scores));
-
         }
     }
-  /**  function handleFindResponse(_event: ProgressEvent): void {
-        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
-            output.value = xhr.response;
-            let responseAsJson: JSON = JSON.parse(xhr.response);
-            console.log(responseAsJson);
-        }
-    }**/
 }
