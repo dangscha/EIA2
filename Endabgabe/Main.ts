@@ -15,9 +15,8 @@ namespace end {
 
     function init(): void {
         document.getElementById("start").addEventListener("click", canvasDraw);
-        document.getElementById("EndScreen").style.display="none";
+        document.getElementById("EndScreen").style.display = "none";
     }
-
 
     function startCountdown(_seconds: number) {
         var counter: number = _seconds;
@@ -155,14 +154,16 @@ namespace end {
 
         }
     }
+
+
     function end(): void {
         document.getElementById("canvas").style.display = "none";
         document.getElementById("timer").style.display = "none";
         document.getElementById("Baelle").style.display = "none";
         document.getElementById("score").style.display = "none";
-        document.getElementById("EndScreen").style.display="initial";
-        document.getElementById("endScore").innerHTML="Score:"+score.toString();
-        document.getElementById("endScore").setAttribute("value",score.toString());
+        document.getElementById("EndScreen").style.display = "initial";
+        document.getElementById("endScore").innerHTML = "Score:" + score.toString();
+        document.getElementById("endScore").setAttribute("value", score.toString());
         document.getElementById("restart").addEventListener("click", refresh);
         return;
     }
