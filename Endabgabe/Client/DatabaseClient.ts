@@ -45,8 +45,40 @@ namespace end {
             alert(xhr.response);
         }
     }
+function playerDataSort(_a: StudentData, _b: StudentData): number {
+        let returnNumber: number;
+        if (_a.score > _b.score) {
+            returnNumber = -1;
+        }
+        else if (_a.score< _b.score) {
+            returnNumber = 1;
+        }
+        else {
+            returnNumber = 0;
+        }
+        return returnNumber;
+
+    }
 
     function handleFindResponse(_event: ProgressEvent): void {
+        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            let output: HTMLElement = document.getElementById("scores");
+            let scores: number[] = [];
+            let responseAsJson: StudentData[] = JSON.parse(xhr.response);
+            responseAsJson.sort(playerDataSort);
+            for (let i: number = 0; i < responseAsJson.length; i++) {
+                output.innerHTML += "<h3>" + responseAsJson[i].name + " | Score:" + responseAsJson[i].score + "<br>";
+                /* if (responseAsJson[i].score > maxNumber) {
+                     maxNumber = responseAsJson[i].score;
+                 } 
+                 scores.push(responseAsJson[i].score);*/
+            }
+            console.log(Math.max(...scores));
+
+        }
+    }
+  /**  function handleFindResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
             let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
@@ -54,5 +86,5 @@ namespace end {
             let responseAsJson: JSON = JSON.parse(xhr.response);
             console.log(responseAsJson);
         }
-    }
+    }**/
 }
