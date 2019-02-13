@@ -15,6 +15,7 @@ namespace end {
 
     function init(): void {
         document.getElementById("start").addEventListener("click", canvasDraw);
+        document.getElementById("EndScreen").style.display="none";
     }
 
 
@@ -22,7 +23,7 @@ namespace end {
         var counter: number = _seconds;
         var interval = setInterval(() => {
             counter--;
-            document.getElementById("timer").innerHTML = "Timer: "+counter.toString() + "</br>";
+            document.getElementById("timer").innerHTML = "Timer: " + counter.toString() + "</br>";
             if (counter < 0) {
                 clearInterval(interval);
                 end()
@@ -98,7 +99,7 @@ namespace end {
 
         window.setTimeout(update, 1000 / fps);
         crc2.putImageData(imgData, 0, 0);
-        document.getElementById("score").innerHTML = "Score:"+score.toString() + "</br>";
+        document.getElementById("score").innerHTML = "Score:" + score.toString() + "</br>";
 
 
         for (let i: number = 0; i < 100; i++) {
@@ -132,7 +133,7 @@ namespace end {
                         if (snowballs[i].hitDetection(children1[i2].x, children1[i2].y) == true && children1[i2].state == "down") {
                             children1[i2].state = "hit";
                             score += (children1[i2].dx * children1[i2].dy) * -10;
-                            score=Math.floor(score);
+                            score = Math.floor(score);
 
                             console.log("score:" + score);
                         }
@@ -144,30 +145,24 @@ namespace end {
 
             }
         }
-        if (snowballs.length > 20) {
 
+        if (snowballs.length < 20) {
+            document.getElementById("Baelle").innerHTML = "Geworfene Baelle:" + ballCount.toString() + "";
+
+        }
+        if (snowballs.length > 20) {
             end();
 
         }
     }
     function end(): void {
         document.getElementById("canvas").style.display = "none";
-        let node: HTMLBodyElement = <HTMLBodyElement>document.getElementsByTagName("body")[0];
-        let childNodeHTML: string;
-        childNodeHTML = "<h3>Game Over</h3>";
-        childNodeHTML += "<p id='endScore' value="+score.toString()+">Dein Score:"+score+"</p></br>";
-        childNodeHTML += "<button id='restart'>Restart</button></br>";
-        childNodeHTML += "<fieldset id='input'></br>";
-        childNodeHTML += "<legend> Highscore hier eintragen!</legend>";
-        childNodeHTML += "<input type= 'text' name='name' placeholder= 'Name eintragen' id= 'name'/>";
-        childNodeHTML += "<button type= 'button' id= 'insert'>Score absenden</button>";
-        childNodeHTML += "</fieldset>";
-        childNodeHTML += "<fieldset id= 'output'>";
-        childNodeHTML += " <legend>Highscores </legend>";
-        childNodeHTML += "<button type= 'button' id= 'refresh'> Refresh </button>";
-        childNodeHTML += "<textarea rows= '20' cols= '90'></textarea>";
-        childNodeHTML += " </fieldset>";
-        node.innerHTML = childNodeHTML;
+        document.getElementById("timer").style.display = "none";
+        document.getElementById("Baelle").style.display = "none";
+        document.getElementById("score").style.display = "none";
+        document.getElementById("EndScreen").style.display="initial";
+        document.getElementById("endScore").innerHTML="Score:"+score.toString();
+        document.getElementById("endScore").setAttribute("value",score.toString());
         document.getElementById("restart").addEventListener("click", refresh);
         return;
     }

@@ -24,7 +24,8 @@ function handleRequest(_request, _response) {
     switch (command) {
         case "insert":
             let student = {
-                name: query["name"]
+                name: query["name"],
+                score: parseInt(query["score"])
             };
             Database.insert(student);
             respond(_response, "storing data");

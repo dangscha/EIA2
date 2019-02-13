@@ -1,17 +1,18 @@
 namespace end {
     export class Child1 extends Movement {
-        
-        state:string;
-        
-        draw():void{
-            if (this.state=="down"){
+
+        state: string;
+
+        draw(): void {
+            if (this.state == "down") {
                 this.drawChild();
-            if (this.state=="hit"){
-                this.drawHit
-                }
-                }
-                
             }
+            if (this.state == "hit") {
+                this.drawHit
+            }
+
+
+        }
         move(): void {
             this.y += this.dy;
             this.x += this.dx;
@@ -22,7 +23,7 @@ namespace end {
             }
             this.draw();
         }
-        
+
         drawHit(): void {
             crc2.strokeStyle = "black";
             crc2.fillStyle = "brown";
@@ -37,8 +38,8 @@ namespace end {
             crc2.closePath();
             crc2.stroke();
             crc2.fill();
-            }
-        
+        }
+
         drawChild(): void {
             crc2.fillStyle = "black";
             crc2.strokeStyle = "black";

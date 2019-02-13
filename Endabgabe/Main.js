@@ -11,6 +11,7 @@ var end;
     let score = 0;
     function init() {
         document.getElementById("start").addEventListener("click", canvasDraw);
+        document.getElementById("EndScreen").style.display = "none";
     }
     function startCountdown(_seconds) {
         var counter = _seconds;
@@ -124,28 +125,21 @@ var end;
                 }
             }
         }
+        if (snowballs.length < 20) {
+            document.getElementById("Baelle").innerHTML = "Geworfene Baelle:" + ballCount.toString() + "";
+        }
         if (snowballs.length > 20) {
             end();
         }
     }
     function end() {
         document.getElementById("canvas").style.display = "none";
-        let node = document.getElementsByTagName("body")[0];
-        let childNodeHTML;
-        childNodeHTML = "<h3>Game Over</h3>";
-        childNodeHTML += "<p id='endScore' value=" + score.toString() + ">Dein Score:" + score + "</p></br>";
-        childNodeHTML += "<button id='restart'>Restart</button></br>";
-        childNodeHTML += "<fieldset id='input'></br>";
-        childNodeHTML += "<legend> Highscore hier eintragen!</legend>";
-        childNodeHTML += "<input type= 'text' name='name' placeholder= 'Name eintragen' id= 'name'/>";
-        childNodeHTML += "<button type= 'button' id= 'insert'>Score absenden</button>";
-        childNodeHTML += "</fieldset>";
-        childNodeHTML += "<fieldset id= 'output'>";
-        childNodeHTML += " <legend>Highscores </legend>";
-        childNodeHTML += "<button type= 'button' id= 'refresh'> Refresh </button>";
-        childNodeHTML += "<textarea rows= '20' cols= '90'></textarea>";
-        childNodeHTML += " </fieldset>";
-        node.innerHTML = childNodeHTML;
+        document.getElementById("timer").style.display = "none";
+        document.getElementById("Baelle").style.display = "none";
+        document.getElementById("score").style.display = "none";
+        document.getElementById("EndScreen").style.display = "initial";
+        document.getElementById("endScore").innerHTML = "Score:" + score.toString();
+        document.getElementById("endScore").setAttribute("value", score.toString());
         document.getElementById("restart").addEventListener("click", refresh);
         return;
     }

@@ -1,4 +1,6 @@
-
+.crosshair{
+cursor:crosshair
+}
 #div{
 position:absolute;
 display:inline;

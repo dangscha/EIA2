@@ -1,4 +1,4 @@
-namespace DatabaseClient {
+namespace end {
     window.addEventListener("load", init);
     let serverAddress: string = "https://eia2-dangschat.herokuapp.com/";
     //let serverAddress: string = "https://<your>.herokuapp.com/";    
@@ -6,6 +6,7 @@ namespace DatabaseClient {
     function init(_event: Event): void {
         console.log("Init");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
+        console.log(insertButton);
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);

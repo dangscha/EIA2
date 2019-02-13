@@ -4,9 +4,9 @@ var end;
         draw() {
             if (this.state == "down") {
                 this.drawChild();
-                if (this.state == "hit") {
-                    this.drawHit;
-                }
+            }
+            if (this.state == "hit") {
+                this.drawHit;
             }
         }
         move() {

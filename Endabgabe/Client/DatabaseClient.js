@@ -1,11 +1,12 @@
-var DatabaseClient;
-(function (DatabaseClient) {
+var end;
+(function (end) {
     window.addEventListener("load", init);
     let serverAddress = "https://eia2-dangschat.herokuapp.com/";
     //let serverAddress: string = "https://<your>.herokuapp.com/";    
     function init(_event) {
         console.log("Init");
         let insertButton = document.getElementById("insert");
+        console.log(insertButton);
         let refreshButton = document.getElementById("refresh");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
@@ -47,5 +48,5 @@ var DatabaseClient;
             console.log(responseAsJson);
         }
     }
-})(DatabaseClient || (DatabaseClient = {}));
+})(end || (end = {}));
 //# sourceMappingURL=DatabaseClient.js.map
