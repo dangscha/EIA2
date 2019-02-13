@@ -40,7 +40,6 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
             respond(_response, "storing data");
             break;
         case "refresh":
-            console.log(student.name);
             Database.findAll(findCallback);
             break;
         default:

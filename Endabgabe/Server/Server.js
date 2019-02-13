@@ -31,7 +31,6 @@ function handleRequest(_request, _response) {
             respond(_response, "storing data");
             break;
         case "refresh":
-            console.log(student.name);
             Database.findAll(findCallback);
             break;
         default:
