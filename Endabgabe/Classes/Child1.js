@@ -2,9 +2,9 @@ var end;
 (function (end) {
     class Child1 extends end.Movement {
         draw() {
-            if (this.state = "down") {
+            if (this.state == "down") {
                 this.drawChild();
-                if (this.state = "hit") {
+                if (this.state == "hit") {
                     this.drawHit;
                 }
             }

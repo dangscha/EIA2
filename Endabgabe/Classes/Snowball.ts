@@ -1,6 +1,6 @@
 namespace end {
     export class Snowball extends Movement {
-        radius: number = 50;
+        radius: number = 30;
 
 
         move(): void {
@@ -36,7 +36,6 @@ namespace end {
             crc2.lineTo(_x + 10, _y + 50);
             crc2.lineTo(_x + 10, _y + 30);
             crc2.closePath();
-            crc2.stroke();
 
             if (crc2.isPointInPath(this.x, this.y)) {
                 return true;

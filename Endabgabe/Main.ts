@@ -22,7 +22,7 @@ namespace end {
         var counter: number = _seconds;
         var interval = setInterval(() => {
             counter--;
-            document.getElementById("timer").innerHTML = counter.toString() + "</br>";
+            document.getElementById("timer").innerHTML = "Timer: "+counter.toString() + "</br>";
             if (counter < 0) {
                 clearInterval(interval);
                 end()
@@ -60,7 +60,7 @@ namespace end {
             snowflakes.push(flake);
         }
 
-        for (let i: number = 0; i < 50; i++) {
+        for (let i: number = 0; i < 7; i++) {
             let child1: Child1 = new Child1();
             child1.state = "down"
             child1.x = 360;
@@ -98,6 +98,8 @@ namespace end {
 
         window.setTimeout(update, 1000 / fps);
         crc2.putImageData(imgData, 0, 0);
+        document.getElementById("score").innerHTML = "Score:"+score.toString() + "</br>";
+
 
         for (let i: number = 0; i < 100; i++) {
             let flake: Objects = snowflakes[i];
@@ -105,7 +107,7 @@ namespace end {
             flake.draw();
         }
 
-        for (let i: number = 0; i < 50; i++) {
+        for (let i: number = 0; i < 7; i++) {
             let child1: Objects = children1[i];
             child1.move();
             child1.draw();
@@ -119,16 +121,19 @@ namespace end {
             if (snowballs[i].radius > 0) {
                 snowballs[i].move();
                 snowballs[i].draw();
-                //snowballs[i].checkIfHit(childrenArray[i].x, childrenArray[i].y);
             }
             else {
                 if (snowballs[i].radius == 0) {
                     snowballs[i].move();
                     snowballs[i].draw();
                     for (let i2: number = 0; i2 < children1.length; i2++) {
+                        //console.log("snowX:" + snowballs[i].x + "snowY:" + snowballs[i].y + "childX:" + children1[i2].x + "childY:" + children1[i2].y);
+                        //console.log(snowballs[i].hitDetection(children1[i2].x, children1[i2].y), children1[i2].state);
                         if (snowballs[i].hitDetection(children1[i2].x, children1[i2].y) == true && children1[i2].state == "down") {
                             children1[i2].state = "hit";
-                            score += (children1[i2].dx * children1[i2].dy) * 10;
+                            score += (children1[i2].dx * children1[i2].dy) * -10;
+                            score=Math.floor(score);
+
                             console.log("score:" + score);
                         }
                         else {
@@ -150,11 +155,18 @@ namespace end {
         let node: HTMLBodyElement = <HTMLBodyElement>document.getElementsByTagName("body")[0];
         let childNodeHTML: string;
         childNodeHTML = "<h3>Game Over</h3>";
-        childNodeHTML += "Dein Score:<input type='text' id='textbox'></input></br>";
-        childNodeHTML += "Name:<input type='text' id='textbox'></input></br>";
-        childNodeHTML += "<button type='submit' id='submit'>Score absenden</button>";
-        childNodeHTML += "<button id='restart'>Restart</button>";
-
+        childNodeHTML += "<p id='endScore' value="+score.toString()+">Dein Score:"+score+"</p></br>";
+        childNodeHTML += "<button id='restart'>Restart</button></br>";
+        childNodeHTML += "<fieldset id='input'></br>";
+        childNodeHTML += "<legend> Highscore hier eintragen!</legend>";
+        childNodeHTML += "<input type= 'text' name='name' placeholder= 'Name eintragen' id= 'name'/>";
+        childNodeHTML += "<button type= 'button' id= 'insert'>Score absenden</button>";
+        childNodeHTML += "</fieldset>";
+        childNodeHTML += "<fieldset id= 'output'>";
+        childNodeHTML += " <legend>Highscores </legend>";
+        childNodeHTML += "<button type= 'button' id= 'refresh'> Refresh </button>";
+        childNodeHTML += "<textarea rows= '20' cols= '90'></textarea>";
+        childNodeHTML += " </fieldset>";
         node.innerHTML = childNodeHTML;
         document.getElementById("restart").addEventListener("click", refresh);
         return;

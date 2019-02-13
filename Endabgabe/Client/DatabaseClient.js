@@ -14,6 +14,7 @@ var DatabaseClient;
         let inputs = document.getElementsByTagName("input");
         let query = "command=insert";
         query += "&name=" + inputs[0].value;
+        query += "&score=" + document.getElementById("endScore").getAttribute("value");
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
@@ -21,10 +22,10 @@ var DatabaseClient;
         let query = "command=refresh";
         sendRequest(query, handleFindResponse);
     }
-    function change(_event) {
-        let target = _event.target;
-        target.setAttribute("value", target.value);
-    }
+    /**   function change(_event: Event): void {
+           let target: HTMLInputElement = <HTMLInputElement>_event.target;
+           target.setAttribute("value", target.value)
+           }**/
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);

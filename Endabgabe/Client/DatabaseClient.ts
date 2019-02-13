@@ -15,6 +15,7 @@ namespace DatabaseClient {
         let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
         let query: string = "command=insert";
         query += "&name=" + inputs[0].value;
+        query+="&score="+document.getElementById("endScore").getAttribute("value");
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
@@ -24,10 +25,10 @@ namespace DatabaseClient {
         sendRequest(query, handleFindResponse);
     }
     
-    function change(_event: Event): void {
+ /**   function change(_event: Event): void {
         let target: HTMLInputElement = <HTMLInputElement>_event.target;
         target.setAttribute("value", target.value)
-        }
+        }**/
     
 
     function sendRequest(_query: string, _callback: EventListener): void {

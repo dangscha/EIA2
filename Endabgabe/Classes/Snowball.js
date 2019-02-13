@@ -3,7 +3,7 @@ var end;
     class Snowball extends end.Movement {
         constructor(...args) {
             super(...args);
-            this.radius = 50;
+            this.radius = 30;
         }
         move() {
             this.radius -= 1;
@@ -35,7 +35,6 @@ var end;
             end.crc2.lineTo(_x + 10, _y + 50);
             end.crc2.lineTo(_x + 10, _y + 30);
             end.crc2.closePath();
-            end.crc2.stroke();
             if (end.crc2.isPointInPath(this.x, this.y)) {
                 return true;
             }

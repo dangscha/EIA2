@@ -4,9 +4,9 @@ namespace end {
         state:string;
         
         draw():void{
-            if (this.state="down"){
+            if (this.state=="down"){
                 this.drawChild();
-            if (this.state="hit"){
+            if (this.state=="hit"){
                 this.drawHit
                 }
                 }
