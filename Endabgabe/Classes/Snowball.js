@@ -3,7 +3,7 @@ var end;
     class Snowball extends end.Movement {
         constructor(...args) {
             super(...args);
-            this.radius = 30;
+            this.radius = 15;
         }
         move() {
             this.radius -= 1;
@@ -19,21 +19,28 @@ var end;
                 end.crc2.fill();
             }
         }
+        hitDetection2(_x, _y) {
+            end.crc2.lineWidth = 30;
+            end.crc2.beginPath();
+            end.crc2.moveTo(_x + 20, _y + 20);
+            end.crc2.lineTo(_x - 20, _y + 20);
+            end.crc2.lineTo(_x - 20, _y - 20);
+            end.crc2.lineTo(_x + 20, _y - 20);
+            end.crc2.closePath();
+            if (end.crc2.isPointInPath(this.x, this.y)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
         hitDetection(_x, _y) {
             end.crc2.lineWidth = 30;
             end.crc2.beginPath();
-            end.crc2.arc(_x, _y, 20, 0, 2 * Math.PI);
-            end.crc2.moveTo(_x, _y);
-            end.crc2.lineTo(_x, _y + 30);
-            end.crc2.moveTo(_x, _y + 30);
-            end.crc2.lineTo(_x, _y + 35);
-            end.crc2.moveTo(_x, _y + 10);
-            end.crc2.lineTo(_x - 15, _y + 13);
-            end.crc2.moveTo(_x - 20, _y + 35);
-            end.crc2.lineTo(_x - 20, _y + 40);
-            end.crc2.lineTo(_x - 20, _y + 50);
-            end.crc2.lineTo(_x + 10, _y + 50);
-            end.crc2.lineTo(_x + 10, _y + 30);
+            end.crc2.moveTo(_x + 20, _y + 20);
+            end.crc2.lineTo(_x - 20, _y + 20);
+            end.crc2.lineTo(_x - 20, _y - 20);
+            end.crc2.lineTo(_x + 20, _y - 20);
             end.crc2.closePath();
             if (end.crc2.isPointInPath(this.x, this.y)) {
                 return true;

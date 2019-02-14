@@ -62,7 +62,7 @@ function playerDataSort(_a: StudentData, _b: StudentData): number {
             responseAsJson.sort(playerDataSort);
             for (let i: number = 0; i < responseAsJson.length; i++) {
                 console.log(responseAsJson[i].name);
-                output.innerHTML += "<p>" + responseAsJson[i].name + " | Score:" + responseAsJson[i].score + "<br>";
+                output.innerHTML += "<p id='showScores'><strong>Name: </strong>" + responseAsJson[i].name + "<br><strong>Score: </strong>" + responseAsJson[i].score + "</p>";
             }
         }
     }

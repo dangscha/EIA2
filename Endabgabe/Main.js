@@ -12,6 +12,14 @@ var end;
     function init() {
         document.getElementById("start").addEventListener("click", canvasDraw);
         document.getElementById("EndScreen").style.display = "none";
+        document.getElementById("Highscores").addEventListener("click", highScores);
+    }
+    function highScores() {
+        document.getElementById("div").style.display = "none";
+        document.getElementById("EndScreen").style.display = "initial";
+        document.getElementById("h3").style.display = "none";
+        document.getElementById("restart").style.display = "none";
+        document.getElementById("input").style.display = "none";
     }
     function startCountdown(_seconds) {
         var counter = _seconds;
@@ -117,6 +125,11 @@ var end;
                             score += (children1[i2].dx * children1[i2].dy) * -10;
                             score = Math.floor(score);
                             console.log("score:" + score);
+                        }
+                        else if (snowballs[i].hitDetection2(children1[i2].x, children1[i2].y) == true && children1[i2].state == "up") {
+                            children1[i2].state = "hit";
+                            score += (children1[i2].dx * children1[i2].dy) * -10;
+                            score = Math.floor(score);
                         }
                         else {
                             console.log("else");

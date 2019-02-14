@@ -15,22 +15,19 @@
 <script src="Client/DatabaseClient.js" type="text/javascript" charset="utf-8"></script>
 
  </head>
-<body>
-	
-
-<div id="timer"></div>
+<body><div id="timer"></div>
 <div id="Baelle"></div>
 <div id="score"></div>
 <div id="div">
 <h1>Rodelhang-Terminator</h1>
 <h2>Regeln: Mit 20 Baellen soviele Kinder wie moeglich treffen</h2>
 <button id="start">Start</button></br>
-<button id="scores">HighScores</button>
+<button id="Highscores">HighScores</button>
 </div>
 
 <div id="EndScreen">
-<h3>Game Over</h3>
-<p id="endScore"></p></br>
+<h3 id="h3">Game Over</h3>
+<p id="endScore"></p>
 <button id="restart">Restart</button></br>
 
 <fieldset id="input"></br>
@@ -38,11 +35,12 @@
 <input type="text" name="name" placeholder="Name eintragen" id="name"/>
 <button type="button" id="insert">Score absenden</button>
 </fieldset>
-
+<div id="highScores">
 <fieldset id="output">
 <legend>Highscores </legend>
 <button type= "button" id= "refresh"> Refresh </button>
 </fieldset>
+</div>
 <div id="scores"></div>
 
 </div>

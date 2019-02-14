@@ -1,3 +1,7 @@
+body{
+background-color:#CEECF5;
+}
+
 .crosshair{
 cursor:crosshair;
 }
@@ -7,6 +11,11 @@ margin-left:3em;
 
 #scores{
 margin-left:3em;
+font-align:2px;
+}
+#endScore{
+font-size:30px;
+margin:1em;
 }
 
 #div{
@@ -54,35 +63,60 @@ color:#8A4B08;
 #restart{
 width:400px;
 font-size:20px;
-margin-left:3em;
+margin-left:2em;
 }
+
 button{
+border-radius: 8px;
+background-color:#2ECCFA;
+border: 2px solid black;
 width:360px;
 height:40px;
-margin-left:3em;}
+margin-left:3em;
+margin-top:1em;}
 
 #canvas{position:absolute;z-index:2;float:left}
 
 h3{
 text-decoration:underline;
-font-size:20px;
+font-size:40px;
+margin:1px;
 }
+#showScores{
+font-size:20px;
 
+}
 p{
 font-size:50px;
+}
+
+#name{
+height:70px;
+width:250px;
+margin-top:2px;
 }
 
 h2{
 font-size:20px;
 font-style:italic;
 }
+
 #input{
 width:300px;
-height:150px;
+height:200px;
 font-size:30px;
 display: inline-block;
 }
 
+#EndScreen{background-color:#D8D8D8;
+position:absolute;
+left:25%;
+border: 2px solid black;
+margin: 5px;
+padding: 5px;
+}
+
+}
 #output{
 width:300px;
 height:100px;
